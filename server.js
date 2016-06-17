@@ -25,10 +25,15 @@ require('babel-polyfill');
 
 // Models
 var User = require('./models/user');
+var Job = require('./models/job');
+var Note = require('./models/note');
+var Status = require('./models/status');
 
-// Controllers
+// Controllers (Express routes handler)
 var UserController = require('./controllers/user');
 var ContactController = require('./controllers/contact');
+var JobController = require('./controllers/job');
+
 
 // React and Server-Side Rendering
 var routes = require('./app/routes');
@@ -90,6 +95,10 @@ app.use(function(req, res, next) {
   }
 });
 
+// Routes
+app.use('/job', JobController);
+
+//TODO clean and move parts to controllers
 app.post('/contact', ContactController.contactPost);
 app.put('/account', UserController.ensureAuthenticated, UserController.accountPut);
 app.delete('/account', UserController.ensureAuthenticated, UserController.accountDelete);
