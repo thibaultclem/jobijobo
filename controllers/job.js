@@ -6,7 +6,9 @@ var mongoose = require('mongoose');
 var Job = mongoose.model('Job');
 
 /**
- * GET /job listing
+ * GET /job
+ *
+ * return all jobs
  */
 router.get('/', function(req, res, next) {
   Job.find(function(err, jobs) {
@@ -14,6 +16,25 @@ router.get('/', function(req, res, next) {
 
     res.json(jobs);
   })
+});
+
+/**
+ * POST /job
+ *
+ * create a new job
+ */
+router.post('/', function(req, res, next) {
+  var job = new Job(req.body);
+  var now = new Date();
+  job.createdDate = now;
+  job.updatedDate = now;
+  //rumor.author = req.payload.username;
+
+  job.save(function(err, job){
+    if(err){ return next(err); }
+
+    res.json(job);
+  });
 });
 
 /**

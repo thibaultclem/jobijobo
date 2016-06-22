@@ -95,8 +95,8 @@ app.use(function(req, res, next) {
   }
 });
 
-// Routes
-app.use('/job', JobController);
+// API
+app.use('/api/v1/job', JobController);
 
 //TODO clean and move parts to controllers
 app.post('/contact', ContactController.contactPost);
