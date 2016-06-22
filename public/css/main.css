@@ -6856,3 +6856,11 @@ textarea {
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
+.job .panel-body {
+  padding-top: 20px;
+}
+.add-new-job button {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
