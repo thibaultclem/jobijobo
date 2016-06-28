@@ -83,7 +83,7 @@ app.use(function(req, res, next) {
       return false;
     }
   };
-
+  //If user is authenticated add the user to the payload
   if (req.isAuthenticated()) {
     var payload = req.isAuthenticated();
     User.findById(payload.sub, function(err, user) {
@@ -96,7 +96,7 @@ app.use(function(req, res, next) {
 });
 
 // API
-app.use('/api/v1/job', JobController);
+app.use('/api/v1/job', UserController.ensureAuthenticated, JobController);
 
 //TODO clean and move parts to controllers
 app.post('/contact', ContactController.contactPost);

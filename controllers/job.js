@@ -11,7 +11,7 @@ var Job = mongoose.model('Job');
  * return all jobs
  */
 router.get('/', function(req, res, next) {
-  Job.find(function(err, jobs) {
+  Job.find({'user': req.user }, function(err, jobs) {
     if(err) { return next(err); }
 
     res.json(jobs);
@@ -28,6 +28,7 @@ router.post('/', function(req, res, next) {
   var now = new Date();
   job.createdDate = now;
   job.updatedDate = now;
+  job.user = req.user;
   //rumor.author = req.payload.username;
 
   job.save(function(err, job){
