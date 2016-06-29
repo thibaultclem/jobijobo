@@ -11,6 +11,8 @@ class JobList extends React.Component {
 
   render() {
 
+    console.log("jobs: " + this.props.jobs);
+
     var jobNodes = this.props.jobs.map(function(job) {
       return (
         <Job key={job._id} company={job.company} position={job.position}/>

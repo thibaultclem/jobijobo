@@ -1,4 +1,4 @@
-const initialState = {
+ const initialState = {
   token: null,
   user: {}
 };

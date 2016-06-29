@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addJobOffer } from '../actions/job';
 import Messages from './Messages';
 
 class NewJob extends React.Component {
@@ -42,13 +43,14 @@ class NewJob extends React.Component {
       return;
     }
 
-    //Let the parent manage the request to server
-    this.props.onJobSubmit({
-      company: company,
-      position: position,
-      link: link,
-      description: description
-    });
+    //dispatch the new job offer
+    this.props.dispatch(addJobOffer(
+      company,
+      position,
+      link,
+      description,
+      this.props.token
+    ));
 
     //Clear the field
     this.setState({company: '', position: '', link: '', description: ''});
@@ -137,7 +139,8 @@ class NewJob extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages
+    messages: state.messages,
+    token: state.auth.token
   };
 };
 

@@ -118,7 +118,8 @@ app.get('/auth/twitter/callback', UserController.authTwitterCallback);
 app.use(function(req, res) {
   var initialState = {
     auth: { token: req.cookies.token, user: req.user },
-    messages: {}
+    messages: {},
+    jobs: []
   };
 
   var store = configureStore(initialState);

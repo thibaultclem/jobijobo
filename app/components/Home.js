@@ -1,8 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import Messages from './Messages';
 import NewJob from './NewJob';
 import JobList from './JobList';
+import { fetchJobOffer } from '../actions/job';
 
 var apiURL = '/api/v1/job'
 
@@ -10,44 +11,10 @@ class Home extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {jobs: []};
   }
 
   componentDidMount() {
-    this.loadJobFromServer();
-  }
-
-  loadJobFromServer() {
-    //Request to get jobs from server
-    $.ajax({
-      url: apiURL,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({jobs: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(apiURL, status, err.toString());
-      }.bind(this)
-    });
-  }
-
-  handleJobSubmit(job) {
-    //submit to the server and refresh the list
-    $.ajax({
-      url: apiURL,
-      dataType: 'json',
-      type: 'POST',
-      data: job,
-      success: function(data) {
-        var jobsList = this.state.jobs.slice();
-        jobsList.push(data);
-        this.setState({jobs: jobsList});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(apiURL, status, err.toString());
-      }.bind(this)
-    });
+    this.props.dispatch(fetchJobOffer(this.props.token));
   }
 
   render() {
@@ -62,7 +29,7 @@ class Home extends React.Component {
               </p>
             </div>
             <NewJob onJobSubmit={this.handleJobSubmit.bind(this)}/>
-            <JobList jobs={this.state.jobs}/>
+            <JobList jobs={this.props.jobs}/>
           </div>
         </div>
       </div>
@@ -73,7 +40,8 @@ class Home extends React.Component {
 const mapStateToProps = (state) => {
   return {
     messages: state.messages,
-    jobs: state.jobs
+    jobs: state.jobs,
+    token: state.auth.token
   };
 };
 
