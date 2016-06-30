@@ -3078,7 +3078,7 @@ exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
 },{"./Footer":11,"./Header":12,"react":270}],11:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -3089,7 +3089,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -3111,24 +3111,26 @@ var Footer = function (_get__$Component) {
   }
 
   _createClass(Footer, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'footer',
+        "footer",
         null,
         _react2.default.createElement(
-          'p',
+          "p",
           null,
-          '© 2016 JobiJobo. Inspired by friend in Hanoi, Make with love in France, Maintained from Singapore.'
+          "© 2016 JobiJobo. Inspired by friend in Hanoi, Make with ",
+          _react2.default.createElement("i", { className: "fa fa-heart text-danger" }),
+          " in France, Maintained from Singapore."
         )
       );
     }
   }]);
 
   return Footer;
-}(_get__('React').Component);
+}(_get__("React").Component);
 
-exports.default = _get__('Footer');
+exports.default = _get__("Footer");
 var _RewiredData__ = {};
 var _RewireAPI__ = {};
 
@@ -3156,10 +3158,10 @@ function _get__(variableName) {
 
 function _get_original__(variableName) {
   switch (variableName) {
-    case 'React':
+    case "React":
       return _react2.default;
 
-    case 'Footer':
+    case "Footer":
       return Footer;
   }
 
@@ -3191,7 +3193,7 @@ function _update_operation__(operation, variableName, prefix) {
 }
 
 function _set__(variableName, value) {
-  if ((typeof variableName === 'undefined' ? 'undefined' : _typeof(variableName)) === 'object') {
+  if ((typeof variableName === "undefined" ? "undefined" : _typeof(variableName)) === 'object') {
     Object.keys(variableName).forEach(function (name) {
       _RewiredData__[name] = variableName[name];
     });
@@ -3231,7 +3233,7 @@ function _with__(object) {
   };
 }
 
-var _typeOfOriginalExport = typeof Footer === 'undefined' ? 'undefined' : _typeof(Footer);
+var _typeOfOriginalExport = typeof Footer === "undefined" ? "undefined" : _typeof(Footer);
 
 function addNonEnumerableProperty(name, value) {
   Object.defineProperty(Footer, name, {
@@ -3854,15 +3856,15 @@ var Job = function (_get__$Component) {
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Job).call(this, props));
 
     _this.state = { displayAll: false };
-    _this.handleClik = _this.handleClik.bind(_this);
+    _this.handleExpandClik = _this.handleExpandClik.bind(_this);
     _this.handleEditJob = _this.handleEditJob.bind(_this);
     _this.handleDeleteJob = _this.handleDeleteJob.bind(_this);
     return _this;
   }
 
   _createClass(Job, [{
-    key: 'handleClik',
-    value: function handleClik(e) {
+    key: 'handleExpandClik',
+    value: function handleExpandClik(e) {
       this.setState({ displayAll: !this.state.displayAll });
     }
   }, {
@@ -3880,7 +3882,7 @@ var Job = function (_get__$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'job', onClick: this.handleClik },
+        { className: 'job' },
         _react2.default.createElement(
           'div',
           { className: 'panel panel-default job-offer' },
@@ -3891,25 +3893,11 @@ var Job = function (_get__$Component) {
               'div',
               { className: 'job-state' },
               this.props.job.status[0].name
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'job-actions' },
-              _react2.default.createElement(
-                'button',
-                { className: 'btn btn-secondary pull-right', onClick: this.handleEditJob },
-                'Editer'
-              ),
-              _react2.default.createElement(
-                'button',
-                { className: 'btn btn-secondary pull-right', onClick: this.handleDeleteJob },
-                'Supprimer'
-              )
             )
           ),
           !this.state.displayAll ? _react2.default.createElement(
             'div',
-            { className: 'panel-body' },
+            { className: 'panel-body', onClick: this.handleExpandClik },
             _react2.default.createElement(
               'h3',
               { className: 'jobCompany' },
@@ -3922,7 +3910,21 @@ var Job = function (_get__$Component) {
             )
           ) : _react2.default.createElement(
             'div',
-            { className: 'panel-body' },
+            { className: 'panel-body', onClick: this.handleExpandClik },
+            _react2.default.createElement(
+              'div',
+              { className: 'job-actions' },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-secondary', onClick: this.handleEditJob },
+                'Editer'
+              ),
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-secondary', onClick: this.handleDeleteJob },
+                'Supprimer'
+              )
+            ),
             _react2.default.createElement(
               'h3',
               { className: 'jobCompany' },
