@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Messages from './Messages';
+import Messages from '../Messages';
 import Job from './Job';
 
 class JobList extends React.Component {

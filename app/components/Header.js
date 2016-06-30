@@ -48,7 +48,7 @@ class Header extends React.Component {
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
-              <li><IndexLink to="/" activeStyle={active}>My jobs</IndexLink></li>
+              <li><IndexLink to="/jobDashboard" activeStyle={active}>My jobs</IndexLink></li>
               <li><Link to="/stat" activeStyle={active}>Stats</Link></li>
             </ul>
             {rightNav}
