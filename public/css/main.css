@@ -6859,6 +6859,9 @@ textarea {
 .job .panel-body {
   padding-top: 20px;
 }
+.job-offer :hover {
+  cursor: pointer;
+}
 .add-new-job button {
   display: block;
   margin-right: auto;

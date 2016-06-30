@@ -3851,15 +3851,36 @@ var Job = function (_get__$Component) {
   function Job(props) {
     _classCallCheck(this, Job);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Job).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Job).call(this, props));
+
+    _this.state = { displayAll: false };
+    _this.handleClik = _this.handleClik.bind(_this);
+    _this.handleEditJob = _this.handleEditJob.bind(_this);
+    _this.handleDeleteJob = _this.handleDeleteJob.bind(_this);
+    return _this;
   }
 
   _createClass(Job, [{
+    key: 'handleClik',
+    value: function handleClik(e) {
+      this.setState({ displayAll: !this.state.displayAll });
+    }
+  }, {
+    key: 'handleEditJob',
+    value: function handleEditJob(e) {
+      console.log("edit job");
+    }
+  }, {
+    key: 'handleDeleteJob',
+    value: function handleDeleteJob(e) {
+      console.log("delete job");
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'job' },
+        { className: 'job', onClick: this.handleClik },
         _react2.default.createElement(
           'div',
           { className: 'panel panel-default job-offer' },
@@ -3869,21 +3890,53 @@ var Job = function (_get__$Component) {
             _react2.default.createElement(
               'div',
               { className: 'job-state' },
-              'Interested'
+              this.props.job.status[0].name
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'job-actions' },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-secondary pull-right', onClick: this.handleEditJob },
+                'Editer'
+              ),
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-secondary pull-right', onClick: this.handleDeleteJob },
+                'Supprimer'
+              )
             )
           ),
-          _react2.default.createElement(
+          !this.state.displayAll ? _react2.default.createElement(
             'div',
             { className: 'panel-body' },
             _react2.default.createElement(
               'h3',
               { className: 'jobCompany' },
-              this.props.company
+              this.props.job.company
             ),
             _react2.default.createElement(
               'h5',
               { className: 'jobPosition' },
-              this.props.position
+              this.props.job.position
+            )
+          ) : _react2.default.createElement(
+            'div',
+            { className: 'panel-body' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'jobCompany' },
+              this.props.job.company
+            ),
+            _react2.default.createElement(
+              'h5',
+              { className: 'jobPosition' },
+              this.props.job.position
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'jobDescription' },
+              this.props.job.description
             )
           )
         )
@@ -4336,7 +4389,7 @@ var JobList = function (_get__$Component) {
       var jobNodes = this.props.jobs.map(function (job) {
         var _Job_Component = _get__('Job');
 
-        return _react2.default.createElement(_Job_Component, { key: job._id, company: job.company, position: job.position });
+        return _react2.default.createElement(_Job_Component, { key: job._id, job: job });
       });
 
       return _react2.default.createElement(
@@ -4591,11 +4644,9 @@ var NewJob = function (_get__$Component) {
       //dispatch the new job offer
       this.props.dispatch(_get__('addJobOffer')(company, position, link, description, this.props.token));
 
-      //Clear the field
+      //Clear the field and close the form
       this.setState({ company: '', position: '', link: '', description: '' });
-
-      //TODO remove console log
-      console.log("Add new job. company: " + this.state.company + "| position: " + this.state.position + "| link: " + this.state.link + "| description: " + this.state.description);
+      this.setState({ display: !this.state.display });
     }
   }, {
     key: 'render',

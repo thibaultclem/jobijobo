@@ -61,14 +61,9 @@ class NewJob extends React.Component {
       this.props.token
     ));
 
-    //Clear the field
+    //Clear the field and close the form
     this.setState({company: '', position: '', link: '', description: ''});
-
-    //TODO remove console log
-    console.log("Add new job. company: " + this.state.company
-    + "| position: " + this.state.position
-    + "| link: " + this.state.link
-    + "| description: " + this.state.description);
+    this.setState({display: !this.state.display});
   };
 
   render() {
