@@ -4518,10 +4518,6 @@ var _reactRedux = require('react-redux');
 
 var _job = require('../../actions/job');
 
-var _Messages = require('../Messages');
-
-var _Messages2 = _interopRequireDefault(_Messages);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4538,8 +4534,12 @@ var NewJob = function (_get__$Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NewJob).call(this, props));
 
-    _this.state = { company: '', position: '', link: '', description: '' };
+    _this.state = { company: '', position: '', link: '', description: '', display: false };
     _this.handleSubmitNewJob = _this.handleSubmitNewJob.bind(_this);
+    _this.handleCompanyChange = _this.handleCompanyChange.bind(_this);
+    _this.handlePositionChange = _this.handlePositionChange.bind(_this);
+    _this.handleLinkChange = _this.handleLinkChange.bind(_this);
+    _this.handleDisplayClick = _this.handleDisplayClick.bind(_this);
     return _this;
   }
 
@@ -4564,11 +4564,18 @@ var NewJob = function (_get__$Component) {
       this.setState({ description: e.target.value });
     }
   }, {
+    key: 'handleDisplayClick',
+    value: function handleDisplayClick(e) {
+      this.setState({ display: !this.state.display });
+    }
+  }, {
     key: 'handleSubmitNewJob',
     value: function handleSubmitNewJob(event) {
 
       //Prevent the browser's default action of submitting the form
       event.preventDefault();
+
+      //Todo migrate all stuff below to actions
 
       //Clean data
       var company = this.state.company.trim();
@@ -4593,19 +4600,13 @@ var NewJob = function (_get__$Component) {
   }, {
     key: 'render',
     value: function render() {
+
+      //Form to submit a new job offer
+
       return _react2.default.createElement(
         'div',
         { className: 'add-new-job' },
-        _react2.default.createElement(
-          'p',
-          null,
-          _react2.default.createElement(
-            'button',
-            { type: 'button', className: 'btn btn-primary btn-lg' },
-            'Ajouter une nouvelle offre'
-          )
-        ),
-        _react2.default.createElement(
+        this.state.display ? _react2.default.createElement(
           'div',
           { className: 'panel panel-default new-job-offer' },
           _react2.default.createElement(
@@ -4614,7 +4615,12 @@ var NewJob = function (_get__$Component) {
             _react2.default.createElement(
               'div',
               { className: 'job-state' },
-              'Interested'
+              'Ajouter une nouvelle offre',
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-secondary pull-right', onClick: this.handleDisplayClick },
+                'Annuler'
+              )
             )
           ),
           _react2.default.createElement(
@@ -4724,6 +4730,14 @@ var NewJob = function (_get__$Component) {
               )
             )
           )
+        ) : _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'button',
+            { type: 'button', className: 'btn btn-primary btn-lg', onClick: this.handleDisplayClick },
+            'Ajouter une nouvelle offre'
+          )
         )
       );
     }
@@ -4734,7 +4748,6 @@ var NewJob = function (_get__$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    messages: state.messages,
     token: state.auth.token
   };
 };
@@ -4881,7 +4894,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"../../actions/job":3,"../Messages":18,"react":270,"react-redux":92}],18:[function(require,module,exports){
+},{"../../actions/job":3,"react":270,"react-redux":92}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

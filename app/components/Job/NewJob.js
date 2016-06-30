@@ -1,14 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addJobOffer } from '../../actions/job';
-import Messages from '../Messages';
 
 class NewJob extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {company: '', position: '', link: '', description: ''};
+    this.state = {company: '', position: '', link: '', description: '', display: false};
     this.handleSubmitNewJob = this.handleSubmitNewJob.bind(this);
+    this.handleCompanyChange = this.handleCompanyChange.bind(this);
+    this.handlePositionChange = this.handlePositionChange.bind(this);
+    this.handleLinkChange = this.handleLinkChange.bind(this);
+    this.handleDisplayClick = this.handleDisplayClick.bind(this);
   }
 
   handleCompanyChange(e) {
@@ -27,10 +30,16 @@ class NewJob extends React.Component {
     this.setState({description: e.target.value});
   };
 
+  handleDisplayClick(e) {
+    this.setState({display: !this.state.display});
+  }
+
   handleSubmitNewJob(event) {
 
     //Prevent the browser's default action of submitting the form
     event.preventDefault();
+
+    //Todo migrate all stuff below to actions
 
     //Clean data
     var company = this.state.company.trim();
@@ -63,80 +72,88 @@ class NewJob extends React.Component {
   };
 
   render() {
+
+    //Form to submit a new job offer
+
     return (
       <div className="add-new-job">
-        <p>
-          <button type="button" className="btn btn-primary btn-lg">Ajouter une nouvelle offre</button>
-        </p>
-        <div className="panel panel-default new-job-offer">
-          <div className="panel-heading">
-            <div className="job-state">Interested</div>
-          </div>
-          <div className="panel-body">
-            <form className="form-horizontal" onSubmit={this.handleSubmitNewJob}>
-              <div className="form-group">
-                <label htmlFor="company" className="col-sm-2">Entreprise</label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    name="company"
-                    id="company"
-                    placeholder="JobiJobo & Cie"
-                    className="form-control"
-                    value={this.state.company}
-                    onChange={this.handleCompanyChange.bind(this)}
-                    autoFocus/>
+        { this.state.display ?
+          <div className='panel panel-default new-job-offer'>
+              <div className='panel-heading'>
+                <div className='job-state'>
+                  Ajouter une nouvelle offre
+                  <button className='btn btn-secondary pull-right' onClick={this.handleDisplayClick}>Annuler</button>
                 </div>
               </div>
-              <div className="form-group">
-                <label htmlFor="position" className="col-sm-2">Poste</label>
-                <div className="col-sm-8">
-                  <input
-                    type="text"
-                    name="position"
-                    id="position"
-                    placeholder="Développeur informatique"
-                    className="form-control"
-                    value={this.state.position}
-                    onChange={this.handlePositionChange.bind(this)}
-                    autoFocus/>
-                </div>
+              <div className='panel-body'>
+                <form className='form-horizontal' onSubmit={this.handleSubmitNewJob}>
+                  <div className='form-group'>
+                    <label htmlFor='company' className='col-sm-2'>Entreprise</label>
+                    <div className='col-sm-8'>
+                      <input
+                        type='text'
+                        name='company'
+                        id='company'
+                        placeholder='JobiJobo & Cie'
+                        className='form-control'
+                        value={this.state.company}
+                        onChange={this.handleCompanyChange.bind(this)}
+                        autoFocus/>
+                    </div>
+                  </div>
+                  <div className='form-group'>
+                    <label htmlFor='position' className='col-sm-2'>Poste</label>
+                    <div className='col-sm-8'>
+                      <input
+                        type='text'
+                        name='position'
+                        id='position'
+                        placeholder='Développeur informatique'
+                        className='form-control'
+                        value={this.state.position}
+                        onChange={this.handlePositionChange.bind(this)}
+                        autoFocus/>
+                    </div>
+                  </div>
+                  <div className='form-group'>
+                    <label htmlFor='link' className='col-sm-2'>URL</label>
+                    <div className='col-sm-8'>
+                      <input
+                        type='url'
+                        name='link'
+                        id='link'
+                        placeholder='http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX'
+                        className='form-control'
+                        value={this.state.link}
+                        onChange={this.handleLinkChange.bind(this)}
+                        autoFocus/>
+                    </div>
+                  </div>
+                  <div className='form-group'>
+                    <label htmlFor='description' className='col-sm-2'>Description</label>
+                    <div className='col-sm-8'>
+                      <textarea
+                        name='description'
+                        id='description' rows='7'
+                        className='form-control'
+                        value={this.state.description}
+                        onChange={this.handleDescriptionChange.bind(this)}
+                        >
+                      </textarea>
+                    </div>
+                  </div>
+                  <div className='form-group'>
+                    <div className='col-sm-offset-2 col-sm-8'>
+                      <button type='submit' className='btn btn-success'>Ajouter</button>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <div className="form-group">
-                <label htmlFor="link" className="col-sm-2">URL</label>
-                <div className="col-sm-8">
-                  <input
-                    type="url"
-                    name="link"
-                    id="link"
-                    placeholder="http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX"
-                    className="form-control"
-                    value={this.state.link}
-                    onChange={this.handleLinkChange.bind(this)}
-                    autoFocus/>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="description" className="col-sm-2">Description</label>
-                <div className="col-sm-8">
-                  <textarea
-                    name="description"
-                    id="description" rows="7"
-                    className="form-control"
-                    value={this.state.description}
-                    onChange={this.handleDescriptionChange.bind(this)}
-                    >
-                  </textarea>
-                </div>
-              </div>
-              <div className="form-group">
-                <div className="col-sm-offset-2 col-sm-8">
-                  <button type="submit" className="btn btn-success">Ajouter</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+            </div>
+            :
+            <p>
+              <button type="button" className="btn btn-primary btn-lg" onClick={this.handleDisplayClick}>Ajouter une nouvelle offre</button>
+            </p> }
       </div>
     );
   }
@@ -144,7 +161,6 @@ class NewJob extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages,
     token: state.auth.token
   };
 };
