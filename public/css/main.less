@@ -125,6 +125,7 @@ footer {
   margin-bottom: 5px;
 }
 
+/*
 .btn {
   font-weight: 600;
   border-radius: 3px;
@@ -159,6 +160,8 @@ footer {
     background: darken(#b61b17, 6%) linear-gradient(to bottom, darken(#cc1e1a, 6%), darken(#b61b17, 6%));
   }
 }
+
+*/
 
 .btn-facebook {
   color: #fff;
@@ -248,19 +251,29 @@ textarea {
 // Job page
 // -------------------------
 
-.job-offer .panel-body {
-  padding-top: 20px;
-  &:hover {
-    cursor: pointer;
+.job-offer {
+  .panel-heading {
+    &:hover {
+      cursor: pointer;
+    }
   }
-  button {
-    margin: 5px;
+  .panel-body {
+    padding-top: 20px;
+    button {
+      margin: 5px;
+    }
   }
 }
-
 // Add new job
 .add-new-job button {
   display: block;
   margin-right: auto;
   margin-left: auto;
+}
+
+.job-offer {
+  h2 {
+    font-size: 100%;
+    color: grey
+  }
 }

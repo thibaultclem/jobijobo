@@ -11,6 +11,7 @@ class NewJob extends React.Component {
     this.handleCompanyChange = this.handleCompanyChange.bind(this);
     this.handlePositionChange = this.handlePositionChange.bind(this);
     this.handleLinkChange = this.handleLinkChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleDisplayClick = this.handleDisplayClick.bind(this);
   }
 

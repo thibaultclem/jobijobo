@@ -22,7 +22,7 @@ class JobDashboard extends React.Component {
       <div className="container-fluid">
         <Messages messages={this.props.messages}/>
         <div className="row job">
-          <div className="col-md-8 col-md-offset-2">
+          <div className="col-sm-8 col-sm-offset-2">
             <NewJob/>
             <JobList jobs={this.props.jobs}/>
           </div>

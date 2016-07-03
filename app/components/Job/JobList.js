@@ -27,7 +27,8 @@ class JobList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages
+    messages: state.messages,
+    jobs: state.jobs
   };
 };
 
