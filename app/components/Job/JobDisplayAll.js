@@ -23,9 +23,9 @@ class JobDisplayAll extends React.Component {
     return (
             <div className="job-display-all">
               <div className="job-actions pull-right">
-                  <button type="button" className='btn btn-primary fa fa-pencil-square-o hidden-xs' onClick={this.handleEditJob}> Editer</button>
+                  <button type="button" className='btn btn-primary fa fa-pencil-square-o hidden-xs' onClick={this.handleEditJob}> EDITER</button>
                   <button type="button" className='btn btn-primary fa fa-pencil-square-o visible-xs-block' onClick={this.handleEditJob}></button>
-                  <button type="button" className='btn btn-primary fa fa-times hidden-xs' onClick={this.handleDeleteJob}> Supprimer</button>
+                  <button type="button" className='btn btn-primary fa fa-times hidden-xs' onClick={this.handleDeleteJob}> SUPPRIMER</button>
                   <button type="button" className='btn btn-primary fa fa-times visible-xs-block' onClick={this.handleDeleteJob}></button>
               </div>
               <h3 className="jobCompany">{this.props.job.company}</h3>

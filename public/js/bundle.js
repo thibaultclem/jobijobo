@@ -4385,13 +4385,13 @@ var JobDisplayAll = function (_get__$Component) {
           _react2.default.createElement(
             'button',
             { type: 'button', className: 'btn btn-primary fa fa-pencil-square-o hidden-xs', onClick: this.handleEditJob },
-            ' Editer'
+            ' EDITER'
           ),
           _react2.default.createElement('button', { type: 'button', className: 'btn btn-primary fa fa-pencil-square-o visible-xs-block', onClick: this.handleEditJob }),
           _react2.default.createElement(
             'button',
             { type: 'button', className: 'btn btn-primary fa fa-times hidden-xs', onClick: this.handleDeleteJob },
-            ' Supprimer'
+            ' SUPPRIMER'
           ),
           _react2.default.createElement('button', { type: 'button', className: 'btn btn-primary fa fa-times visible-xs-block', onClick: this.handleDeleteJob })
         ),
