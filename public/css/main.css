@@ -9068,6 +9068,9 @@ textarea {
 .job-offer .panel-body:hover {
   cursor: pointer;
 }
+.job-offer .panel-body button {
+  margin: 5px;
+}
 .add-new-job button {
   display: block;
   margin-right: auto;
