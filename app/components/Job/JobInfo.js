@@ -12,6 +12,7 @@ class JobInfo extends React.Component {
     this.handlePositionChange = this.handlePositionChange.bind(this);
     this.handleLinkChange = this.handleLinkChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleDeleteJob = this.handleDeleteJob.bind(this);
   }
 
   handleCompanyChange(e) {
@@ -34,6 +35,10 @@ class JobInfo extends React.Component {
     console.log("handle Edit a job");
   }
 
+  handleDeleteJob(e) {
+    console.log("handle delete a job");
+  }
+
   handleEditClick(e) {
     this.setState({editMode: !this.state.editMode})
   }
@@ -45,8 +50,8 @@ class JobInfo extends React.Component {
         //Display mode
         <div className="JobInfo-display">
           <div className="jobInfo-action pull-right">
-            <button type="button" className='btn btn-primary hidden-xs' onClick={this.handleEditClick}> EDITER</button>
-            <button type="button" className='btn btn-primary fa fa-pencil-square-o visible-xs-block' onClick={this.handleEditClick}></button>
+            <button type="button" className='btn btn-default hidden-xs' onClick={this.handleEditClick}>Editer</button>
+            <button type="button" className='btn btn-default fa fa-pencil-square-o visible-xs-block' onClick={this.handleEditClick}></button>
           </div>
           <h3 className="JobInfo-company">{this.props.job.company}</h3>
           <h4 className="JobInfo-position">{this.props.job.position}</h4>
@@ -57,11 +62,12 @@ class JobInfo extends React.Component {
         :
         //Edit mode
         <div className="JobEdit">
-          <div className="jobInfo-action pull-right">
-            <button type="button" className='btn btn-secondary hidden-xs' onClick={this.handleEditClick}> ANNULER</button>
-            <button type="button" className='btn btn-secondary fa fa-angle-left visible-xs-block' onClick={this.handleEditClick}></button>
-          </div>
           <form className='form-horizontal' onSubmit={this.handleSubmitEditJob}>
+            <div className='form-group'>
+                <button type='submit' className='btn btn-success'>Sauvegarder</button>
+                <button type="button" className='btn btn-danger' onClick={this.handleDeleteJob}>Supprimer</button>
+                <button type="button" className='btn btn-secondary' onClick={this.handleEditClick}>Annuler</button>
+            </div>
             <div className='form-group'>
               <label htmlFor='company'>Entreprise</label>
               <div>
@@ -115,11 +121,6 @@ class JobInfo extends React.Component {
                   onChange={this.handleDescriptionChange.bind(this)}
                   >
                 </textarea>
-              </div>
-            </div>
-            <div className='form-group'>
-              <div className='col-sm-offset-2'>
-                <button type='submit' className='btn btn-success'>Sauvegarder</button>
               </div>
             </div>
           </form>

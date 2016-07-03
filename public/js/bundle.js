@@ -4785,6 +4785,7 @@ var JobInfo = function (_get__$Component) {
     _this.handlePositionChange = _this.handlePositionChange.bind(_this);
     _this.handleLinkChange = _this.handleLinkChange.bind(_this);
     _this.handleDescriptionChange = _this.handleDescriptionChange.bind(_this);
+    _this.handleDeleteJob = _this.handleDeleteJob.bind(_this);
     return _this;
   }
 
@@ -4814,6 +4815,11 @@ var JobInfo = function (_get__$Component) {
       console.log("handle Edit a job");
     }
   }, {
+    key: 'handleDeleteJob',
+    value: function handleDeleteJob(e) {
+      console.log("handle delete a job");
+    }
+  }, {
     key: 'handleEditClick',
     value: function handleEditClick(e) {
       this.setState({ editMode: !this.state.editMode });
@@ -4834,10 +4840,10 @@ var JobInfo = function (_get__$Component) {
             { className: 'jobInfo-action pull-right' },
             _react2.default.createElement(
               'button',
-              { type: 'button', className: 'btn btn-primary hidden-xs', onClick: this.handleEditClick },
-              ' EDITER'
+              { type: 'button', className: 'btn btn-default hidden-xs', onClick: this.handleEditClick },
+              'Editer'
             ),
-            _react2.default.createElement('button', { type: 'button', className: 'btn btn-primary fa fa-pencil-square-o visible-xs-block', onClick: this.handleEditClick })
+            _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-pencil-square-o visible-xs-block', onClick: this.handleEditClick })
           ),
           _react2.default.createElement(
             'h3',
@@ -4870,18 +4876,27 @@ var JobInfo = function (_get__$Component) {
           'div',
           { className: 'JobEdit' },
           _react2.default.createElement(
-            'div',
-            { className: 'jobInfo-action pull-right' },
-            _react2.default.createElement(
-              'button',
-              { type: 'button', className: 'btn btn-secondary hidden-xs', onClick: this.handleEditClick },
-              ' ANNULER'
-            ),
-            _react2.default.createElement('button', { type: 'button', className: 'btn btn-secondary fa fa-angle-left visible-xs-block', onClick: this.handleEditClick })
-          ),
-          _react2.default.createElement(
             'form',
             { className: 'form-horizontal', onSubmit: this.handleSubmitEditJob },
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group' },
+              _react2.default.createElement(
+                'button',
+                { type: 'submit', className: 'btn btn-success' },
+                'Sauvegarder'
+              ),
+              _react2.default.createElement(
+                'button',
+                { type: 'button', className: 'btn btn-danger', onClick: this.handleDeleteJob },
+                'Supprimer'
+              ),
+              _react2.default.createElement(
+                'button',
+                { type: 'button', className: 'btn btn-secondary', onClick: this.handleEditClick },
+                'Annuler'
+              )
+            ),
             _react2.default.createElement(
               'div',
               { className: 'form-group' },
@@ -4966,19 +4981,6 @@ var JobInfo = function (_get__$Component) {
                   value: this.state.job.description,
                   onChange: this.handleDescriptionChange.bind(this)
                 })
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'form-group' },
-              _react2.default.createElement(
-                'div',
-                { className: 'col-sm-offset-2' },
-                _react2.default.createElement(
-                  'button',
-                  { type: 'submit', className: 'btn btn-success' },
-                  'Sauvegarder'
-                )
               )
             )
           )
