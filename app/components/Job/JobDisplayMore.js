@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import JobInfo from './JobInfo';
-import JobNotes from './JobNotes';
+import JobNotes from './Notes/JobNotes';
 import JobStatus from './JobStatus';
 
 class JobDisplayMore extends React.Component {

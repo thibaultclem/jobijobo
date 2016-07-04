@@ -24,7 +24,7 @@ class JobDashboard extends React.Component {
         <div className="row job">
           <div className="col-sm-8 col-sm-offset-2">
             <NewJob/>
-            <JobList jobs={this.props.jobs}/>
+            <JobList/>
           </div>
         </div>
       </div>
@@ -35,7 +35,6 @@ class JobDashboard extends React.Component {
 const mapStateToProps = (state) => {
   return {
     messages: state.messages,
-    jobs: state.jobs,
     token: state.auth.token
   };
 };
