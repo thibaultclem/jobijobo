@@ -15,7 +15,7 @@ class JobDisplayMore extends React.Component {
       <div className="JobDisplayMore">
         <JobInfo job={this.props.job} />
         <JobStatus job={this.props.job} />
-        <JobNotes notes={this.props.notes} />
+        <JobNotes job={this.props.job} />
       </div>
 
     );

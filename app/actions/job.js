@@ -116,3 +116,36 @@ export function deleteJobOffer(id, token) {
     });
   };
 };
+
+//Add new note to job offer
+export function addNoteToJobOffer(body, id, token) {
+  return (dispatch) => {
+    return fetch(apiURL+'/'+id+'/notes', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        body: body
+      })
+    }).then((response) => {
+      if (response.ok) {
+        return response.json().then((note) => {
+          dispatch({
+            type: 'CLEAR_MESSAGES'
+          });
+          dispatch({
+            type: 'ADD_NOTE_TO_JOB_OFFER',
+            note
+          });
+          console.log(note);
+        });
+      } else {
+        return response.json().then((json) => {
+          //TODO:
+        });
+      }
+    });
+  };
+};

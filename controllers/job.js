@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 //model
 var Job = mongoose.model('Job');
 var Status = mongoose.model('Status');
-var Notes = mongoose.model('Note')
+var Note = mongoose.model('Note')
 
 /**
 * GET /jobs
@@ -13,7 +13,7 @@ var Notes = mongoose.model('Note')
 * return all jobs
 */
 router.get('/', function(req, res, next) {
-  Job.find({'user': req.user }).populate('status').exec(function(err, jobs) {
+  Job.find({'user': req.user }).populate('status').populate('notes').exec(function(err, jobs) {
     if(err) { return next(err); }
 
     res.json(jobs);
@@ -54,7 +54,10 @@ router.post('/', function(req, res, next) {
     //save job
     job.save(function(err, job){
       if(err){ return next(err); }
-      res.json(job);
+      Job.populate(job, [{path:"status"}, {path:"notes"}], function(err, job) {
+        if(err){ return next(err); console.log(err); }
+        res.json(job);
+      });
     });
   });
 });
@@ -97,7 +100,10 @@ router.put('/:job', function(req, res, next) {
     //save job
     job.save(function(err, job){
       if(err){ return next(err); console.log(err); }
-      res.json(job);
+      Job.populate(job, [{path:"status"}, {path:"notes"}], function(err, job) {
+        if(err){ return next(err); console.log(err); }
+        res.json(job);
+      });
     });
   });
 });
@@ -137,7 +143,7 @@ router.param('note', function(req, res, next, id) {
 *
 * create a new note
 */
-router.post('/:job/notes/', function(req, res, next) {
+router.post('/:job/notes', function(req, res, next) {
   //Create Job
   var note = new Note(req.body);
   //Add date informations
@@ -150,14 +156,15 @@ router.post('/:job/notes/', function(req, res, next) {
   //first save note
   note.save(function(err, note){
     //error:
-    if(err){ return next(err); }
+    if(err){ return next(err); console.log(err);}
     //success:
     //Link note to job
     req.job.notes.push(note);
     //save job
     req.job.save(function(err, job){
-      if(err){ return next(err); }
-      res.json(job);
+      if(err){ return next(err); console.log(err); }
+      //return the new job with populate fields
+      res.json(note);
     });
   });
 });

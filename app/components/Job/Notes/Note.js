@@ -10,8 +10,8 @@ class Note extends React.Component {
   render() {
     return (
       <div className="Note">
-        <p>{this.props.body}</p>
-        <h5>{this.props.updatedDate}</h5>
+        <p>{this.props.note.body}</p>
+        <h6>{this.props.note.updatedDate}</h6>
       </div>
     );
   }

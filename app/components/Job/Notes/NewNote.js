@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addNoteToJobOffer } from '../../../actions/job';
 
 class NewNote extends React.Component {
 
@@ -12,7 +13,20 @@ class NewNote extends React.Component {
 
   handleSubmitNewNote(e) {
     e.preventDefault();
-    console.log("submit new Note");
+    //Clean data
+    var body = this.state.body.trim();
+    //Don't save empty note
+    if (!body) {
+      return;
+    }
+    //dispatch the new job offer
+    this.props.dispatch(addNoteToJobOffer(
+      body,
+      this.props.jobId,
+      this.props.token
+    ));
+    //Clear the field
+    this.setState({body: ''});
   }
 
   handleBodyChange(e) {
@@ -50,6 +64,7 @@ class NewNote extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    token: state.auth.token
   };
 };
 
