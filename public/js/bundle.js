@@ -5324,7 +5324,6 @@ var JobList = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  console.log(state);
   return {
     messages: state.messages,
     jobs: state.jobs
@@ -6135,7 +6134,6 @@ var JobNote = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  console.log(state);
   return {};
 };
 
