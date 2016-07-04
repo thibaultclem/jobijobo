@@ -115,4 +115,51 @@ router.delete('/:job', function(req, res, next) {
   })
 });
 
+
+/**
+* PARAM :note
+*
+*/
+router.param('note', function(req, res, next, id) {
+  var query = Notes.findById(id);
+
+  query.exec(function (err, note){
+    if (err) { return next(err); }
+    if (!note) { return next(new Error('can\'t find note')); }
+
+    req.note = note;
+    return next();
+  });
+});
+
+/**
+* POST /note
+*
+* create a new note
+*/
+router.post('/:job/notes/', function(req, res, next) {
+  //Create Job
+  var note = new Note(req.body);
+  //Add date informations
+  var now = new Date();
+  note.createdDate = now;
+  note.updatedDate = now;
+  //link to job
+  note.job = req.job;
+
+  //first save note
+  note.save(function(err, note){
+    //error:
+    if(err){ return next(err); }
+    //success:
+    //Link note to job
+    req.job.notes.push(note);
+    //save job
+    req.job.save(function(err, job){
+      if(err){ return next(err); }
+      res.json(job);
+    });
+  });
+});
+
 module.exports = router;
