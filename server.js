@@ -96,7 +96,7 @@ app.use(function(req, res, next) {
 });
 
 // API
-app.use('/api/v1/job', UserController.ensureAuthenticated, JobController);
+app.use('/api/v1/jobs', UserController.ensureAuthenticated, JobController);
 
 //TODO clean and move parts to controllers
 app.post('/contact', ContactController.contactPost);

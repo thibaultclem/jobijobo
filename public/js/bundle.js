@@ -430,7 +430,7 @@ exports.fetchJobOffer = fetchJobOffer;
 exports.addJobOffer = addJobOffer;
 exports.updateJobOffer = updateJobOffer;
 exports.deleteJobOffer = deleteJobOffer;
-var apiURL = '/api/v1/job';
+var apiURL = '/api/v1/jobs';
 
 //Fetch all job offer for connected user
 function fetchJobOffer(token) {

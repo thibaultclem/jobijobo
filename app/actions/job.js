@@ -1,4 +1,4 @@
-var apiURL = '/api/v1/job'
+var apiURL = '/api/v1/jobs'
 
 //Fetch all job offer for connected user
 export function fetchJobOffer(token) {
