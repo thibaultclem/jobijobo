@@ -4777,7 +4777,13 @@ var JobInfo = function (_get__$Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JobInfo).call(this, props));
 
-    _this.state = { editMode: false, job: _this.props.job };
+    _this.state = {
+      editMode: false,
+      company: _this.props.job.company,
+      position: _this.props.job.position,
+      link: _this.props.job.link,
+      description: _this.props.job.description
+    };
     _this.handleEditClick = _this.handleEditClick.bind(_this);
     _this.handleSubmitEditJob = _this.handleSubmitEditJob.bind(_this);
     _this.handleCompanyChange = _this.handleCompanyChange.bind(_this);
@@ -4847,17 +4853,17 @@ var JobInfo = function (_get__$Component) {
           _react2.default.createElement(
             'h3',
             { className: 'JobInfo-company' },
-            this.props.job.company
+            this.state.company
           ),
           _react2.default.createElement(
             'h4',
             { className: 'JobInfo-position' },
-            this.props.job.position
+            this.state.position
           ),
           _react2.default.createElement(
             'a',
             { className: 'JobInfo-link' },
-            this.props.job.link
+            this.state.link
           ),
           _react2.default.createElement(
             'h2',
@@ -4867,7 +4873,7 @@ var JobInfo = function (_get__$Component) {
           _react2.default.createElement(
             'p',
             { className: 'JobInfo-description' },
-            this.props.job.description
+            this.state.description
           )
         ) :
         //Edit mode
@@ -4913,8 +4919,8 @@ var JobInfo = function (_get__$Component) {
                   id: 'company',
                   placeholder: 'JobiJobo & Cie',
                   className: 'form-control',
-                  value: this.state.job.company,
-                  onChange: this.handleCompanyChange.bind(this),
+                  value: this.state.company,
+                  onChange: this.handleCompanyChange,
                   autoFocus: true })
               )
             ),
@@ -4935,8 +4941,8 @@ var JobInfo = function (_get__$Component) {
                   id: 'position',
                   placeholder: 'Développeur informatique',
                   className: 'form-control',
-                  value: this.state.job.position,
-                  onChange: this.handlePositionChange.bind(this),
+                  value: this.state.position,
+                  onChange: this.handlePositionChange,
                   autoFocus: true })
               )
             ),
@@ -4957,8 +4963,8 @@ var JobInfo = function (_get__$Component) {
                   id: 'link',
                   placeholder: 'http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX',
                   className: 'form-control',
-                  value: this.state.job.link,
-                  onChange: this.handleLinkChange.bind(this),
+                  value: this.state.link,
+                  onChange: this.handleLinkChange,
                   autoFocus: true })
               )
             ),
@@ -4977,8 +4983,8 @@ var JobInfo = function (_get__$Component) {
                   name: 'description',
                   id: 'description', rows: '7',
                   className: 'form-control',
-                  value: this.state.job.description,
-                  onChange: this.handleDescriptionChange.bind(this)
+                  value: this.state.description,
+                  onChange: this.handleDescriptionChange
                 })
               )
             )

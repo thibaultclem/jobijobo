@@ -5,7 +5,13 @@ class JobInfo extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {editMode: false, job: this.props.job};
+    this.state = {
+      editMode: false,
+      company: this.props.job.company,
+      position: this.props.job.position,
+      link: this.props.job.link,
+      description: this.props.job.description
+    };
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleSubmitEditJob = this.handleSubmitEditJob.bind(this);
     this.handleCompanyChange = this.handleCompanyChange.bind(this);
@@ -53,11 +59,11 @@ class JobInfo extends React.Component {
             <button type="button" className='btn btn-default hidden-xs' onClick={this.handleEditClick}>Editer</button>
             <button type="button" className='btn btn-default fa fa-pencil-square-o visible-xs-block' onClick={this.handleEditClick}></button>
           </div>
-          <h3 className="JobInfo-company">{this.props.job.company}</h3>
-          <h4 className="JobInfo-position">{this.props.job.position}</h4>
-          <a className="JobInfo-link">{this.props.job.link}</a>
+          <h3 className="JobInfo-company">{this.state.company}</h3>
+          <h4 className="JobInfo-position">{this.state.position}</h4>
+          <a className="JobInfo-link">{this.state.link}</a>
           <h2>DESCRIPTION</h2>
-          <p className="JobInfo-description">{this.props.job.description}</p>
+          <p className="JobInfo-description">{this.state.description}</p>
           </div>
         :
         //Edit mode
@@ -77,8 +83,8 @@ class JobInfo extends React.Component {
                   id='company'
                   placeholder='JobiJobo & Cie'
                   className='form-control'
-                  value={this.state.job.company}
-                  onChange={this.handleCompanyChange.bind(this)}
+                  value={this.state.company}
+                  onChange={this.handleCompanyChange}
                   autoFocus/>
               </div>
             </div>
@@ -91,8 +97,8 @@ class JobInfo extends React.Component {
                   id='position'
                   placeholder='Développeur informatique'
                   className='form-control'
-                  value={this.state.job.position}
-                  onChange={this.handlePositionChange.bind(this)}
+                  value={this.state.position}
+                  onChange={this.handlePositionChange}
                   autoFocus/>
               </div>
             </div>
@@ -105,8 +111,8 @@ class JobInfo extends React.Component {
                   id='link'
                   placeholder='http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX'
                   className='form-control'
-                  value={this.state.job.link}
-                  onChange={this.handleLinkChange.bind(this)}
+                  value={this.state.link}
+                  onChange={this.handleLinkChange}
                   autoFocus/>
               </div>
             </div>
@@ -117,8 +123,8 @@ class JobInfo extends React.Component {
                   name='description'
                   id='description' rows='7'
                   className='form-control'
-                  value={this.state.job.description}
-                  onChange={this.handleDescriptionChange.bind(this)}
+                  value={this.state.description}
+                  onChange={this.handleDescriptionChange}
                   >
                 </textarea>
               </div>
