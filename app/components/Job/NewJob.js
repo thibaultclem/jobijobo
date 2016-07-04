@@ -91,7 +91,7 @@ class NewJob extends React.Component {
                         placeholder='JobiJobo & Cie'
                         className='form-control'
                         value={this.state.company}
-                        onChange={this.handleCompanyChange.bind(this)}
+                        onChange={this.handleCompanyChange}
                         autoFocus/>
                     </div>
                   </div>
@@ -105,7 +105,7 @@ class NewJob extends React.Component {
                         placeholder='Développeur informatique'
                         className='form-control'
                         value={this.state.position}
-                        onChange={this.handlePositionChange.bind(this)}
+                        onChange={this.handlePositionChange}
                         autoFocus/>
                     </div>
                   </div>
@@ -119,7 +119,7 @@ class NewJob extends React.Component {
                         placeholder='http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX'
                         className='form-control'
                         value={this.state.link}
-                        onChange={this.handleLinkChange.bind(this)}
+                        onChange={this.handleLinkChange}
                         autoFocus/>
                     </div>
                   </div>
@@ -131,7 +131,7 @@ class NewJob extends React.Component {
                         id='description' rows='7'
                         className='form-control'
                         value={this.state.description}
-                        onChange={this.handleDescriptionChange.bind(this)}
+                        onChange={this.handleDescriptionChange}
                         >
                       </textarea>
                     </div>
