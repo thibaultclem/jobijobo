@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateJobOffer } from '../../actions/job';
 
 class JobInfo extends React.Component {
 
@@ -38,7 +39,28 @@ class JobInfo extends React.Component {
   };
 
   handleSubmitEditJob(e) {
-    console.log("handle Edit a job");
+    //Prevent the browser's default action of submitting the form
+    e.preventDefault();
+    //Clean data
+    var company = this.state.company.trim();
+    var position = this.state.position.trim();
+    var link = this.state.link.trim();
+    var description = this.state.description.trim();
+    //Company and position cannot be empty
+    if (!company || !position) {
+      //TODO: dispatch a message
+      return;
+    }
+    //dispatch the updated job offer
+    this.props.dispatch(updateJobOffer(
+      this.props.job._id,
+      company,
+      position,
+      link,
+      description,
+      this.props.token
+    ));
+    this.setState({editMode: false})
   }
 
   handleDeleteJob(e) {
@@ -139,6 +161,7 @@ class JobInfo extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    token: state.auth.token
   };
 };
 

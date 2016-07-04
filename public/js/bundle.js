@@ -428,6 +428,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.fetchJobOffer = fetchJobOffer;
 exports.addJobOffer = addJobOffer;
+exports.updateJobOffer = updateJobOffer;
 var apiURL = '/api/v1/job';
 
 //Fetch all job offer for connected user
@@ -476,6 +477,39 @@ function addJobOffer(company, position, link, description, token) {
         return response.json().then(function (job) {
           dispatch({
             type: 'ADD_JOB_OFFER',
+            job: job
+          });
+        });
+      } else {
+        return response.json().then(function (json) {
+          //TODO:
+        });
+      }
+    });
+  };
+};
+
+//Update job offer
+function updateJobOffer(id, company, position, link, description, token) {
+  return function (dispatch) {
+    return fetch(_get__('apiURL'), {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({
+        id: id,
+        company: company,
+        position: position,
+        link: link,
+        description: description
+      })
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json().then(function (job) {
+          dispatch({
+            type: 'UPDATE_JOB_OFFER',
             job: job
           });
         });
@@ -4761,6 +4795,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _job = require('../../actions/job');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4817,7 +4853,21 @@ var JobInfo = function (_get__$Component) {
   }, {
     key: 'handleSubmitEditJob',
     value: function handleSubmitEditJob(e) {
-      console.log("handle Edit a job");
+      //Prevent the browser's default action of submitting the form
+      e.preventDefault();
+      //Clean data
+      var company = this.state.company.trim();
+      var position = this.state.position.trim();
+      var link = this.state.link.trim();
+      var description = this.state.description.trim();
+      //Company and position cannot be empty
+      if (!company || !position) {
+        //TODO: dispatch a message
+        return;
+      }
+      //dispatch the updated job offer
+      this.props.dispatch(_get__('updateJobOffer')(this.props.job._id, company, position, link, description, this.props.token));
+      this.setState({ editMode: false });
     }
   }, {
     key: 'handleDeleteJob',
@@ -4998,7 +5048,9 @@ var JobInfo = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {};
+  return {
+    token: state.auth.token
+  };
 };
 
 var _DefaultExportValue = _get__('connect')(_get__('mapStateToProps'))(_get__('JobInfo'));
@@ -5031,6 +5083,9 @@ function _get__(variableName) {
 
 function _get_original__(variableName) {
   switch (variableName) {
+    case 'updateJobOffer':
+      return _job.updateJobOffer;
+
     case 'React':
       return _react2.default;
 
@@ -5140,7 +5195,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"react":277,"react-redux":99}],19:[function(require,module,exports){
+},{"../../actions/job":3,"react":277,"react-redux":99}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5622,12 +5677,10 @@ var NewJob = function (_get__$Component) {
     }
   }, {
     key: 'handleSubmitNewJob',
-    value: function handleSubmitNewJob(event) {
+    value: function handleSubmitNewJob(e) {
 
       //Prevent the browser's default action of submitting the form
-      event.preventDefault();
-
-      //Todo migrate all stuff below to actions
+      e.preventDefault();
 
       //Clean data
       var company = this.state.company.trim();
@@ -7711,6 +7764,8 @@ function jobs() {
       case 'FETCH_JOB_OFFER':
          return action.jobs;
       case 'ADD_JOB_OFFER':
+         return [].concat(_toConsumableArray(state), [action.job]);
+      case 'UPDATE_JOB_OFFER':
          return [].concat(_toConsumableArray(state), [action.job]);
       default:
          return state;

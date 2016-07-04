@@ -35,12 +35,10 @@ class NewJob extends React.Component {
     this.setState({display: !this.state.display});
   }
 
-  handleSubmitNewJob(event) {
+  handleSubmitNewJob(e) {
 
     //Prevent the browser's default action of submitting the form
-    event.preventDefault();
-
-    //Todo migrate all stuff below to actions
+    e.preventDefault();
 
     //Clean data
     var company = this.state.company.trim();

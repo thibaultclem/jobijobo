@@ -58,4 +58,31 @@ router.post('/', function(req, res, next) {
    });
 });
 
+/**
+ * PUT /job
+ *
+ * Update a job
+ */
+router.put('/', function(req, res, next) {
+  console.log("id = " + req.id);
+  var query = Job.findById(req.body.id);
+  query.exec(function (err, job){
+    if (err) { return next(err); }
+    if (!job) { return next(new Error('can\'t find job')); }
+    //Update date informations
+    var now = new Date();
+    job.updatedDate = now;
+    //Update info
+    job.company = req.body.company;
+    job.position = req.body.position;
+    job.link = req.body.link;
+    job.description = req.body.description;
+    //save job
+    job.save(function(err, job){
+      if(err){ return next(err); console.log(err); }
+      res.json(job);
+    });
+  });
+});
+
 module.exports = router;
