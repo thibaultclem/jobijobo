@@ -90,3 +90,33 @@ export function updateJobOffer(id, company, position, link, description, token) 
     });
   };
 };
+
+
+//Delete job offer
+export function deleteJobOffer(id, token) {
+  return (dispatch) => {
+    return fetch(apiURL, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        id: id
+      })
+    }).then((response) => {
+      if (response.ok) {
+        return response.json().then((jobId) => {
+          dispatch({
+            type: 'DELETE_JOB_OFFER',
+            jobId
+          });
+        });
+      } else {
+        return response.json().then((json) => {
+          //TODO:
+        });
+      }
+    });
+  };
+};

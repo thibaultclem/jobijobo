@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateJobOffer } from '../../actions/job';
+import { updateJobOffer, deleteJobOffer } from '../../actions/job';
 
 class JobInfo extends React.Component {
 
@@ -64,7 +64,11 @@ class JobInfo extends React.Component {
   }
 
   handleDeleteJob(e) {
-    console.log("handle delete a job");
+    //dispatch the deleted job offer
+    this.props.dispatch(deleteJobOffer(
+      this.props.job._id,
+      this.props.token
+    ));
   }
 
   handleEditClick(e) {

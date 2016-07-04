@@ -12,6 +12,8 @@ export default function jobs(state = {}, action) {
          ...state,
          action.job
       ];
+      case 'DELETE_JOB_OFFER':
+      return state.filter(job => job._id !== action.jobId);
       default:
       return state;
    }

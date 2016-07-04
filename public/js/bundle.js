@@ -429,6 +429,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 exports.fetchJobOffer = fetchJobOffer;
 exports.addJobOffer = addJobOffer;
 exports.updateJobOffer = updateJobOffer;
+exports.deleteJobOffer = deleteJobOffer;
 var apiURL = '/api/v1/job';
 
 //Fetch all job offer for connected user
@@ -511,6 +512,35 @@ function updateJobOffer(id, company, position, link, description, token) {
           dispatch({
             type: 'UPDATE_JOB_OFFER',
             job: job
+          });
+        });
+      } else {
+        return response.json().then(function (json) {
+          //TODO:
+        });
+      }
+    });
+  };
+};
+
+//Delete job offer
+function deleteJobOffer(id, token) {
+  return function (dispatch) {
+    return fetch(_get__('apiURL'), {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({
+        id: id
+      })
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json().then(function (jobId) {
+          dispatch({
+            type: 'DELETE_JOB_OFFER',
+            jobId: jobId
           });
         });
       } else {
@@ -4872,7 +4902,8 @@ var JobInfo = function (_get__$Component) {
   }, {
     key: 'handleDeleteJob',
     value: function handleDeleteJob(e) {
-      console.log("handle delete a job");
+      //dispatch the deleted job offer
+      this.props.dispatch(_get__('deleteJobOffer')(this.props.job._id, this.props.token));
     }
   }, {
     key: 'handleEditClick',
@@ -5085,6 +5116,9 @@ function _get_original__(variableName) {
   switch (variableName) {
     case 'updateJobOffer':
       return _job.updateJobOffer;
+
+    case 'deleteJobOffer':
+      return _job.deleteJobOffer;
 
     case 'React':
       return _react2.default;
@@ -7767,6 +7801,10 @@ function jobs() {
          return [].concat(_toConsumableArray(state), [action.job]);
       case 'UPDATE_JOB_OFFER':
          return [].concat(_toConsumableArray(state), [action.job]);
+      case 'DELETE_JOB_OFFER':
+         return state.filter(function (job) {
+            return job._id !== action.jobId;
+         });
       default:
          return state;
    }

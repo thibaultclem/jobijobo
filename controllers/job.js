@@ -7,10 +7,10 @@ var Job = mongoose.model('Job');
 var Status = mongoose.model('Status');
 
 /**
- * GET /job
- *
- * return all jobs
- */
+* GET /job
+*
+* return all jobs
+*/
 router.get('/', function(req, res, next) {
   Job.find({'user': req.user }).populate('status').exec(function(err, jobs) {
     if(err) { return next(err); }
@@ -20,10 +20,10 @@ router.get('/', function(req, res, next) {
 });
 
 /**
- * POST /job
- *
- * create a new job
- */
+* POST /job
+*
+* create a new job
+*/
 router.post('/', function(req, res, next) {
   //Create Job
   var job = new Job(req.body);
@@ -41,30 +41,29 @@ router.post('/', function(req, res, next) {
     name: "I",//Interested
     createdDate: now,
     job: job
-   });
+  });
 
-   //first save status
-   status.save(function(err, status){
-     //error:
-     if(err){ return next(err); }
-     //success:
-     //Link status to job
-     job.status.push(status);
-     //save job
-     job.save(function(err, job){
-       if(err){ return next(err); }
-       res.json(job);
-     });
-   });
+  //first save status
+  status.save(function(err, status){
+    //error:
+    if(err){ return next(err); }
+    //success:
+    //Link status to job
+    job.status.push(status);
+    //save job
+    job.save(function(err, job){
+      if(err){ return next(err); }
+      res.json(job);
+    });
+  });
 });
 
 /**
- * PUT /job
- *
- * Update a job
- */
+* PUT /job
+*
+* Update a job
+*/
 router.put('/', function(req, res, next) {
-  console.log("id = " + req.id);
   var query = Job.findById(req.body.id);
   query.exec(function (err, job){
     if (err) { return next(err); }
@@ -83,6 +82,19 @@ router.put('/', function(req, res, next) {
       res.json(job);
     });
   });
+});
+
+/**
+* DELETE /job
+*
+* Delete a job
+*/
+router.delete('/', function(req, res, next) {
+  Job.remove({_id: req.body.id}, function(err){
+    if(err){ return next(err); console.log(err); }
+    //return deleted job id
+    res.json(req.body.id);
+  })
 });
 
 module.exports = router;
