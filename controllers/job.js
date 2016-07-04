@@ -5,9 +5,10 @@ var mongoose = require('mongoose');
 //model
 var Job = mongoose.model('Job');
 var Status = mongoose.model('Status');
+var Notes = mongoose.model('Note')
 
 /**
-* GET /job
+* GET /jobs
 *
 * return all jobs
 */
@@ -20,7 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 /**
-* POST /job
+* POST /jobs
 *
 * create a new job
 */
@@ -59,12 +60,29 @@ router.post('/', function(req, res, next) {
 });
 
 /**
-* PUT /job
+* PARAM :job
+*
+*/
+router.param('job', function(req, res, next, id) {
+  var query = Job.findOne({'user': req.user, '_id': id });
+
+  query.exec(function (err, job){
+    if (err) { return next(err); }
+    if (!job) { return next(new Error('can\'t find job')); }
+
+    req.job = job;
+    return next();
+  });
+});
+
+
+/**
+* PUT /jobs
 *
 * Update a job
 */
-router.put('/', function(req, res, next) {
-  var query = Job.findById(req.body.id);
+router.put('/:job', function(req, res, next) {
+  var query = Job.findOne({'user': req.user, '_id': req.job });
   query.exec(function (err, job){
     if (err) { return next(err); }
     if (!job) { return next(new Error('can\'t find job')); }
@@ -85,15 +103,15 @@ router.put('/', function(req, res, next) {
 });
 
 /**
-* DELETE /job
+* DELETE /jobs
 *
 * Delete a job
 */
-router.delete('/', function(req, res, next) {
-  Job.remove({_id: req.body.id}, function(err){
+router.delete('/:job', function(req, res, next) {
+  Job.remove({'user': req.user, '_id': req.job}, function(err){
     if(err){ return next(err); console.log(err); }
     //return deleted job id
-    res.json(req.body.id);
+    res.json(req.job._id);
   })
 });
 

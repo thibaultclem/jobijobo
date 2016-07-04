@@ -493,14 +493,13 @@ function addJobOffer(company, position, link, description, token) {
 //Update job offer
 function updateJobOffer(id, company, position, link, description, token) {
   return function (dispatch) {
-    return fetch(_get__('apiURL'), {
+    return fetch(_get__('apiURL') + '/' + id, {
       method: 'put',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       },
       body: JSON.stringify({
-        id: id,
         company: company,
         position: position,
         link: link,
@@ -526,15 +525,12 @@ function updateJobOffer(id, company, position, link, description, token) {
 //Delete job offer
 function deleteJobOffer(id, token) {
   return function (dispatch) {
-    return fetch(_get__('apiURL'), {
+    return fetch(_get__('apiURL') + '/' + id, {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
-      },
-      body: JSON.stringify({
-        id: id
-      })
+      }
     }).then(function (response) {
       if (response.ok) {
         return response.json().then(function (jobId) {
