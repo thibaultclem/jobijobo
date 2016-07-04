@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Note from './Note';
+import NewNote from './NewNote';
 
 class JobNote extends React.Component {
 
@@ -8,17 +10,28 @@ class JobNote extends React.Component {
   }
 
   render() {
-    return (
-      <div className="JobNote  col-sm-4">
-        <h2>NOTES</h2>
-      </div>
-    );
+
+    var noteNodes = this.props.notes ?
+      this.props.notes.map(function(note) {
+        return (
+          <Note key={note._id} note={note}/>
+        );
+      })
+      : null;
+
+      return (
+        <div className="JobNote col-sm-4">
+          <h2>NOTES</h2>
+          {noteNodes}
+          <NewNote />
+        </div>
+      );
+    }
   }
-}
 
-const mapStateToProps = (state) => {
-  return {
+  const mapStateToProps = (state) => {
+    return {
+    };
   };
-};
 
-export default connect(mapStateToProps)(JobNote);
+  export default connect(mapStateToProps)(JobNote);

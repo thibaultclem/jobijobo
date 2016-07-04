@@ -9071,6 +9071,9 @@ textarea {
 .job-offer .panel-body button {
   margin-right: 5px;
 }
+.job-offer .form-horizontal .form-group {
+  margin: 0px;
+}
 .add-new-job button {
   display: block;
   margin-right: auto;

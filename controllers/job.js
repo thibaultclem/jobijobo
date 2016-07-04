@@ -33,10 +33,12 @@ router.post('/', function(req, res, next) {
   job.updatedDate = now;
   //Link user
   job.user = req.user;
+  //Add empty array of notes
+  job.notes = [];
 
   //Create status
   var status = new Status({
-    name: "Interessé",
+    name: "I",//Interested
     createdDate: now,
     job: job
    });
