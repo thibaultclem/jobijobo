@@ -131,15 +131,70 @@ export function addNoteToJobOffer(body, id, token) {
       })
     }).then((response) => {
       if (response.ok) {
-        return response.json().then((note) => {
+        return response.json().then((job) => {
           dispatch({
             type: 'CLEAR_MESSAGES'
           });
           dispatch({
-            type: 'ADD_NOTE_TO_JOB_OFFER',
-            note
+            type: 'UPDATE_JOB_OFFER',
+            job
           });
-          console.log(note);
+        });
+      } else {
+        return response.json().then((json) => {
+          //TODO:
+        });
+      }
+    });
+  };
+};
+
+//Update note
+export function updateNote(jobId, id, body, token) {
+  return (dispatch) => {
+    return fetch(apiURL+'/'+jobId+'/notes/'+id, {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        body: body
+      })
+    }).then((response) => {
+      if (response.ok) {
+        return response.json().then((job) => {
+          dispatch({
+            type: 'UPDATE_JOB_OFFER',
+            job
+          });
+        });
+      } else {
+        return response.json().then((json) => {
+          //TODO:
+        });
+      }
+    });
+  };
+};
+
+
+//Delete note
+export function deleteNote(jobId, id, token) {
+  return (dispatch) => {
+    return fetch(apiURL+'/'+jobId+'/notes/'+id, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    }).then((response) => {
+      if (response.ok) {
+        return response.json().then((job) => {
+          dispatch({
+            type: 'UPDATE_JOB_OFFER',
+            job
+          });
         });
       } else {
         return response.json().then((json) => {

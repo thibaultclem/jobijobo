@@ -25,9 +25,9 @@ require('babel-polyfill');
 
 // Models
 var User = require('./models/user');
-var Job = require('./models/job');
 var Note = require('./models/note');
 var Status = require('./models/status');
+var Job = require('./models/job');
 
 // Controllers (Express routes handler)
 var UserController = require('./controllers/user');

@@ -127,38 +127,38 @@ footer {
 
 /*
 .btn {
-  font-weight: 600;
-  border-radius: 3px;
-  &:focus {
-    outline: 0 !important;
-  }
+font-weight: 600;
+border-radius: 3px;
+&:focus {
+outline: 0 !important;
+}
 }
 
 .btn-default {
-  border-color: #ccc;
-  background: #f5f5f5 linear-gradient(to bottom, #fff, #f5f5f5);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 -1px 4px rgba(151, 159, 175, 0.2);
-  &:active {
-    background: darken(#f5f5f5, 6%) linear-gradient(to bottom, darken(#fff, 6%), darken(#f5f5f5, 6%));
-  }
+border-color: #ccc;
+background: #f5f5f5 linear-gradient(to bottom, #fff, #f5f5f5);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 -1px 4px rgba(151, 159, 175, 0.2);
+&:active {
+background: darken(#f5f5f5, 6%) linear-gradient(to bottom, darken(#fff, 6%), darken(#f5f5f5, 6%));
+}
 }
 
 .btn-success {
-  border-color: #208a46;
-  background: #29b35b linear-gradient(to bottom, #2ec866, #29b35b);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(32, 138, 70, 0.3);
-  &:active {
-    background: darken(#29b35b, 6%) linear-gradient(to bottom, darken(#2ec866, 6%), darken(#29b35b, 6%));
-  }
+border-color: #208a46;
+background: #29b35b linear-gradient(to bottom, #2ec866, #29b35b);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(32, 138, 70, 0.3);
+&:active {
+background: darken(#29b35b, 6%) linear-gradient(to bottom, darken(#2ec866, 6%), darken(#29b35b, 6%));
+}
 }
 
 .btn-danger {
-  border-color: #8c1512;
-  background: #b61b17 linear-gradient(to bottom, #cc1e1a, #b61b17);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(140, 21, 18, 0.3);
-  &:active {
-    background: darken(#b61b17, 6%) linear-gradient(to bottom, darken(#cc1e1a, 6%), darken(#b61b17, 6%));
-  }
+border-color: #8c1512;
+background: #b61b17 linear-gradient(to bottom, #cc1e1a, #b61b17);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(140, 21, 18, 0.3);
+&:active {
+background: darken(#b61b17, 6%) linear-gradient(to bottom, darken(#cc1e1a, 6%), darken(#b61b17, 6%));
+}
 }
 
 */
@@ -252,19 +252,50 @@ textarea {
 // -------------------------
 
 .job-offer {
-  .panel-heading {
+  .jobInfo-description {
+    padding-top: 20px;
+  }
+  .jobInfo-display {
+    padding-top: 20px;
+  }
+  .JobStatus {
+    padding-top: 20px;
+  }
+  .JobNote {
+    padding-top: 20px;
+  }
+  .jobInfo-edit-buttons {
+    padding-top: 20px;
+  }
+  .job-display-minimalist {
+    padding-top: 20px;
+  }
+  .JobInfo {
+    padding-left: 0px;
+  }
+  .job-status-I {
+    background-color: #edeff0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+  }
+  .panel-body {
+    padding-top: 0px;
+    padding-left: 30px;
+    button {
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
     &:hover {
       cursor: pointer;
     }
   }
-  .panel-body {
-    padding-top: 20px;
-    button {
-      margin-right: 5px;
-    }
-  }
   .form-horizontal .form-group {
     margin: 0px;
+  }
+  h2 {
+    font-size: 120%;
+    color: grey
   }
 }
 // Add new job
@@ -272,11 +303,4 @@ textarea {
   display: block;
   margin-right: auto;
   margin-left: auto;
-}
-
-.job-offer {
-  h2 {
-    font-size: 100%;
-    color: grey
-  }
 }

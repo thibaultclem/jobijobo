@@ -11,10 +11,11 @@ class JobNote extends React.Component {
 
   render() {
 
+    var jobId = this.props.job._id;
     var noteNodes = this.props.job.notes ?
       this.props.job.notes.map(function(note) {
         return (
-          <Note key={note._id} note={note}/>
+          <Note key={note._id} note={note} jobId={jobId}/>
         );
       })
       : null;
@@ -23,7 +24,7 @@ class JobNote extends React.Component {
         <div className="JobNote col-sm-4">
           <h2>NOTES</h2>
           {noteNodes}
-          <NewNote jobId={this.props.job._id}/>
+          <NewNote jobId={jobId}/>
         </div>
       );
     }

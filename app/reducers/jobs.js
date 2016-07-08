@@ -10,18 +10,22 @@ export default function jobs(state = {}, action) {
          action.job
       ];
       case 'UPDATE_JOB_OFFER':
-      return [
-         ...state,
-         action.job
-      ];
+      var newState = state.map(job => {
+         if (job._id === action.job._id) {
+            return action.job
+         } else {
+            return job;
+         }
+      });
+      return newState;
       case 'DELETE_JOB_OFFER':
       var newState = state.filter(job => job._id !== action.jobId);
       return newState;
-      case 'ADD_NOTE_TO_JOB_OFFER':
+      case 'DELETE_NOTE':
       var newState = state.map(job => {
-         if (job._id === action.note.job._id) {
+         if (job._id === action.note.job) {
             return Object.assign({}, job, {
-               notes: [...job.notes, action.note]
+               notes: job.notes.filter(note => note._id !== action.note._id)
             })
          } else {
             return job;

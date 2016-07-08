@@ -114,57 +114,101 @@ router.put('/:job', function(req, res, next) {
 * Delete a job
 */
 router.delete('/:job', function(req, res, next) {
-  Job.remove({'user': req.user, '_id': req.job}, function(err){
-    if(err){ return next(err); console.log(err); }
-    //return deleted job id
+  var query = Job.findOne({'user': req.user, '_id': req.job });
+  query.exec(function (err, job){
+    if (err) { return next(err); }
+    if (!job) { return next(new Error('can\'t find job')); }
+    job.remove();
     res.json(req.job._id);
   })
 });
 
 
 /**
-* PARAM :note
-*
-*/
-router.param('note', function(req, res, next, id) {
-  var query = Notes.findById(id);
-
-  query.exec(function (err, note){
-    if (err) { return next(err); }
-    if (!note) { return next(new Error('can\'t find note')); }
-
-    req.note = note;
-    return next();
-  });
-});
-
-/**
-* POST /note
+* POST /:job/notes'
 *
 * create a new note
 */
 router.post('/:job/notes', function(req, res, next) {
-  //Create Job
+  //Create note
   var note = new Note(req.body);
   //Add date informations
   var now = new Date();
   note.createdDate = now;
   note.updatedDate = now;
+  //add note to job
+  req.job.notes.push(note);
+  //save job
+  req.job.save(function(err, job){
+    if(err){ return next(err); console.log(err); }
+    //return the new note with populate fields
+    res.json(job);
+  });
+});
+
+/**
+* PARAM :note
+*
+*/
+router.param('note', function(req, res, next, id) {
+  req.note = req.job.notes.id(id);
+    return next();
+});
+
+/**
+* UPDATE /:job/notes'
+*
+* Update a note
+*/
+router.put('/:job/notes/:note', function(req, res, next) {
+  console.log('body: '+req.body.body);
+  console.log('note: ');
+  console.log(req.note);
+  req.job.updateNote(req.note, req.body.body, function(err){
+    if(err){ return next(err); console.log(err); }
+    res.json(req.job);
+  });
+});
+
+/**
+* DELETE /:job/notes'
+*
+* Delete a note
+*/
+router.delete('/:job/notes/:note', function(req, res, next) {
+  req.job.removeNote(req.note, function(err){
+    if(err){ return next(err); console.log(err); }
+    res.json(req.job);
+  });
+});
+
+
+/**
+* POST /status
+*
+* create a new status
+*/
+router.post('/:job/status', function(req, res, next) {
+  //Create status
+  var status = new Status(req.body);
+  //Add date informations
+  var now = new Date();
+  status.createdDate = now;
   //link to job
-  note.job = req.job;
+  status.job = req.job;
 
   //first save note
-  note.save(function(err, note){
+  status.save(function(err, note){
     //error:
     if(err){ return next(err); console.log(err);}
     //success:
     //Link note to job
-    req.job.notes.push(note);
+    req.job.status.push(status);
     //save job
     req.job.save(function(err, job){
       if(err){ return next(err); console.log(err); }
-      //return the new job with populate fields
-      res.json(note);
+      //return the new status with populate fields
+      res.json(status);
     });
   });
 });
