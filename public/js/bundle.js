@@ -1562,7 +1562,7 @@ var Login = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Log In'
+                'Se connecter'
               ),
               _react2.default.createElement(
                 'div',
@@ -1580,7 +1580,7 @@ var Login = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'password' },
-                  'Password'
+                  'Mot de passe'
                 ),
                 _react2.default.createElement('input', { type: 'password', name: 'password', id: 'password', placeholder: 'Password', className: 'form-control', value: this.state.password, onChange: this.handleChange.bind(this) })
               ),
@@ -1593,14 +1593,14 @@ var Login = function (_get__$Component) {
                   _react2.default.createElement(
                     'strong',
                     null,
-                    'Forgot your password?'
+                    'Oubli de votre mot de passe ?'
                   )
                 )
               ),
               _react2.default.createElement(
                 'button',
                 { type: 'submit', className: 'btn btn-success' },
-                'Log in'
+                'Se connecter'
               )
             ),
             _react2.default.createElement(
@@ -1609,7 +1609,7 @@ var Login = function (_get__$Component) {
               _react2.default.createElement(
                 'span',
                 null,
-                'or'
+                'A venir bientôt'
               )
             ),
             _react2.default.createElement(
@@ -1617,17 +1617,17 @@ var Login = function (_get__$Component) {
               { className: 'btn-toolbar text-center' },
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleFacebook.bind(this), className: 'btn btn-facebook' },
+                { onClick: this.handleFacebook.bind(this), className: 'btn btn-facebook disabled' },
                 'Sign in with Facebook'
               ),
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleTwitter.bind(this), className: 'btn btn-twitter' },
+                { onClick: this.handleTwitter.bind(this), className: 'btn btn-twitter disabled' },
                 'Sign in with Twitter'
               ),
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleGoogle.bind(this), className: 'btn btn-google' },
+                { onClick: this.handleGoogle.bind(this), className: 'btn btn-google disabled' },
                 'Sign in with Google'
               )
             )
@@ -1636,14 +1636,14 @@ var Login = function (_get__$Component) {
         _react2.default.createElement(
           'p',
           { className: 'text-center' },
-          'Don\'t have an account? ',
+          'Pas encore de compte ? ',
           _react2.default.createElement(
             _Link_Component2,
             { to: '/signup' },
             _react2.default.createElement(
               'strong',
               null,
-              'Sign up'
+              'S\'enregistrer\''
             )
           )
         )
@@ -3278,7 +3278,11 @@ var Footer = function (_get__$Component) {
             "Vietnam"
           ),
           ", ",
-          _react2.default.createElement("i", { className: "fa fa-code" }),
+          _react2.default.createElement(
+            "strong",
+            null,
+            _react2.default.createElement("i", { className: "fa fa-code" })
+          ),
           " with ",
           _react2.default.createElement("i", { className: "fa fa-heart text-danger" }),
           " in ",
@@ -3515,7 +3519,7 @@ var Header = function (_get__$Component) {
               _react2.default.createElement(
                 _Link_Component,
                 { to: '/account' },
-                'My Account'
+                'Mon compte'
               )
             ),
             _react2.default.createElement('li', { className: 'divider' }),
@@ -3525,7 +3529,7 @@ var Header = function (_get__$Component) {
               _react2.default.createElement(
                 'a',
                 { href: '#', onClick: this.handleLogout.bind(this) },
-                'Logout'
+                'Se déconnecter'
               )
             )
           )
@@ -3539,7 +3543,7 @@ var Header = function (_get__$Component) {
           _react2.default.createElement(
             _Link_Component2,
             { to: '/login', activeStyle: active },
-            'Log in'
+            'Se connecter'
           )
         ),
         _react2.default.createElement(
@@ -3548,7 +3552,7 @@ var Header = function (_get__$Component) {
           _react2.default.createElement(
             _Link_Component3,
             { to: '/signup', activeStyle: active },
-            'Sign up'
+            'S\'enregistrer'
           )
         )
       );
@@ -3598,7 +3602,7 @@ var Header = function (_get__$Component) {
                 _react2.default.createElement(
                   _IndexLink_Component2,
                   { to: '/jobDashboard', activeStyle: active },
-                  'My jobs'
+                  'Mes offres'
                 )
               ),
               _react2.default.createElement(
@@ -3607,7 +3611,7 @@ var Header = function (_get__$Component) {
                 _react2.default.createElement(
                   _Link_Component4,
                   { to: '/stat', activeStyle: active },
-                  'Stats'
+                  'Mon activité'
                 )
               )
             ),
@@ -4060,7 +4064,106 @@ var Home = function (_get__$Component) {
           _react2.default.createElement(
             'div',
             { className: 'col-md-8 col-md-offset-2' },
-            'Bienvenue sur JobiJobo'
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'h3',
+                null,
+                'Bienvenue sur JobiJobo un outil pour vous facilitez la gestion de votre recherche d\'emplois.'
+              ),
+              _react2.default.createElement('br', null)
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'h4',
+                null,
+                'Enregistrer vous puis rendez vous sur l\'onglet "Mes offres" pour ajouter votre première offre d\'emplois.'
+              ),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'strong',
+                null,
+                'NOTE for my english friend: Currently JobiJobo is only available in french. English version coming soon...'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'h5',
+                null,
+                'Pour les geeks, la stack:'
+              ),
+              _react2.default.createElement(
+                'ul',
+                null,
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Platform: node'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Framework: express'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Template Engine: handlebars'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'CSS Framework: bootstrap'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'CSS Preprocessor: less'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'JavaScript Framework: react'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Build Tool: gulp'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Unit Testing: mocha'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Database: mongodb'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Authentication: email,facebook,google,twitter'
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  'Deployment: heroku'
+                )
+              )
+            )
           )
         )
       );

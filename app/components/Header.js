@@ -21,16 +21,16 @@ class Header extends React.Component {
             <i className="caret"></i>
           </a>
           <ul className="dropdown-menu">
-            <li><Link to="/account">My Account</Link></li>
+            <li><Link to="/account">Mon compte</Link></li>
             <li className="divider"></li>
-            <li><a href="#" onClick={this.handleLogout.bind(this)}>Logout</a></li>
+            <li><a href="#" onClick={this.handleLogout.bind(this)}>Se déconnecter</a></li>
           </ul>
         </li>
       </ul>
     ) : (
       <ul className="nav navbar-nav navbar-right">
-        <li><Link to="/login" activeStyle={active}>Log in</Link></li>
-        <li><Link to="/signup" activeStyle={active}>Sign up</Link></li>
+        <li><Link to="/login" activeStyle={active}>Se connecter</Link></li>
+        <li><Link to="/signup" activeStyle={active}>S'enregistrer</Link></li>
       </ul>
     );
 
@@ -48,8 +48,8 @@ class Header extends React.Component {
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
-              <li><IndexLink to="/jobDashboard" activeStyle={active}>My jobs</IndexLink></li>
-              <li><Link to="/stat" activeStyle={active}>Stats</Link></li>
+              <li><IndexLink to="/jobDashboard" activeStyle={active}>Mes offres</IndexLink></li>
+              <li><Link to="/stat" activeStyle={active}>Mon activité</Link></li>
             </ul>
             {rightNav}
           </div>

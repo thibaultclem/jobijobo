@@ -43,28 +43,28 @@ class Login extends React.Component {
           <div className="panel-body">
             <Messages messages={this.props.messages}/>
             <form onSubmit={this.handleLogin.bind(this)}>
-              <legend>Log In</legend>
+              <legend>Se connecter</legend>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" id="email" placeholder="Email" autoFocus className="form-control" value={this.state.email} onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Mot de passe</label>
                 <input type="password" name="password" id="password" placeholder="Password" className="form-control" value={this.state.password} onChange={this.handleChange.bind(this)}/>
               </div>
-              <div className="form-group"><Link to="/forgot"><strong>Forgot your password?</strong></Link></div>
-              <button type="submit" className="btn btn-success">Log in</button>
+              <div className="form-group"><Link to="/forgot"><strong>Oubli de votre mot de passe ?</strong></Link></div>
+              <button type="submit" className="btn btn-success">Se connecter</button>
             </form>
-            <div className="hr-title"><span>or</span></div>
+            <div className="hr-title"><span>A venir bientôt</span></div>
             <div className="btn-toolbar text-center">
-        <button onClick={this.handleFacebook.bind(this)} className="btn btn-facebook">Sign in with Facebook</button>
-        <button onClick={this.handleTwitter.bind(this)} className="btn btn-twitter">Sign in with Twitter</button>
-        <button onClick={this.handleGoogle.bind(this)} className="btn btn-google">Sign in with Google</button>
+        <button onClick={this.handleFacebook.bind(this)} className="btn btn-facebook disabled">Sign in with Facebook</button>
+        <button onClick={this.handleTwitter.bind(this)} className="btn btn-twitter disabled">Sign in with Twitter</button>
+        <button onClick={this.handleGoogle.bind(this)} className="btn btn-google disabled">Sign in with Google</button>
             </div>
           </div>
         </div>
         <p className="text-center">
-          Don't have an account? <Link to="/signup"><strong>Sign up</strong></Link>
+          Pas encore de compte ? <Link to="/signup"><strong>S'enregistrer'</strong></Link>
         </p>
       </div>
     );
