@@ -4,6 +4,17 @@ var mongoose = require('mongoose');
 var Status = mongoose.model('Status');
 var Note = mongoose.model('Note')
 
+var StatusSchema = new mongoose.Schema({
+  name: String,
+  createdDate: String
+});
+
+var NoteSchema = new mongoose.Schema({
+  body: String,
+  createdDate: Date,
+  updatedDate: Date
+});
+
 var JobSchema = new mongoose.Schema({
   user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   company: String,
@@ -13,17 +24,36 @@ var JobSchema = new mongoose.Schema({
   dueDate: Date,
   createdDate: Date,
   updatedDate: Date,
-  status: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Status' }],
+  status: [StatusSchema],
   contacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Contact' }],
-  notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }]
+  notes: [NoteSchema]
 });
 
 JobSchema.pre('remove', function(next) {
-  console.log('pre remove !!!');
   Status.remove({job: this._id}).exec();
   Note.remove({job: this._id}).exec();
   //Contacts.remove({job: this._id}).exec();
   next();
 });
+
+JobSchema.pre('save', function(next) {
+  this.updatedDate = new Date();
+  next();
+})
+
+JobSchema.methods.removeNote = function(note, cb){
+  //Remove note for note array of job
+  this.notes.id(note._id).remove();
+  //Save and return callback method
+  this.save(cb);
+};
+
+JobSchema.methods.updateNote = function(note, newBody, cb){
+  console.log('Updating Note');
+  //Remove note for note array of job
+  this.notes.id(note._id).body = newBody;
+  //Save and return callback method
+  this.save(cb);
+};
 
 mongoose.model('Job', JobSchema);
