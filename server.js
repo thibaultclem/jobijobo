@@ -114,12 +114,30 @@ app.get('/auth/google/callback', UserController.authGoogleCallback);
 app.post('/auth/twitter', UserController.authTwitter);
 app.get('/auth/twitter/callback', UserController.authTwitterCallback);
 
+//Applications languages
+var lang_en = require('./i18n/en.json');
+var lang_fr = require('./i18n/fr.json');
+
 // React server rendering
 app.use(function(req, res) {
+
+  //get locale
+  switch (req.acceptsLanguages( 'en-US', 'en', 'fr' )) {
+    case 'fr':
+      var lang = 'fr';
+      var labels = lang_fr;
+      break;
+    default:
+      var lang = 'en';
+      var labels = lang_en;
+   }
+
+   //Init store
   var initialState = {
     auth: { token: req.cookies.token, user: req.user },
     messages: {},
-    jobs: []
+    jobs: [],
+    i18n: { language: lang, labels: labels }
   };
 
   var store = configureStore(initialState);

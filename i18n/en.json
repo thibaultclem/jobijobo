@@ -1,0 +1,37 @@
+{
+  "contact": {
+
+  },
+  "footer": {
+
+  },
+  "header": {
+    "myaccount": "My account",
+    "signup": "Sign Up",
+    "login": "Log In",
+    "logout": "Log Out",
+    "myjobs": "My Jobs",
+    "myactivity": "My Activity"
+  },
+  "home": {
+
+  },
+  "message": {
+
+  },
+  "notfound": {
+
+  },
+  "stat": {
+
+  },
+  "account": {
+
+  },
+  "helper": {
+
+  },
+  "job": {
+
+  }
+}

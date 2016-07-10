@@ -15,7 +15,7 @@ var Note = mongoose.model('Note')
 router.get('/', function(req, res, next) {
   Job.find({'user': req.user }).populate('status').populate('notes').exec(function(err, jobs) {
     if(err) { return next(err); }
-
+    
     res.json(jobs);
   })
 });
