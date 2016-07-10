@@ -61,7 +61,6 @@ class Note extends React.Component {
           <div className="note-display">
             <div className="jobNote-action pull-right">
               <button type="button" className='btn btn-default fa fa-pencil-square-o' onClick={this.handleEditClick}></button>
-              <button type="button" className='btn btn-default fa fa-remove' onClick={this.handleDeleteNote}></button>
             </div>
             <p>{this.props.note.body}</p>
             <h6>{this.props.note.updatedDate}</h6>
@@ -69,9 +68,13 @@ class Note extends React.Component {
           :
           <div className="note-edit">
             <form className='form-horizontal' onSubmit={this.handleSubmitEditNote}>
-              <div className='form-group edit-buttons'>
-                <button type='submit' className='btn btn-success'>Sauvegarder</button>
-                <button type='button' className='btn btn-default' onClick={this.handleEditClick}>Annuler</button>
+              <div className='btn-group edit-buttons' role='group'>
+                <button type='submit' className='btn btn-success hidden-xs'>Sauvegarder</button>
+                <button type="submit" className='btn btn-success fa fa-check visible-xs-block'></button>
+                <button type='button' className='btn btn-danger hidden-xs' onClick={this.handleDeleteNote}>Supprimer</button>
+                <button type="button" className='btn btn-danger fa fa-trash visible-xs-block' onClick={this.handleDeleteNote}></button>
+                <button type='button' className='btn btn-default hidden-xs' onClick={this.handleEditClick}>Annuler</button>
+                <button type="button" className='btn btn-default fa fa-remove visible-xs-block' onClick={this.handleEditClick}></button>
               </div>
               <div className='form-group'>
                   <textarea

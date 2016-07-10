@@ -98,10 +98,13 @@ class JobInfo extends React.Component {
           //Edit mode
           <div className="JobEdit">
             <form className='form-horizontal' onSubmit={this.handleSubmitEditJob}>
-              <div className='form-group jobInfo-edit-buttons'>
-                <button type='submit' className='btn btn-success'>Sauvegarder</button>
-                <button type="button" className='btn btn-danger' onClick={this.handleDeleteJob}>Supprimer</button>
-                <button type="button" className='btn btn-default' onClick={this.handleEditClick}>Annuler</button>
+              <div className='btn-group jobInfo-edit-buttons' role='group'>
+                <button type='submit' className='btn btn-success hidden-xs'>Sauvegarder</button>
+                <button type="submit" className='btn btn-success fa fa-check visible-xs-block'></button>
+                <button type='button' className='btn btn-danger hidden-xs' onClick={this.handleDeleteJob}>Supprimer</button>
+                <button type="button" className='btn btn-danger fa fa-trash visible-xs-block' onClick={this.handleDeleteJob}></button>
+                <button type='button' className='btn btn-default hidden-xs' onClick={this.handleEditClick}>Annuler</button>
+                <button type="button" className='btn btn-default fa fa-remove visible-xs-block' onClick={this.handleEditClick}></button>
               </div>
               <div className='form-group'>
                 <label htmlFor='company'>Entreprise</label>

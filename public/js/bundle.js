@@ -5602,22 +5602,25 @@ var JobInfo = function (_get__$Component) {
             { className: 'form-horizontal', onSubmit: this.handleSubmitEditJob },
             _react2.default.createElement(
               'div',
-              { className: 'form-group jobInfo-edit-buttons' },
+              { className: 'btn-group jobInfo-edit-buttons', role: 'group' },
               _react2.default.createElement(
                 'button',
-                { type: 'submit', className: 'btn btn-success' },
+                { type: 'submit', className: 'btn btn-success hidden-xs' },
                 'Sauvegarder'
               ),
+              _react2.default.createElement('button', { type: 'submit', className: 'btn btn-success fa fa-check visible-xs-block' }),
               _react2.default.createElement(
                 'button',
-                { type: 'button', className: 'btn btn-danger', onClick: this.handleDeleteJob },
+                { type: 'button', className: 'btn btn-danger hidden-xs', onClick: this.handleDeleteJob },
                 'Supprimer'
               ),
+              _react2.default.createElement('button', { type: 'button', className: 'btn btn-danger fa fa-trash visible-xs-block', onClick: this.handleDeleteJob }),
               _react2.default.createElement(
                 'button',
-                { type: 'button', className: 'btn btn-default', onClick: this.handleEditClick },
+                { type: 'button', className: 'btn btn-default hidden-xs', onClick: this.handleEditClick },
                 'Annuler'
-              )
+              ),
+              _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-remove visible-xs-block', onClick: this.handleEditClick })
             ),
             _react2.default.createElement(
               'div',
@@ -7045,8 +7048,7 @@ var Note = function (_get__$Component) {
           _react2.default.createElement(
             'div',
             { className: 'jobNote-action pull-right' },
-            _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-pencil-square-o', onClick: this.handleEditClick }),
-            _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-remove', onClick: this.handleDeleteNote })
+            _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-pencil-square-o', onClick: this.handleEditClick })
           ),
           _react2.default.createElement(
             'p',
@@ -7066,17 +7068,25 @@ var Note = function (_get__$Component) {
             { className: 'form-horizontal', onSubmit: this.handleSubmitEditNote },
             _react2.default.createElement(
               'div',
-              { className: 'form-group edit-buttons' },
+              { className: 'btn-group edit-buttons', role: 'group' },
               _react2.default.createElement(
                 'button',
-                { type: 'submit', className: 'btn btn-success' },
+                { type: 'submit', className: 'btn btn-success hidden-xs' },
                 'Sauvegarder'
               ),
+              _react2.default.createElement('button', { type: 'submit', className: 'btn btn-success fa fa-check visible-xs-block' }),
               _react2.default.createElement(
                 'button',
-                { type: 'button', className: 'btn btn-default', onClick: this.handleEditClick },
+                { type: 'button', className: 'btn btn-danger hidden-xs', onClick: this.handleDeleteNote },
+                'Supprimer'
+              ),
+              _react2.default.createElement('button', { type: 'button', className: 'btn btn-danger fa fa-trash visible-xs-block', onClick: this.handleDeleteNote }),
+              _react2.default.createElement(
+                'button',
+                { type: 'button', className: 'btn btn-default hidden-xs', onClick: this.handleEditClick },
                 'Annuler'
-              )
+              ),
+              _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-remove visible-xs-block', onClick: this.handleEditClick })
             ),
             _react2.default.createElement(
               'div',
