@@ -26,7 +26,68 @@
 
   },
   "account": {
-
+    "forgot": {
+      "forgotpassword": "Forgot Password",
+      "resetinstruction": "Enter your email address below and we'll send you password reset instructions.",
+      "email": "Email",
+      "resetpassword": "Reset Password"
+    },
+    "login": {
+      "login": "Log In",
+      "email": "Email",
+      "password": "Password",
+      "forgotpassword": "Forgot password ?",
+      "socialsection": "Coming soon",
+      "facebooklogin": "Sign in with Facebook",
+      "twitterlogin": "Sign in with Twitter",
+      "googlelogin": "Sign in with Google",
+      "noaccountyet": "Not account yet ? ",
+      "signup": "Sign Up"
+    },
+    "profile": {
+      "facebooklink": "Link your Facebook account",
+      "facebookunlink": "Unlink your Facebook account",
+      "twitterlink": "Link your Twitter account",
+      "twitterunlink": "Unlink your Twitter account",
+      "googlelink": "Link your Google account",
+      "googleunlink": "Unlink your Google account",
+      "profileinformation": "Profile Information",
+      "email": "Email",
+      "name": "Name",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "location": "Location",
+      "gravatar": "Gravatar",
+      "updateprofile": "Update Profile",
+      "changepassword": "Change Password",
+      "newpassword": "New Password",
+      "confirmpassword": "Confirm Password",
+      "linkedaccounts": "Linked Accounts",
+      "deleteaccount": "Delete Account",
+      "deletewarning": "You can delete your account, but keep in mind this action is irreversible.",
+      "deletebutton": "Delete my account"
+    },
+    "reset": {
+      "resetpassword": "Reset Password",
+      "newpassword": "New Password",
+      "confirmpassword": "Confirm Password",
+      "changepassword": "Change Password"
+    },
+    "signup": {
+      "createaccount": "Create an account",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "agreeterms": "By signing up, you agree to the ",
+      "termofservice": "Terms of Service",
+      "socialsection": "Coming soon",
+      "facebooklogin": "Sign in with Facebook",
+      "twitterlogin": "Sign in with Twitter",
+      "googlelogin": "Sign in with Google",
+      "alreadyaccount": "Already have an account? ",
+      "login": "Log In"
+    }
   },
   "helper": {
 

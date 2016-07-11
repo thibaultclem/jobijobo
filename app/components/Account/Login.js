@@ -43,28 +43,28 @@ class Login extends React.Component {
           <div className="panel-body">
             <Messages messages={this.props.messages}/>
             <form onSubmit={this.handleLogin.bind(this)}>
-              <legend>Se connecter</legend>
+              <legend>{this.props.labels.login}</legend>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{this.props.labels.email}</label>
                 <input type="email" name="email" id="email" placeholder="Email" autoFocus className="form-control" value={this.state.email} onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="form-group">
-                <label htmlFor="password">Mot de passe</label>
+                <label htmlFor="password">{this.props.labels.password}</label>
                 <input type="password" name="password" id="password" placeholder="Password" className="form-control" value={this.state.password} onChange={this.handleChange.bind(this)}/>
               </div>
-              <div className="form-group"><Link to="/forgot"><strong>Oubli de votre mot de passe ?</strong></Link></div>
-              <button type="submit" className="btn btn-success">Se connecter</button>
+              <div className="form-group"><Link to="/forgot"><strong>{this.props.labels.forgotpassword}</strong></Link></div>
+              <button type="submit" className="btn btn-success">{this.props.labels.login}</button>
             </form>
-            <div className="hr-title"><span>A venir bientôt</span></div>
+            <div className="hr-title"><span>{this.props.labels.socialsection}</span></div>
             <div className="btn-toolbar text-center">
-        <button onClick={this.handleFacebook.bind(this)} className="btn btn-facebook disabled">Sign in with Facebook</button>
-        <button onClick={this.handleTwitter.bind(this)} className="btn btn-twitter disabled">Sign in with Twitter</button>
-        <button onClick={this.handleGoogle.bind(this)} className="btn btn-google disabled">Sign in with Google</button>
+        <button onClick={this.handleFacebook.bind(this)} className="btn btn-facebook disabled">{this.props.labels.facebooklogin}</button>
+        <button onClick={this.handleTwitter.bind(this)} className="btn btn-twitter disabled">{this.props.labels.twitterlogin}</button>
+        <button onClick={this.handleGoogle.bind(this)} className="btn btn-google disabled">{this.props.labels.googlelogin}</button>
             </div>
           </div>
         </div>
         <p className="text-center">
-          Pas encore de compte ? <Link to="/signup"><strong>S'enregistrer'</strong></Link>
+          {this.props.labels.noaccountyet}<Link to="/signup"><strong>{this.props.labels.signup}</strong></Link>
         </p>
       </div>
     );
@@ -73,7 +73,8 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages
+    messages: state.messages,
+    labels: state.i18n.labels.account.login
   };
 };
 

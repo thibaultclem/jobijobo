@@ -25,13 +25,13 @@ class Forgot extends React.Component {
           <div className="panel-body">
             <Messages messages={this.props.messages} />
             <form onSubmit={this.handleForgot.bind(this)}>
-              <legend>Forgot Password</legend>
+              <legend>{this.props.labels.forgotpassword}</legend>
               <div className="form-group">
-                <p>Enter your email address below and we'll send you password reset instructions.</p>
-                <label htmlFor="email">Email</label>
+                <p>{this.props.labels.resetinstruction}</p>
+                <label htmlFor="email">{this.props.labels.email}</label>
                 <input type="email" name="email" id="email" placeholder="Email" className="form-control" autoFocus value={this.state.email} onChange={this.handleChange.bind(this)}/>
               </div>
-              <button type="submit" className="btn btn-success">Reset Password</button>
+              <button type="submit" className="btn btn-success">{this.props.labels.resetpassword}</button>
             </form>
           </div>
         </div>
@@ -42,7 +42,8 @@ class Forgot extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages
+    messages: state.messages,
+    labels: state.i18n.labels.account.forgot
   };
 };
 

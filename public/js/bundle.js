@@ -179,8 +179,7 @@ function updateProfile(state, token) {
         email: state.email,
         name: state.name,
         gender: state.gender,
-        location: state.location,
-        website: state.website
+        location: state.location
       })
     }).then(function (response) {
       if (response.ok) {
@@ -1418,7 +1417,7 @@ var Forgot = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Forgot Password'
+                this.props.labels.forgotpassword
               ),
               _react2.default.createElement(
                 'div',
@@ -1426,19 +1425,19 @@ var Forgot = function (_get__$Component) {
                 _react2.default.createElement(
                   'p',
                   null,
-                  'Enter your email address below and we\'ll send you password reset instructions.'
+                  this.props.labels.resetinstruction
                 ),
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'email' },
-                  'Email'
+                  this.props.labels.email
                 ),
                 _react2.default.createElement('input', { type: 'email', name: 'email', id: 'email', placeholder: 'Email', className: 'form-control', autoFocus: true, value: this.state.email, onChange: this.handleChange.bind(this) })
               ),
               _react2.default.createElement(
                 'button',
                 { type: 'submit', className: 'btn btn-success' },
-                'Reset Password'
+                this.props.labels.resetpassword
               )
             )
           )
@@ -1452,7 +1451,8 @@ var Forgot = function (_get__$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    labels: state.i18n.labels.account.forgot
   };
 };
 
@@ -1707,7 +1707,7 @@ var Login = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Se connecter'
+                this.props.labels.login
               ),
               _react2.default.createElement(
                 'div',
@@ -1715,7 +1715,7 @@ var Login = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'email' },
-                  'Email'
+                  this.props.labels.email
                 ),
                 _react2.default.createElement('input', { type: 'email', name: 'email', id: 'email', placeholder: 'Email', autoFocus: true, className: 'form-control', value: this.state.email, onChange: this.handleChange.bind(this) })
               ),
@@ -1725,7 +1725,7 @@ var Login = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'password' },
-                  'Mot de passe'
+                  this.props.labels.password
                 ),
                 _react2.default.createElement('input', { type: 'password', name: 'password', id: 'password', placeholder: 'Password', className: 'form-control', value: this.state.password, onChange: this.handleChange.bind(this) })
               ),
@@ -1738,14 +1738,14 @@ var Login = function (_get__$Component) {
                   _react2.default.createElement(
                     'strong',
                     null,
-                    'Oubli de votre mot de passe ?'
+                    this.props.labels.forgotpassword
                   )
                 )
               ),
               _react2.default.createElement(
                 'button',
                 { type: 'submit', className: 'btn btn-success' },
-                'Se connecter'
+                this.props.labels.login
               )
             ),
             _react2.default.createElement(
@@ -1754,7 +1754,7 @@ var Login = function (_get__$Component) {
               _react2.default.createElement(
                 'span',
                 null,
-                'A venir bientôt'
+                this.props.labels.socialsection
               )
             ),
             _react2.default.createElement(
@@ -1763,17 +1763,17 @@ var Login = function (_get__$Component) {
               _react2.default.createElement(
                 'button',
                 { onClick: this.handleFacebook.bind(this), className: 'btn btn-facebook disabled' },
-                'Sign in with Facebook'
+                this.props.labels.facebooklogin
               ),
               _react2.default.createElement(
                 'button',
                 { onClick: this.handleTwitter.bind(this), className: 'btn btn-twitter disabled' },
-                'Sign in with Twitter'
+                this.props.labels.twitterlogin
               ),
               _react2.default.createElement(
                 'button',
                 { onClick: this.handleGoogle.bind(this), className: 'btn btn-google disabled' },
-                'Sign in with Google'
+                this.props.labels.googlelogin
               )
             )
           )
@@ -1781,14 +1781,14 @@ var Login = function (_get__$Component) {
         _react2.default.createElement(
           'p',
           { className: 'text-center' },
-          'Pas encore de compte ? ',
+          this.props.labels.noaccountyet,
           _react2.default.createElement(
             _Link_Component2,
             { to: '/signup' },
             _react2.default.createElement(
               'strong',
               null,
-              'S\'enregistrer\''
+              this.props.labels.signup
             )
           )
         )
@@ -1801,7 +1801,8 @@ var Login = function (_get__$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    labels: state.i18n.labels.account.login
   };
 };
 
@@ -2061,29 +2062,29 @@ var Profile = function (_get__$Component) {
       var facebookLinkedAccount = this.props.user.facebook ? _react2.default.createElement(
         'a',
         { role: 'button', className: 'text-danger', onClick: this.handleUnlink.bind(this, 'facebook') },
-        'Unlink your Facebook account'
+        this.props.labels.facebookunlink
       ) : _react2.default.createElement(
         'a',
         { role: 'button', onClick: this.handleLink.bind(this, 'facebook') },
-        'Link your Facebook account'
+        this.props.labels.facebooklink
       );
       var twitterLinkedAccount = this.props.user.twitter ? _react2.default.createElement(
         'a',
         { role: 'button', className: 'text-danger', onClick: this.handleUnlink.bind(this, 'twitter') },
-        'Unlink your Twitter account'
+        this.props.labels.twitterunlink
       ) : _react2.default.createElement(
         'a',
         { role: 'button', onClick: this.handleLink.bind(this, 'twitter') },
-        'Link your Twitter account'
+        this.props.labels.twitterlink
       );
       var googleLinkedAccount = this.props.user.google ? _react2.default.createElement(
         'a',
         { role: 'button', className: 'text-danger', onClick: this.handleUnlink.bind(this, 'google') },
-        'Unlink your Google account'
+        this.props.labels.googleunlink
       ) : _react2.default.createElement(
         'a',
         { role: 'button', onClick: this.handleLink.bind(this, 'google') },
-        'Link your Google account'
+        this.props.labels.googlelink
       );
 
       var _Messages_Component = _get__('Messages');
@@ -2104,7 +2105,7 @@ var Profile = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Profile Information'
+                this.props.labels.profileinformation
               ),
               _react2.default.createElement(
                 'div',
@@ -2112,7 +2113,7 @@ var Profile = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'email', className: 'col-sm-3' },
-                  'Email'
+                  this.props.labels.email
                 ),
                 _react2.default.createElement(
                   'div',
@@ -2126,7 +2127,7 @@ var Profile = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'name', className: 'col-sm-3' },
-                  'Name'
+                  this.props.labels.name
                 ),
                 _react2.default.createElement(
                   'div',
@@ -2140,7 +2141,7 @@ var Profile = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { className: 'col-sm-3' },
-                  'Gender'
+                  this.props.labels.gender
                 ),
                 _react2.default.createElement(
                   'div',
@@ -2152,7 +2153,7 @@ var Profile = function (_get__$Component) {
                     _react2.default.createElement(
                       'span',
                       null,
-                      'Male'
+                      this.props.labels.male
                     )
                   ),
                   _react2.default.createElement(
@@ -2162,7 +2163,7 @@ var Profile = function (_get__$Component) {
                     _react2.default.createElement(
                       'span',
                       null,
-                      'Female'
+                      this.props.labels.female
                     )
                   )
                 )
@@ -2173,7 +2174,7 @@ var Profile = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'location', className: 'col-sm-3' },
-                  'Location'
+                  this.props.labels.location
                 ),
                 _react2.default.createElement(
                   'div',
@@ -2186,22 +2187,8 @@ var Profile = function (_get__$Component) {
                 { className: 'form-group' },
                 _react2.default.createElement(
                   'label',
-                  { htmlFor: 'website', className: 'col-sm-3' },
-                  'Website'
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-sm-7' },
-                  _react2.default.createElement('input', { type: 'text', name: 'website', id: 'website', className: 'form-control', value: this.state.website, onChange: this.handleChange.bind(this) })
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-group' },
-                _react2.default.createElement(
-                  'label',
                   { className: 'col-sm-3' },
-                  'Gravatar'
+                  this.props.labels.gravatar
                 ),
                 _react2.default.createElement(
                   'div',
@@ -2218,7 +2205,7 @@ var Profile = function (_get__$Component) {
                   _react2.default.createElement(
                     'button',
                     { type: 'submit', className: 'btn btn-success' },
-                    'Update Profile'
+                    this.props.labels.updateprofile
                   )
                 )
               )
@@ -2237,7 +2224,7 @@ var Profile = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Change Password'
+                this.props.labels.changepassword
               ),
               _react2.default.createElement(
                 'div',
@@ -2245,7 +2232,7 @@ var Profile = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'password', className: 'col-sm-3' },
-                  'New Password'
+                  this.props.labels.newpassword
                 ),
                 _react2.default.createElement(
                   'div',
@@ -2259,7 +2246,7 @@ var Profile = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'confirm', className: 'col-sm-3' },
-                  'Confirm Password'
+                  this.props.labels.confirmpassword
                 ),
                 _react2.default.createElement(
                   'div',
@@ -2276,7 +2263,7 @@ var Profile = function (_get__$Component) {
                   _react2.default.createElement(
                     'button',
                     { type: 'submit', className: 'btn btn-success' },
-                    'Change Password'
+                    this.props.labels.changepassword
                   )
                 )
               )
@@ -2295,7 +2282,7 @@ var Profile = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Linked Accounts'
+                this.props.labels.linkedaccounts
               ),
               _react2.default.createElement(
                 'div',
@@ -2335,7 +2322,7 @@ var Profile = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Delete Account'
+                this.props.labels.deleteaccount
               ),
               _react2.default.createElement(
                 'div',
@@ -2343,7 +2330,7 @@ var Profile = function (_get__$Component) {
                 _react2.default.createElement(
                   'p',
                   { className: 'col-sm-offset-3 col-sm-9' },
-                  'You can delete your account, but keep in mind this action is irreversible.'
+                  this.props.labels.deletewarning
                 ),
                 _react2.default.createElement(
                   'div',
@@ -2351,7 +2338,7 @@ var Profile = function (_get__$Component) {
                   _react2.default.createElement(
                     'button',
                     { type: 'submit', className: 'btn btn-danger' },
-                    'Delete my account'
+                    this.props.labels.deletebutton
                   )
                 )
               )
@@ -2369,7 +2356,8 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     token: state.auth.token,
     user: state.auth.user,
-    messages: state.messages
+    messages: state.messages,
+    labels: state.i18n.labels.account.profile
   };
 };
 
@@ -2608,7 +2596,7 @@ var Reset = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Reset Password'
+                this.props.labels.resetpassword
               ),
               _react2.default.createElement(
                 'div',
@@ -2616,7 +2604,7 @@ var Reset = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'password' },
-                  'New Password'
+                  this.props.labels.newpassword
                 ),
                 _react2.default.createElement('input', { type: 'password', name: 'password', id: 'password', placeholder: 'New password', className: 'form-control', autoFocus: true, value: this.state.password, onChange: this.handleChange.bind(this) })
               ),
@@ -2626,7 +2614,7 @@ var Reset = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'confirm' },
-                  'Confirm Password'
+                  this.props.labels.confirmpassword
                 ),
                 _react2.default.createElement('input', { type: 'password', name: 'confirm', id: 'confirm', placeholder: 'Confirm password', className: 'form-control', value: this.state.confirm, onChange: this.handleChange.bind(this) })
               ),
@@ -2636,7 +2624,7 @@ var Reset = function (_get__$Component) {
                 _react2.default.createElement(
                   'button',
                   { type: 'submit', className: 'btn btn-success' },
-                  'Change Password'
+                  this.props.labels.changepassword
                 )
               )
             )
@@ -2650,7 +2638,9 @@ var Reset = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  return state;
+  return {
+    labels: state.i18n.labels.account.reset
+  };
 };
 
 var _DefaultExportValue = _get__('connect')(_get__('mapStateToProps'))(_get__('Reset'));
@@ -2904,7 +2894,7 @@ var Signup = function (_get__$Component) {
               _react2.default.createElement(
                 'legend',
                 null,
-                'Create an account'
+                this.props.labels.createaccount
               ),
               _react2.default.createElement(
                 'div',
@@ -2912,7 +2902,7 @@ var Signup = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'name' },
-                  'Name'
+                  this.props.labels.name
                 ),
                 _react2.default.createElement('input', { type: 'text', name: 'name', id: 'name', placeholder: 'Name', autoFocus: true, className: 'form-control', value: this.state.name, onChange: this.handleChange.bind(this) })
               ),
@@ -2922,7 +2912,7 @@ var Signup = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'email' },
-                  'Email'
+                  this.props.labels.email
                 ),
                 _react2.default.createElement('input', { type: 'email', name: 'email', id: 'email', placeholder: 'Email', className: 'form-control', value: this.state.email, onChange: this.handleChange.bind(this) })
               ),
@@ -2932,7 +2922,7 @@ var Signup = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'password' },
-                  'Password'
+                  this.props.labels.password
                 ),
                 _react2.default.createElement('input', { type: 'password', name: 'password', id: 'password', placeholder: 'Password', className: 'form-control', value: this.state.password, onChange: this.handleChange.bind(this) })
               ),
@@ -2942,11 +2932,11 @@ var Signup = function (_get__$Component) {
                 _react2.default.createElement(
                   'small',
                   { className: 'text-muted' },
-                  'By signing up, you agree to the ',
+                  this.props.labels.agreeterms,
                   _react2.default.createElement(
                     _Link_Component,
                     { to: '/' },
-                    'Terms of Service'
+                    this.props.labels.termofservice
                   ),
                   '.'
                 )
@@ -2954,7 +2944,7 @@ var Signup = function (_get__$Component) {
               _react2.default.createElement(
                 'button',
                 { type: 'submit', className: 'btn btn-success' },
-                'Create an account'
+                this.props.labels.createaccount
               )
             ),
             _react2.default.createElement(
@@ -2963,7 +2953,7 @@ var Signup = function (_get__$Component) {
               _react2.default.createElement(
                 'span',
                 null,
-                'or'
+                this.props.labels.socialsection
               )
             ),
             _react2.default.createElement(
@@ -2972,17 +2962,17 @@ var Signup = function (_get__$Component) {
               _react2.default.createElement(
                 'button',
                 { onClick: this.handleFacebook.bind(this), className: 'btn btn-facebook' },
-                'Sign in with Facebook'
+                this.props.labels.facebooklogin
               ),
               _react2.default.createElement(
                 'button',
                 { onClick: this.handleTwitter.bind(this), className: 'btn btn-twitter' },
-                'Sign in with Twitter'
+                this.props.labels.twitterlogin
               ),
               _react2.default.createElement(
                 'button',
                 { onClick: this.handleGoogle.bind(this), className: 'btn btn-google' },
-                'Sign in with Google'
+                this.props.labels.googlelogin
               )
             )
           )
@@ -2990,14 +2980,14 @@ var Signup = function (_get__$Component) {
         _react2.default.createElement(
           'p',
           { className: 'text-center' },
-          'Already have an account? ',
+          this.props.labels.alreadyaccount,
           _react2.default.createElement(
             _Link_Component2,
             { to: '/login' },
             _react2.default.createElement(
               'strong',
               null,
-              'Log in'
+              this.props.labels.login
             )
           )
         )
@@ -3010,7 +3000,8 @@ var Signup = function (_get__$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    labels: state.i18n.labels.account.signup
   };
 };
 

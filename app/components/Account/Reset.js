@@ -25,17 +25,17 @@ class Reset extends React.Component {
           <div className="panel-body">
             <Messages messages={this.props.messages}/>
             <form onSubmit={this.handleReset.bind(this)}>
-              <legend>Reset Password</legend>
+              <legend>{this.props.labels.resetpassword}</legend>
               <div className="form-group">
-                <label htmlFor="password">New Password</label>
+                <label htmlFor="password">{this.props.labels.newpassword}</label>
                 <input type="password" name="password" id="password" placeholder="New password" className="form-control" autoFocus value={this.state.password} onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="form-group">
-                <label htmlFor="confirm">Confirm Password</label>
+                <label htmlFor="confirm">{this.props.labels.confirmpassword}</label>
                 <input type="password" name="confirm" id="confirm" placeholder="Confirm password" className="form-control" value={this.state.confirm} onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="form-group">
-                <button type="submit" className="btn btn-success">Change Password</button>
+                <button type="submit" className="btn btn-success">{this.props.labels.changepassword}</button>
               </div>
             </form>
           </div>
@@ -46,8 +46,9 @@ class Reset extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return state;
+  return {
+    labels: state.i18n.labels.account.reset
+  };
 };
 
 export default connect(mapStateToProps)(Reset);
-

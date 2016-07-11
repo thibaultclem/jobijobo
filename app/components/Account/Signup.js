@@ -43,34 +43,34 @@ class Signup extends React.Component {
           <div className="panel-body">
             <Messages messages={this.props.messages}/>
             <form onSubmit={this.handleSignup.bind(this)}>
-              <legend>Create an account</legend>
+              <legend>{this.props.labels.createaccount}</legend>
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">{this.props.labels.name}</label>
                 <input type="text" name="name" id="name" placeholder="Name" autoFocus className="form-control" value={this.state.name} onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{this.props.labels.email}</label>
                 <input type="email" name="email" id="email" placeholder="Email" className="form-control" value={this.state.email} onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{this.props.labels.password}</label>
                 <input type="password" name="password" id="password" placeholder="Password" className="form-control" value={this.state.password} onChange={this.handleChange.bind(this)}/>
               </div>
               <div className="form-group">
-                <small className="text-muted">By signing up, you agree to the <Link to="/">Terms of Service</Link>.</small>
+                <small className="text-muted">{this.props.labels.agreeterms}<Link to="/">{this.props.labels.termofservice}</Link>.</small>
               </div>
-              <button type="submit" className="btn btn-success">Create an account</button>
+              <button type="submit" className="btn btn-success">{this.props.labels.createaccount}</button>
             </form>
-            <div className="hr-title"><span>or</span></div>
+            <div className="hr-title"><span>{this.props.labels.socialsection}</span></div>
             <div className="btn-toolbar text-center">
-        <button onClick={this.handleFacebook.bind(this)} className="btn btn-facebook">Sign in with Facebook</button>
-        <button onClick={this.handleTwitter.bind(this)} className="btn btn-twitter">Sign in with Twitter</button>
-        <button onClick={this.handleGoogle.bind(this)} className="btn btn-google">Sign in with Google</button>
+        <button onClick={this.handleFacebook.bind(this)} className="btn btn-facebook">{this.props.labels.facebooklogin}</button>
+        <button onClick={this.handleTwitter.bind(this)} className="btn btn-twitter">{this.props.labels.twitterlogin}</button>
+        <button onClick={this.handleGoogle.bind(this)} className="btn btn-google">{this.props.labels.googlelogin}</button>
             </div>
           </div>
         </div>
         <p className="text-center">
-          Already have an account? <Link to="/login"><strong>Log in</strong></Link>
+          {this.props.labels.alreadyaccount}<Link to="/login"><strong>{this.props.labels.login}</strong></Link>
         </p>
       </div>
     );
@@ -79,7 +79,8 @@ class Signup extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages
+    messages: state.messages,
+    labels: state.i18n.labels.account.signup
   };
 };
 

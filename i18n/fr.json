@@ -26,7 +26,68 @@
 
   },
   "account": {
-
+    "forgot": {
+      "forgotpassword": "Oubli mot de passe",
+      "resetinstruction": "Entrer votre email ci dessous afin de recevoir les instructions pour réinitialiser votre mot de passe.",
+      "email": "Email",
+      "resetpassword": "Reinitialiser le mot de passe"
+    },
+    "login": {
+      "login": "Se connecter",
+      "email": "Email",
+      "password": "Mot de passe",
+      "forgotpassword": "Oubli de votre mot de passe ?",
+      "socialsection": "Bientôt disponible",
+      "facebooklogin": "Se connecter avec Facebook",
+      "twitterlogin": "Se connecter avec Twitter",
+      "googlelogin": "Se connecter avec Google",
+      "noaccountyet": "Pas encore de compte ? ",
+      "signup": "S'enregistrer"
+    },
+    "profil": {
+      "facebooklink": "Lier votre compte Facebook",
+      "facebookunlink": "Dissocier votre compte Facebook",
+      "twitterlink": "Lier votre compte Twitter",
+      "twitterunlink": "Dissocier votre compte Twitter",
+      "googlelink": "Lier votre compte Google",
+      "googleunlink": "Dissocier votre compte Google",
+      "profilinformation": "Profil",
+      "email": "Email",
+      "name": "Nom",
+      "gender": "Sexe",
+      "male": "Homme",
+      "female": "Femme",
+      "location": "Adresse",
+      "gravatar": "Gravatar",
+      "updateprofil": "Mettre à jour votre Profil",
+      "changepassword": "Changer votre Mot de passe",
+      "newpassword": "Nouveau Mot de passe",
+      "confirmpassword": "Confirmer votre Mot de passe",
+      "linkedaccounts": "Comptes Liés",
+      "deleteaccount": "Suppression du Compte",
+      "deletewarning": "Vous pouvez supprimer votre compte mais garder en tête que cette action est irréversible.",
+      "deletebutton": "Supprimer mon compte"
+    },
+    "reset": {
+      "resetpassword": "Réinitialiser Mot de passe",
+      "newpassword": "Nouveau Mot de passe",
+      "confirmpassword": "Confirmer le Mot de passe",
+      "changepassword": "Changer votre Mot de passe"
+    },
+    "signup": {
+      "createaccount": "Créer un compte",
+      "name": "Nom",
+      "email": "Email",
+      "password": "Mot de passe",
+      "agreeterms": "En cliquand sur ce bouton vous déclarez être en accord avec les ",
+      "termofservice": "Conditions d'utilisation",
+      "socialsection": "Bientôt disponible",
+      "facebooklogin": "Se connecter avec Facebook",
+      "twitterlogin": "Se connecter avec Twitter",
+      "googlelogin": "Se connecter avec Google",
+      "alreadyaccount": "Déjà un compte ? ",
+      "login": "Se connecter"
+    }
   },
   "helper": {
 
