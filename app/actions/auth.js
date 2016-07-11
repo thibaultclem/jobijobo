@@ -152,8 +152,7 @@ export function updateProfile(state, token) {
         email: state.email,
         name: state.name,
         gender: state.gender,
-        location: state.location,
-        website: state.website
+        location: state.location
       })
     }).then((response) => {
       if (response.ok) {

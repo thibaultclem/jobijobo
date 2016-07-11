@@ -62,7 +62,7 @@ class Profile extends React.Component {
     ) : (
       <a role="button" onClick={this.handleLink.bind(this, 'google')}>Link your Google account</a>
     );
-    
+
     return (
       <div className="container">
         <div className="panel">
@@ -91,18 +91,6 @@ class Profile extends React.Component {
                   <label className="radio-inline col-sm-4">
                     <input type="radio" name="gender" value="female" checked={this.state.gender === 'female'} onChange={this.handleChange.bind(this)}/><span>Female</span>
                   </label>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="location" className="col-sm-3">Location</label>
-                <div className="col-sm-7">
-                  <input type="text" name="location" id="location" className="form-control" value={this.state.location} onChange={this.handleChange.bind(this)}/>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="website" className="col-sm-3">Website</label>
-                <div className="col-sm-7">
-                  <input type="text" name="website" id="website" className="form-control" value={this.state.website} onChange={this.handleChange.bind(this)}/>
                 </div>
               </div>
               <div className="form-group">

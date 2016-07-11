@@ -27,7 +27,7 @@ exports.ensureAuthenticated = function(req, res, next) {
     res.status(401).send({ msg: 'Unauthorized' });
   }
 };
-  
+
   /**
    * POST /login
    * Sign in with email and password
@@ -75,7 +75,7 @@ exports.signupPost = function(req, res, next) {
     return res.status(400).send(errors);
   }
 
-  
+
   User.findOne({ email: req.body.email }, function(err, user) {
     if (user) {
     return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
@@ -120,7 +120,6 @@ exports.accountPut = function(req, res, next) {
       user.name = req.body.name;
       user.gender = req.body.gender;
       user.location = req.body.location;
-      user.website = req.body.website;
     }
     user.save(function(err) {
       if ('password' in req.body) {
@@ -494,7 +493,7 @@ exports.authTwitter = function(req, res) {
           if (user) {
             return res.send({ token: generateToken(user), user: user });
           }
-      
+
           // Twitter does not provide an email address, but email is a required field in our User schema.
           // We can "fake" a Twitter email address as follows: username@twitter.com.
           user = new User({

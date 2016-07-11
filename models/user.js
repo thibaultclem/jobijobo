@@ -17,7 +17,6 @@ var userSchema = new mongoose.Schema({
   passwordResetExpires: Date,
   gender: String,
   location: String,
-  website: String,
   picture: String,
   facebook: String,
   twitter: String,
