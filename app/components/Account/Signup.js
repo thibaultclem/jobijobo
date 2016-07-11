@@ -63,9 +63,9 @@ class Signup extends React.Component {
             </form>
             <div className="hr-title"><span>{this.props.labels.socialsection}</span></div>
             <div className="btn-toolbar text-center">
-        <button onClick={this.handleFacebook.bind(this)} className="btn btn-facebook">{this.props.labels.facebooklogin}</button>
-        <button onClick={this.handleTwitter.bind(this)} className="btn btn-twitter">{this.props.labels.twitterlogin}</button>
-        <button onClick={this.handleGoogle.bind(this)} className="btn btn-google">{this.props.labels.googlelogin}</button>
+        <button className="btn btn-facebook disabled">{this.props.labels.facebooklogin}</button>
+        <button className="btn btn-twitter disabled">{this.props.labels.twitterlogin}</button>
+        <button className="btn btn-google disabled">{this.props.labels.googlelogin}</button>
             </div>
           </div>
         </div>

@@ -1762,17 +1762,17 @@ var Login = function (_get__$Component) {
               { className: 'btn-toolbar text-center' },
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleFacebook.bind(this), className: 'btn btn-facebook disabled' },
+                { className: 'btn btn-facebook disabled' },
                 this.props.labels.facebooklogin
               ),
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleTwitter.bind(this), className: 'btn btn-twitter disabled' },
+                { className: 'btn btn-twitter disabled' },
                 this.props.labels.twitterlogin
               ),
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleGoogle.bind(this), className: 'btn btn-google disabled' },
+                { className: 'btn btn-google disabled' },
                 this.props.labels.googlelogin
               )
             )
@@ -2961,17 +2961,17 @@ var Signup = function (_get__$Component) {
               { className: 'btn-toolbar text-center' },
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleFacebook.bind(this), className: 'btn btn-facebook' },
+                { className: 'btn btn-facebook disabled' },
                 this.props.labels.facebooklogin
               ),
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleTwitter.bind(this), className: 'btn btn-twitter' },
+                { className: 'btn btn-twitter disabled' },
                 this.props.labels.twitterlogin
               ),
               _react2.default.createElement(
                 'button',
-                { onClick: this.handleGoogle.bind(this), className: 'btn btn-google' },
+                { className: 'btn btn-google disabled' },
                 this.props.labels.googlelogin
               )
             )
