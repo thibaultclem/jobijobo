@@ -33,6 +33,7 @@ var Job = require('./models/job');
 var UserController = require('./controllers/user');
 var ContactController = require('./controllers/contact');
 var JobController = require('./controllers/job');
+var I18nController = require('./controllers/i18n');
 
 
 // React and Server-Side Rendering
@@ -97,6 +98,7 @@ app.use(function(req, res, next) {
 
 // API
 app.use('/api/v1/jobs', UserController.ensureAuthenticated, JobController);
+app.use('/api/v1/i18n', UserController.ensureAuthenticated, I18nController);
 
 //TODO clean and move parts to controllers
 app.post('/contact', ContactController.contactPost);
