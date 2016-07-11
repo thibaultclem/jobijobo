@@ -4488,7 +4488,7 @@ var Home = function (_get__$Component) {
               _react2.default.createElement(
                 'h3',
                 null,
-                'Bienvenue sur JobiJobo un outil pour vous facilitez la gestion de votre recherche d\'emplois.'
+                'Welcome to JobiJobo! '
               ),
               _react2.default.createElement('br', null)
             ),
@@ -4498,19 +4498,10 @@ var Home = function (_get__$Component) {
               _react2.default.createElement(
                 'h4',
                 null,
-                'Enregistrer vous puis rendez vous sur l\'onglet "Mes offres" pour ajouter votre première offre d\'emplois.'
+                'Landing page coming soon :)'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement('br', null)
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(
-                'strong',
-                null,
-                'NOTE for my english friend: Currently JobiJobo is only available in french. English version coming soon...'
-              )
             ),
             _react2.default.createElement(
               'div',
@@ -4520,7 +4511,7 @@ var Home = function (_get__$Component) {
               _react2.default.createElement(
                 'h5',
                 null,
-                'Pour les geeks, la stack:'
+                'Tech:'
               ),
               _react2.default.createElement(
                 'ul',

@@ -17,21 +17,18 @@ class Home extends React.Component {
         <div className="row home">
           <div className="col-md-8 col-md-offset-2">
             <div>
-              <h3>Bienvenue sur JobiJobo un outil pour vous facilitez la gestion de votre recherche d'emplois.</h3>
+              <h3>Welcome to JobiJobo! </h3>
               <br />
             </div>
             <div>
-              <h4>Enregistrer vous puis rendez vous sur l'onglet "Mes offres" pour ajouter votre première offre d'emplois.</h4>
+              <h4>Landing page coming soon :)</h4>
               <br />
               <br />
-            </div>
-            <div>
-              <strong>NOTE for my english friend: Currently JobiJobo is only available in french. English version coming soon...</strong>
             </div>
             <div>
               <br />
               <br />
-              <h5>Pour les geeks, la stack:</h5>
+              <h5>Tech:</h5>
               <ul>
                 <li>Platform: node</li>
                 <li>Framework: express</li>
