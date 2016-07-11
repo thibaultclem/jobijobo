@@ -10,9 +10,9 @@ class JobHeader extends React.Component {
   render() {
     var classHeadingStatus = "panel-heading job-status-" + this.props.status.name;
     var textHeadingStatus = (this.props.status.name == 'I') ?
-    "Interessé par l'offre"
+    this.props.labels.interested
     :
-    "Statut inconnu ! Hum... souci dans la plomberie"
+    this.props.labels.unknown
     ;
     return (
       <div className="JobHeader">
@@ -26,6 +26,7 @@ class JobHeader extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    labels: state.i18n.labels.job.jobheader
   };
 };
 

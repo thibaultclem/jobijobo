@@ -83,14 +83,14 @@ class JobInfo extends React.Component {
           //Display mode
           <div className="jobInfo-display">
             <div className="jobInfo-action pull-right">
-              <button type="button" className='btn btn-default hidden-xs' onClick={this.handleEditClick}>Editer</button>
+              <button type="button" className='btn btn-default hidden-xs' onClick={this.handleEditClick}>{this.props.labels.edit}</button>
               <button type="button" className='btn btn-default fa fa-pencil-square-o visible-xs-block' onClick={this.handleEditClick}></button>
             </div>
             <h3 className="jobInfo-company">{this.state.company}</h3>
             <h4 className="jobInfo-position">{this.state.position}</h4>
-            <i className="fa fa-external-link jobInfo-link"><a href={this.state.link}> Voir l'offre</a></i>
+            <i className="fa fa-external-link jobInfo-link"><a href={this.state.link}>{this.props.labels.linkoffer}</a></i>
             <div className="jobInfo-description">
-              <h2>DESCRIPTION</h2>
+              <h2>{this.props.labels.descriptiontitle}</h2>
               <ExpandedText>{this.state.description}</ExpandedText>
             </div>
           </div>
@@ -99,15 +99,15 @@ class JobInfo extends React.Component {
           <div className="JobEdit">
             <form className='form-horizontal' onSubmit={this.handleSubmitEditJob}>
               <div className='btn-group jobInfo-edit-buttons' role='group'>
-                <button type='submit' className='btn btn-success hidden-xs'>Sauvegarder</button>
+                <button type='submit' className='btn btn-success hidden-xs'>{this.props.labels.save}</button>
                 <button type="submit" className='btn btn-success fa fa-check visible-xs-block'></button>
-                <button type='button' className='btn btn-danger hidden-xs' onClick={this.handleDeleteJob}>Supprimer</button>
+                <button type='button' className='btn btn-danger hidden-xs' onClick={this.handleDeleteJob}>{this.props.labels.delete}</button>
                 <button type="button" className='btn btn-danger fa fa-trash visible-xs-block' onClick={this.handleDeleteJob}></button>
-                <button type='button' className='btn btn-default hidden-xs' onClick={this.handleEditClick}>Annuler</button>
+                <button type='button' className='btn btn-default hidden-xs' onClick={this.handleEditClick}>{this.props.labels.cancel}</button>
                 <button type="button" className='btn btn-default fa fa-remove visible-xs-block' onClick={this.handleEditClick}></button>
               </div>
               <div className='form-group'>
-                <label htmlFor='company'>Entreprise</label>
+                <label htmlFor='company'>{this.props.labels.company}</label>
                 <div>
                   <input
                     type='text'
@@ -121,7 +121,7 @@ class JobInfo extends React.Component {
                 </div>
               </div>
               <div className='form-group'>
-                <label htmlFor='position'>Poste</label>
+                <label htmlFor='position'>{this.props.labels.position}</label>
                 <div>
                   <input
                     type='text'
@@ -135,13 +135,13 @@ class JobInfo extends React.Component {
                 </div>
               </div>
               <div className='form-group'>
-                <label htmlFor='link'>URL</label>
+                <label htmlFor='link'>{this.props.labels.url}</label>
                 <div>
                   <input
                     type='url'
                     name='link'
                     id='link'
-                    placeholder='http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX'
+                    placeholder={this.props.labels.placeholderurl}
                     className='form-control'
                     value={this.state.link}
                     onChange={this.handleLinkChange}
@@ -149,7 +149,7 @@ class JobInfo extends React.Component {
                 </div>
               </div>
               <div className='form-group'>
-                <label htmlFor='description'>Description</label>
+                <label htmlFor='description'>{this.props.labels.description}</label>
                 <div>
                   <textarea
                     name='description'
@@ -171,7 +171,8 @@ class JobInfo extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    labels: state.i18n.labels.job.jobinfo
   };
 };
 

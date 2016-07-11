@@ -17,7 +17,7 @@ class StatusButton extends React.Component {
     var classButton = "btn btn-block "+this.props.buttonType;
     return (
       <div class='StatusButton'>
-        <button  type="button" data='test' className={classButton} onClick={this.handleButtonClick}>{this.props.children}</button>
+        <button  type="button" data='test' className={classButton} onClick={this.handleButtonClick}>{this.props.statusLabel}</button>
       </div>
     );
   }

@@ -22,7 +22,7 @@ class JobNote extends React.Component {
 
       return (
         <div className="JobNote col-sm-4">
-          <h2>NOTES</h2>
+          <h2>{this.props.labels.title}</h2>
           {noteNodes}
           <NewNote jobId={jobId}/>
         </div>
@@ -32,6 +32,7 @@ class JobNote extends React.Component {
 
   const mapStateToProps = (state) => {
     return {
+      labels: state.i18n.labels.job.notes.jobnotes
     };
   };
 

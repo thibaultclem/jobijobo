@@ -11,7 +11,7 @@ class JobStatus extends React.Component {
   render() {
     return (
       <div className="JobStatus col-sm-3">
-        <h2>STATUT</h2>
+        <h2>{this.props.labels.title}</h2>
         <StatusAction status={this.props.job.status[0]} />
       </div>
     );
@@ -20,6 +20,7 @@ class JobStatus extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    labels: state.i18n.labels.job.status.jobstatus
   };
 };
 

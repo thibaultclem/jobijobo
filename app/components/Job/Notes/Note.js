@@ -69,11 +69,11 @@ class Note extends React.Component {
           <div className="note-edit">
             <form className='form-horizontal' onSubmit={this.handleSubmitEditNote}>
               <div className='btn-group edit-buttons' role='group'>
-                <button type='submit' className='btn btn-success hidden-xs'>Sauvegarder</button>
+                <button type='submit' className='btn btn-success hidden-xs'>{this.props.labels.save}</button>
                 <button type="submit" className='btn btn-success fa fa-check visible-xs-block'></button>
-                <button type='button' className='btn btn-danger hidden-xs' onClick={this.handleDeleteNote}>Supprimer</button>
+                <button type='button' className='btn btn-danger hidden-xs' onClick={this.handleDeleteNote}>{this.props.labels.delete}</button>
                 <button type="button" className='btn btn-danger fa fa-trash visible-xs-block' onClick={this.handleDeleteNote}></button>
-                <button type='button' className='btn btn-default hidden-xs' onClick={this.handleEditClick}>Annuler</button>
+                <button type='button' className='btn btn-default hidden-xs' onClick={this.handleEditClick}>{this.props.labels.cancel}</button>
                 <button type="button" className='btn btn-default fa fa-remove visible-xs-block' onClick={this.handleEditClick}></button>
               </div>
               <div className='form-group'>
@@ -96,7 +96,8 @@ class Note extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    labels: state.i18n.labels.job.notes.note
   };
 };
 

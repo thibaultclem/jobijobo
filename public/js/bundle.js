@@ -5685,7 +5685,7 @@ var JobHeader = function (_get__$Component) {
     key: 'render',
     value: function render() {
       var classHeadingStatus = "panel-heading job-status-" + this.props.status.name;
-      var textHeadingStatus = this.props.status.name == 'I' ? "Interessé par l'offre" : "Statut inconnu ! Hum... souci dans la plomberie";
+      var textHeadingStatus = this.props.status.name == 'I' ? this.props.labels.interested : this.props.labels.unknown;
       return _react2.default.createElement(
         'div',
         { className: 'JobHeader' },
@@ -5706,7 +5706,9 @@ var JobHeader = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {};
+  return {
+    labels: state.i18n.labels.job.jobheader
+  };
 };
 
 var _DefaultExportValue = _get__('connect')(_get__('mapStateToProps'))(_get__('JobHeader'));
@@ -5974,7 +5976,7 @@ var JobInfo = function (_get__$Component) {
             _react2.default.createElement(
               'button',
               { type: 'button', className: 'btn btn-default hidden-xs', onClick: this.handleEditClick },
-              'Editer'
+              this.props.labels.edit
             ),
             _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-pencil-square-o visible-xs-block', onClick: this.handleEditClick })
           ),
@@ -5994,7 +5996,7 @@ var JobInfo = function (_get__$Component) {
             _react2.default.createElement(
               'a',
               { href: this.state.link },
-              ' Voir l\'offre'
+              this.props.labels.linkoffer
             )
           ),
           _react2.default.createElement(
@@ -6003,7 +6005,7 @@ var JobInfo = function (_get__$Component) {
             _react2.default.createElement(
               'h2',
               null,
-              'DESCRIPTION'
+              this.props.labels.descriptiontitle
             ),
             _react2.default.createElement(
               _ExpandedText_Component,
@@ -6025,19 +6027,19 @@ var JobInfo = function (_get__$Component) {
               _react2.default.createElement(
                 'button',
                 { type: 'submit', className: 'btn btn-success hidden-xs' },
-                'Sauvegarder'
+                this.props.labels.save
               ),
               _react2.default.createElement('button', { type: 'submit', className: 'btn btn-success fa fa-check visible-xs-block' }),
               _react2.default.createElement(
                 'button',
                 { type: 'button', className: 'btn btn-danger hidden-xs', onClick: this.handleDeleteJob },
-                'Supprimer'
+                this.props.labels.delete
               ),
               _react2.default.createElement('button', { type: 'button', className: 'btn btn-danger fa fa-trash visible-xs-block', onClick: this.handleDeleteJob }),
               _react2.default.createElement(
                 'button',
                 { type: 'button', className: 'btn btn-default hidden-xs', onClick: this.handleEditClick },
-                'Annuler'
+                this.props.labels.cancel
               ),
               _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-remove visible-xs-block', onClick: this.handleEditClick })
             ),
@@ -6047,7 +6049,7 @@ var JobInfo = function (_get__$Component) {
               _react2.default.createElement(
                 'label',
                 { htmlFor: 'company' },
-                'Entreprise'
+                this.props.labels.company
               ),
               _react2.default.createElement(
                 'div',
@@ -6069,7 +6071,7 @@ var JobInfo = function (_get__$Component) {
               _react2.default.createElement(
                 'label',
                 { htmlFor: 'position' },
-                'Poste'
+                this.props.labels.position
               ),
               _react2.default.createElement(
                 'div',
@@ -6091,7 +6093,7 @@ var JobInfo = function (_get__$Component) {
               _react2.default.createElement(
                 'label',
                 { htmlFor: 'link' },
-                'URL'
+                this.props.labels.url
               ),
               _react2.default.createElement(
                 'div',
@@ -6100,7 +6102,7 @@ var JobInfo = function (_get__$Component) {
                   type: 'url',
                   name: 'link',
                   id: 'link',
-                  placeholder: 'http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX',
+                  placeholder: this.props.labels.placeholderurl,
                   className: 'form-control',
                   value: this.state.link,
                   onChange: this.handleLinkChange,
@@ -6113,7 +6115,7 @@ var JobInfo = function (_get__$Component) {
               _react2.default.createElement(
                 'label',
                 { htmlFor: 'description' },
-                'Description'
+                this.props.labels.description
               ),
               _react2.default.createElement(
                 'div',
@@ -6138,7 +6140,8 @@ var JobInfo = function (_get__$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    labels: state.i18n.labels.job.jobinfo
   };
 };
 
@@ -6617,11 +6620,11 @@ var NewJob = function (_get__$Component) {
             _react2.default.createElement(
               'div',
               { className: 'job-state' },
-              'Ajouter une nouvelle offre',
+              this.props.labels.addjoboffer,
               _react2.default.createElement(
                 'button',
-                { className: 'btn btn-secondary pull-right', onClick: this.handleDisplayClick },
-                'Annuler'
+                { className: 'btn btn-default pull-right', onClick: this.handleDisplayClick },
+                this.props.labels.cancel
               )
             )
           ),
@@ -6637,7 +6640,7 @@ var NewJob = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'company', className: 'col-sm-2' },
-                  'Entreprise'
+                  this.props.labels.company
                 ),
                 _react2.default.createElement(
                   'div',
@@ -6646,7 +6649,7 @@ var NewJob = function (_get__$Component) {
                     type: 'text',
                     name: 'company',
                     id: 'company',
-                    placeholder: 'JobiJobo & Cie',
+                    placeholder: this.props.labels.companyplaceholder,
                     className: 'form-control',
                     value: this.state.company,
                     onChange: this.handleCompanyChange,
@@ -6659,7 +6662,7 @@ var NewJob = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'position', className: 'col-sm-2' },
-                  'Poste'
+                  this.props.labels.position
                 ),
                 _react2.default.createElement(
                   'div',
@@ -6668,7 +6671,7 @@ var NewJob = function (_get__$Component) {
                     type: 'text',
                     name: 'position',
                     id: 'position',
-                    placeholder: 'Développeur informatique',
+                    placeholder: this.props.labels.positionplaceholder,
                     className: 'form-control',
                     value: this.state.position,
                     onChange: this.handlePositionChange,
@@ -6681,7 +6684,7 @@ var NewJob = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'link', className: 'col-sm-2' },
-                  'URL'
+                  this.props.labels.url
                 ),
                 _react2.default.createElement(
                   'div',
@@ -6690,7 +6693,7 @@ var NewJob = function (_get__$Component) {
                     type: 'url',
                     name: 'link',
                     id: 'link',
-                    placeholder: 'http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX',
+                    placeholder: this.props.labels.urlplaceholder,
                     className: 'form-control',
                     value: this.state.link,
                     onChange: this.handleLinkChange,
@@ -6703,14 +6706,15 @@ var NewJob = function (_get__$Component) {
                 _react2.default.createElement(
                   'label',
                   { htmlFor: 'description', className: 'col-sm-2' },
-                  'Description'
+                  this.props.labels.description
                 ),
                 _react2.default.createElement(
                   'div',
                   { className: 'col-sm-8' },
                   _react2.default.createElement('textarea', {
                     name: 'description',
-                    id: 'description', rows: '7',
+                    id: 'description',
+                    rows: '7',
                     className: 'form-control',
                     value: this.state.description,
                     onChange: this.handleDescriptionChange
@@ -6726,7 +6730,7 @@ var NewJob = function (_get__$Component) {
                   _react2.default.createElement(
                     'button',
                     { type: 'submit', className: 'btn btn-success' },
-                    'Ajouter'
+                    this.props.labels.add
                   )
                 )
               )
@@ -6738,7 +6742,7 @@ var NewJob = function (_get__$Component) {
           _react2.default.createElement(
             'button',
             { type: 'button', className: 'btn btn-primary btn-lg', onClick: this.handleDisplayClick },
-            'Ajouter une nouvelle offre'
+            this.props.labels.addjoboffer
           )
         )
       );
@@ -6750,7 +6754,8 @@ var NewJob = function (_get__$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    labels: state.i18n.labels.job.newjob
   };
 };
 
@@ -6958,7 +6963,7 @@ var JobNote = function (_get__$Component) {
         _react2.default.createElement(
           'h2',
           null,
-          'NOTES'
+          this.props.labels.title
         ),
         noteNodes,
         _react2.default.createElement(_NewNote_Component, { jobId: jobId })
@@ -6970,7 +6975,9 @@ var JobNote = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {};
+  return {
+    labels: state.i18n.labels.job.notes.jobnotes
+  };
 };
 
 var _DefaultExportValue = _get__('connect')(_get__('mapStateToProps'))(_get__('JobNote'));
@@ -7200,7 +7207,7 @@ var NewNote = function (_get__$Component) {
                 name: 'body',
                 id: 'body', rows: '2',
                 className: 'form-control',
-                placeholder: 'J\'ajoute ici ma nouvelle note',
+                placeholder: this.props.labels.placeholder,
                 value: this.state.body,
                 onChange: this.handleBodyChange
               })
@@ -7215,7 +7222,7 @@ var NewNote = function (_get__$Component) {
               _react2.default.createElement(
                 'button',
                 { type: 'submit', className: 'btn btn-success' },
-                'Sauvegarder'
+                this.props.labels.save
               )
             )
           )
@@ -7229,7 +7236,8 @@ var NewNote = function (_get__$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    labels: state.i18n.labels.job.notes.newnote
   };
 };
 
@@ -7491,19 +7499,19 @@ var Note = function (_get__$Component) {
               _react2.default.createElement(
                 'button',
                 { type: 'submit', className: 'btn btn-success hidden-xs' },
-                'Sauvegarder'
+                this.props.labels.save
               ),
               _react2.default.createElement('button', { type: 'submit', className: 'btn btn-success fa fa-check visible-xs-block' }),
               _react2.default.createElement(
                 'button',
                 { type: 'button', className: 'btn btn-danger hidden-xs', onClick: this.handleDeleteNote },
-                'Supprimer'
+                this.props.labels.delete
               ),
               _react2.default.createElement('button', { type: 'button', className: 'btn btn-danger fa fa-trash visible-xs-block', onClick: this.handleDeleteNote }),
               _react2.default.createElement(
                 'button',
                 { type: 'button', className: 'btn btn-default hidden-xs', onClick: this.handleEditClick },
-                'Annuler'
+                this.props.labels.cancel
               ),
               _react2.default.createElement('button', { type: 'button', className: 'btn btn-default fa fa-remove visible-xs-block', onClick: this.handleEditClick })
             ),
@@ -7529,7 +7537,8 @@ var Note = function (_get__$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    labels: state.i18n.labels.job.notes.note
   };
 };
 
@@ -7728,7 +7737,7 @@ var JobStatus = function (_get__$Component) {
         _react2.default.createElement(
           'h2',
           null,
-          'STATUT'
+          this.props.labels.title
         ),
         _react2.default.createElement(_StatusAction_Component, { status: this.props.job.status[0] })
       );
@@ -7739,7 +7748,9 @@ var JobStatus = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {};
+  return {
+    labels: state.i18n.labels.job.status.jobstatus
+  };
 };
 
 var _DefaultExportValue = _get__('connect')(_get__('mapStateToProps'))(_get__('JobStatus'));
@@ -7938,21 +7949,9 @@ var StatusAction = function (_get__$Component) {
         _react2.default.createElement(
           'div',
           { className: 'btn-group', role: 'group' },
-          this.props.status.name == 'I' ? _react2.default.createElement(
-            _StatusButton_Component,
-            { buttonType: 'btn-info', statusType: 'candidated' },
-            'Candidature envoyée'
-          ) : null,
-          this.props.status.name == 'I' ? _react2.default.createElement(
-            _StatusButton_Component2,
-            { buttonType: 'btn-success', statusType: 'interview' },
-            'Direct à l\'entretien'
-          ) : null,
-          this.props.status.name == 'I' ? _react2.default.createElement(
-            _StatusButton_Component3,
-            { buttonType: 'btn-default', statusType: 'uninterested' },
-            'Plus intéressé'
-          ) : null
+          this.props.status.name == 'I' ? _react2.default.createElement(_StatusButton_Component, { buttonType: 'btn-info', statusType: 'candidated', statusLabel: this.props.labels.candidated }) : null,
+          this.props.status.name == 'I' ? _react2.default.createElement(_StatusButton_Component2, { buttonType: 'btn-success', statusType: 'interview', statusLabel: this.props.labels.interview }) : null,
+          this.props.status.name == 'I' ? _react2.default.createElement(_StatusButton_Component3, { buttonType: 'btn-default', statusType: 'uninterested', statusLabel: this.props.labels.uninterested }) : null
         )
       );
     }
@@ -7962,7 +7961,9 @@ var StatusAction = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {};
+  return {
+    labels: state.i18n.labels.job.status.statusaction
+  };
 };
 
 var _DefaultExportValue = _get__('connect')(_get__('mapStateToProps'))(_get__('StatusAction'));
@@ -8161,7 +8162,7 @@ var StatusButton = function (_get__$Component) {
         _react2.default.createElement(
           'button',
           { type: 'button', data: 'test', className: classButton, onClick: this.handleButtonClick },
-          this.props.children
+          this.props.statusLabel
         )
       );
     }

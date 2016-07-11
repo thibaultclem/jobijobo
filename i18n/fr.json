@@ -44,7 +44,7 @@
       "noaccountyet": "Pas encore de compte ? ",
       "signup": "S'enregistrer"
     },
-    "profil": {
+    "profile": {
       "facebooklink": "Lier votre compte Facebook",
       "facebookunlink": "Dissocier votre compte Facebook",
       "twitterlink": "Lier votre compte Twitter",
@@ -93,6 +93,58 @@
 
   },
   "job": {
-
+    "notes": {
+      "jobnotes": {
+        "title": "NOTES"
+      },
+      "newnote": {
+        "placeholder": "Taper votre nouvelle notre puis enregistrer",
+        "save": "Enregistrer"
+      },
+      "note": {
+        "save": "Enregistrer",
+        "delete": "Supprimer",
+        "cancel": "Annuler"
+      }
+    },
+    "status": {
+      "jobstatus": {
+        "title": "STATUTS"
+      },
+      "statusaction": {
+        "candidated": "Candidature envoyée",
+        "interview": "Interview planifiée",
+        "uninterested": "Plus intéressé"
+      }
+    },
+    "jobheader": {
+      "interested": "Intéressé",
+      "unknown": "Statut inconnu"
+    },
+    "jobinfo": {
+      "edit": "Editer",
+      "linkoffer": " Voir l'offre",
+      "descriptiontitle": "DESCRIPTION",
+      "save": "Enregistrer",
+      "delete": "Supprimer",
+      "cancel": "Annuler",
+      "company": "Entreprise",
+      "position": "Poste",
+      "url": "URL",
+      "placeholderurl": "http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX",
+      "description": "Description"
+    },
+    "newjob": {
+      "addjoboffer": "Ajouter une nouvelle offre",
+      "cancel": "Annuler",
+      "company": "Entreprise",
+      "companyplaceholder": "JobiJobo & Cie",
+      "position": "Poste",
+      "positionplaceholder": "Commercial",
+      "url": "URL",
+      "urlplaceholder": "http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX",
+      "description": "Description",
+      "add": "Ajouter"
+    }
   }
 }

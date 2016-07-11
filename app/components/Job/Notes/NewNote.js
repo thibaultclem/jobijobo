@@ -44,7 +44,7 @@ class NewNote extends React.Component {
                 name='body'
                 id='body' rows='2'
                 className='form-control'
-                placeholder="J'ajoute ici ma nouvelle note"
+                placeholder={this.props.labels.placeholder}
                 value={this.state.body}
                 onChange={this.handleBodyChange}
                 >
@@ -53,7 +53,7 @@ class NewNote extends React.Component {
           </div>
           <div className='form-group'>
             <div>
-              <button type='submit' className='btn btn-success'>Sauvegarder</button>
+              <button type='submit' className='btn btn-success'>{this.props.labels.save}</button>
             </div>
           </div>
         </form>
@@ -64,7 +64,8 @@ class NewNote extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    labels: state.i18n.labels.job.notes.newnote
   };
 };
 

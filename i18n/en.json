@@ -10,7 +10,7 @@
     "signup": "Sign Up",
     "login": "Log In",
     "logout": "Log Out",
-    "myjobs": "My Jobs",
+    "myjobs": "My Job Adverts",
     "myactivity": "My Activity"
   },
   "home": {
@@ -93,6 +93,58 @@
 
   },
   "job": {
-
+    "notes": {
+      "jobnotes": {
+        "title": "NOTES"
+      },
+      "newnote": {
+        "placeholder": "Tape new note here then save",
+        "save": "Save"
+      },
+      "note": {
+        "save": "Save",
+        "delete": "Delete",
+        "cancel": "Cancel"
+      }
+    },
+    "status": {
+      "jobstatus": {
+        "title": "STATUS"
+      },
+      "statusaction": {
+        "candidated": "Candidated",
+        "interview": "Interview Plan",
+        "uninterested": "Uninterested"
+      }
+    },
+    "jobheader": {
+      "interested": "Interested",
+      "unknown": "Unknown status"
+    },
+    "jobinfo": {
+      "edit": "Edit",
+      "linkoffer": " See job advert",
+      "descriptiontitle": "DESCRIPTION",
+      "save": "Save",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "company": "Company",
+      "position": "Position",
+      "url": "URL",
+      "placeholderurl": "http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX",
+      "description": "Description"
+    },
+    "newjob": {
+      "addjoboffer": "Add a new job advert",
+      "cancel": "Cancel",
+      "company": "Company",
+      "companyplaceholder": "JobiJobo & Cie",
+      "position": "Position",
+      "positionplaceholder": "Marketing Manager",
+      "url": "URL",
+      "urlplaceholder": "http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX",
+      "description": "Description",
+      "add": "Add"
+    }
   }
 }

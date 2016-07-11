@@ -75,20 +75,20 @@ class NewJob extends React.Component {
           <div className='panel panel-default new-job-offer'>
               <div className='panel-heading'>
                 <div className='job-state'>
-                  Ajouter une nouvelle offre
-                  <button className='btn btn-secondary pull-right' onClick={this.handleDisplayClick}>Annuler</button>
+                  {this.props.labels.addjoboffer}
+                  <button className='btn btn-default pull-right' onClick={this.handleDisplayClick}>{this.props.labels.cancel}</button>
                 </div>
               </div>
               <div className='panel-body'>
                 <form className='form-horizontal' onSubmit={this.handleSubmitNewJob}>
                   <div className='form-group'>
-                    <label htmlFor='company' className='col-sm-2'>Entreprise</label>
+                    <label htmlFor='company' className='col-sm-2'>{this.props.labels.company}</label>
                     <div className='col-sm-8'>
                       <input
                         type='text'
                         name='company'
                         id='company'
-                        placeholder='JobiJobo & Cie'
+                        placeholder={this.props.labels.companyplaceholder}
                         className='form-control'
                         value={this.state.company}
                         onChange={this.handleCompanyChange}
@@ -96,13 +96,13 @@ class NewJob extends React.Component {
                     </div>
                   </div>
                   <div className='form-group'>
-                    <label htmlFor='position' className='col-sm-2'>Poste</label>
+                    <label htmlFor='position' className='col-sm-2'>{this.props.labels.position}</label>
                     <div className='col-sm-8'>
                       <input
                         type='text'
                         name='position'
                         id='position'
-                        placeholder='Développeur informatique'
+                        placeholder={this.props.labels.positionplaceholder}
                         className='form-control'
                         value={this.state.position}
                         onChange={this.handlePositionChange}
@@ -110,13 +110,13 @@ class NewJob extends React.Component {
                     </div>
                   </div>
                   <div className='form-group'>
-                    <label htmlFor='link' className='col-sm-2'>URL</label>
+                    <label htmlFor='link' className='col-sm-2'>{this.props.labels.url}</label>
                     <div className='col-sm-8'>
                       <input
                         type='url'
                         name='link'
                         id='link'
-                        placeholder='http://candidat.pole-emploi.fr/candidat/rechercheoffres/detail/XXXXXX'
+                        placeholder={this.props.labels.urlplaceholder}
                         className='form-control'
                         value={this.state.link}
                         onChange={this.handleLinkChange}
@@ -124,11 +124,12 @@ class NewJob extends React.Component {
                     </div>
                   </div>
                   <div className='form-group'>
-                    <label htmlFor='description' className='col-sm-2'>Description</label>
+                    <label htmlFor='description' className='col-sm-2'>{this.props.labels.description}</label>
                     <div className='col-sm-8'>
                       <textarea
                         name='description'
-                        id='description' rows='7'
+                        id='description'
+                        rows='7'
                         className='form-control'
                         value={this.state.description}
                         onChange={this.handleDescriptionChange}
@@ -138,7 +139,7 @@ class NewJob extends React.Component {
                   </div>
                   <div className='form-group'>
                     <div className='col-sm-offset-2 col-sm-8'>
-                      <button type='submit' className='btn btn-success'>Ajouter</button>
+                      <button type='submit' className='btn btn-success'>{this.props.labels.add}</button>
                     </div>
                   </div>
                 </form>
@@ -146,7 +147,7 @@ class NewJob extends React.Component {
             </div>
             :
             <p>
-              <button type="button" className="btn btn-primary btn-lg" onClick={this.handleDisplayClick}>Ajouter une nouvelle offre</button>
+              <button type="button" className="btn btn-primary btn-lg" onClick={this.handleDisplayClick}>{this.props.labels.addjoboffer}</button>
             </p> }
       </div>
     );
@@ -155,7 +156,8 @@ class NewJob extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    labels: state.i18n.labels.job.newjob
   };
 };
 

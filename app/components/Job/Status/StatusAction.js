@@ -12,9 +12,9 @@ class StatusAction extends React.Component {
     return (
       <div className="StatusAction">
         <div className="btn-group" role="group">
-          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-info' statusType='candidated'>Candidature envoyée</StatusButton> : null }
-          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-success' statusType='interview'>Direct à l'entretien</StatusButton> : null }
-          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-default' statusType='uninterested'>Plus intéressé</StatusButton> : null }
+          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-info' statusType='candidated' statusLabel={this.props.labels.candidated}/> : null }
+          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-success' statusType='interview' statusLabel={this.props.labels.interview}/> : null }
+          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-default' statusType='uninterested' statusLabel={this.props.labels.uninterested}/> : null }
         </div>
       </div>
     );
@@ -23,6 +23,7 @@ class StatusAction extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    labels: state.i18n.labels.job.status.statusaction
   };
 };
 
