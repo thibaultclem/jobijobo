@@ -15,7 +15,7 @@ var Note = mongoose.model('Note')
 router.get('/', function(req, res, next) {
   Job.find({'user': req.user }).populate('status').populate('notes').exec(function(err, jobs) {
     if(err) { return next(err); }
-    
+
     res.json(jobs);
   })
 });
@@ -39,11 +39,12 @@ router.post('/', function(req, res, next) {
 
   //Create status
   var status = new Status({
-    name: "I",//Interested
+    type: "interested",//Interested
     createdDate: now,
     job: job
   });
 
+  // TODO: status is include in job
   //first save status
   status.save(function(err, status){
     //error:
@@ -184,32 +185,22 @@ router.delete('/:job/notes/:note', function(req, res, next) {
 
 
 /**
-* POST /status
+* POST /:job/status'
 *
 * create a new status
 */
 router.post('/:job/status', function(req, res, next) {
-  //Create status
+  //Create note
   var status = new Status(req.body);
   //Add date informations
-  var now = new Date();
-  status.createdDate = now;
-  //link to job
-  status.job = req.job;
-
-  //first save note
-  status.save(function(err, note){
-    //error:
-    if(err){ return next(err); console.log(err);}
-    //success:
-    //Link note to job
-    req.job.status.push(status);
-    //save job
-    req.job.save(function(err, job){
-      if(err){ return next(err); console.log(err); }
-      //return the new status with populate fields
-      res.json(status);
-    });
+  status.createdDate = new Date();
+  //add note to job
+  req.job.status.push(status);
+  //save job
+  req.job.save(function(err, job){
+    if(err){ return next(err); console.log(err); }
+    //return the new note with populate fields
+    res.json(job);
   });
 });
 
