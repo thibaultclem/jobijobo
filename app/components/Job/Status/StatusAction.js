@@ -9,12 +9,28 @@ class StatusAction extends React.Component {
   }
 
   render() {
+
+    var status = this.props.status.name;
+
     return (
       <div className="StatusAction">
         <div className="btn-group" role="group">
-          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-info' statusType='candidated' statusLabel={this.props.labels.candidated}/> : null }
-          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-success' statusType='interview' statusLabel={this.props.labels.interview}/> : null }
-          {(this.props.status.name == 'I') ? <StatusButton buttonType='btn-default' statusType='uninterested' statusLabel={this.props.labels.uninterested}/> : null }
+          {(status == 'interested') ?
+            <StatusButton buttonType='btn-default' statusType='apply' statusLabel={this.props.labels.apply}/> : null }
+          {(status == 'apply' OR status == 'interviewed') ?
+            <StatusButton buttonType='btn-default' statusType='interview' statusLabel={this.props.labels.interview}/> : null }
+          {(status == 'interview') ?
+            <StatusButton buttonType='btn-default' statusType='interviewed' statusLabel={this.props.labels.interviewed}/> : null }
+          {(status == 'interviewed' OR status == 'offerrejected') ?
+            <StatusButton buttonType='btn-default' statusType='offer' statusLabel={this.props.labels.offer}/> : null }
+          {(status == 'interviewed' OR status == 'offerrejected') ?
+            <StatusButton buttonType='btn-default' statusType='rejected' statusLabel={this.props.labels.rejected}/> : null }
+          {(status == 'offer') ?
+            <StatusButton buttonType='btn-default' statusType='accepted' statusLabel={this.props.labels.accepted}/> : null }
+          {(status == 'offer') ?
+            <StatusButton buttonType='btn-default' statusType='offerrejected' statusLabel={this.props.labels.offerrejected}/> : null }
+          {(status == 'interested' OR status == 'apply' OR status == 'interview' OR status == 'interviewed' OR status == 'offer' OR status == 'offerrejected') ?
+            <StatusButton buttonType='btn-default' statusType='uninterested' statusLabel={this.props.labels.uninterested}/> : null }
         </div>
       </div>
     );

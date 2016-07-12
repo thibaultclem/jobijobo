@@ -112,13 +112,24 @@
         "title": "STATUS"
       },
       "statusaction": {
-        "candidated": "Candidated",
-        "interview": "Interview Plan",
+        "apply": "Apply",
+        "interview": "Interview Coming",
+        "interviewed": "Interviewed",
+        "accepted": "Accepted",
+        "rejected": "Rejected",
+        "offer": "Got an offer",
         "uninterested": "Uninterested"
       }
     },
     "jobheader": {
       "interested": "Interested",
+      "apply": "Apply",
+      "interview": "Interview Coming",
+      "interviewed": "Interviewed",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "offer": "Got an offer",
+      "uninterested": "Uninterested",
       "unknown": "Unknown status"
     },
     "jobinfo": {

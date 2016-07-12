@@ -112,13 +112,24 @@
         "title": "STATUTS"
       },
       "statusaction": {
-        "candidated": "Candidature envoyée",
-        "interview": "Interview planifiée",
+        "apply": "Candidature envoyée",
+        "interview": "Entretien planifié",
+        "interviewed": "Entretien effectué",
+        "accepted": "Accepté",
+        "rejected": "Non accepté",
+        "offer": "Proposition d'embauche",
         "uninterested": "Plus intéressé"
       }
     },
     "jobheader": {
       "interested": "Intéressé",
+      "apply": "Candidature envoyée",
+      "interview": "Entretien planifié",
+      "interviewed": "Entretien effectué",
+      "accepted": "Accepté",
+      "rejected": "Non accepté",
+      "offer": "Proposition d'embauche",
+      "uninterested": "Plus intéressé",
       "unknown": "Statut inconnu"
     },
     "jobinfo": {
