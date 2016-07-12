@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var StatusSchema = new mongoose.Schema({
-  name: String,
+  type: String,
   createdDate: String,
   job: { type: mongoose.Schema.Types.ObjectId, ref: 'Job' }
 });

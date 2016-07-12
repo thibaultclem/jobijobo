@@ -5,7 +5,7 @@ var Status = mongoose.model('Status');
 var Note = mongoose.model('Note')
 
 var StatusSchema = new mongoose.Schema({
-  name: String,
+  type: String,
   createdDate: String
 });
 
@@ -13,6 +13,14 @@ var NoteSchema = new mongoose.Schema({
   body: String,
   createdDate: Date,
   updatedDate: Date
+});
+
+var ContactSchema = new mongoose.Schema({
+  name: String,
+  position: String,
+  email: String,
+  number: String,
+  link: String
 });
 
 var JobSchema = new mongoose.Schema({
@@ -25,7 +33,7 @@ var JobSchema = new mongoose.Schema({
   createdDate: Date,
   updatedDate: Date,
   status: [StatusSchema],
-  contacts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Contact' }],
+  contacts: [ContactSchema],
   notes: [NoteSchema]
 });
 
