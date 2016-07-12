@@ -10,7 +10,7 @@ class StatusAction extends React.Component {
 
   render() {
 
-    var status = this.props.status.name;
+    var status = this.props.status.type;
 
     return (
       <div className="StatusAction">

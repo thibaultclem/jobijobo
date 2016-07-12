@@ -7929,7 +7929,7 @@ var StatusAction = function (_get__$Component) {
     key: 'render',
     value: function render() {
 
-      var status = this.props.status.name;
+      var status = this.props.status.type;
 
       var _StatusButton_Component = _get__('StatusButton');
 
