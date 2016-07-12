@@ -4837,7 +4837,7 @@ var Job = function (_get__$Component) {
         _react2.default.createElement(
           'div',
           { className: 'panel panel-default job-offer' },
-          _react2.default.createElement(_JobHeader_Component, { status: this.props.job.status[0] }),
+          _react2.default.createElement(_JobHeader_Component, { status: this.props.job.status[this.props.job.status.length - 1] }),
           _react2.default.createElement(
             'div',
             { className: 'panel-body', onClick: this.handleExpandClik },
@@ -7763,7 +7763,7 @@ var JobStatus = function (_get__$Component) {
           null,
           this.props.labels.title
         ),
-        _react2.default.createElement(_StatusAction_Component, { status: this.props.job.status[0] })
+        _react2.default.createElement(_StatusAction_Component, { jobId: this.props.job._id, status: this.props.job.status[this.props.job.status.length - 1] })
       );
     }
   }]);
@@ -7986,14 +7986,14 @@ var StatusAction = function (_get__$Component) {
         _react2.default.createElement(
           'div',
           { className: 'btn-group', role: 'group' },
-          status == 'interested' ? _react2.default.createElement(_StatusButton_Component, { buttonType: 'btn-default', statusType: 'apply', statusLabel: this.props.labels.apply }) : null,
-          status == 'apply' || status == 'interviewed' ? _react2.default.createElement(_StatusButton_Component2, { buttonType: 'btn-default', statusType: 'interview', statusLabel: this.props.labels.interview }) : null,
-          status == 'interview' ? _react2.default.createElement(_StatusButton_Component3, { buttonType: 'btn-default', statusType: 'interviewed', statusLabel: this.props.labels.interviewed }) : null,
-          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component4, { buttonType: 'btn-default', statusType: 'offer', statusLabel: this.props.labels.offer }) : null,
-          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component5, { buttonType: 'btn-default', statusType: 'rejected', statusLabel: this.props.labels.rejected }) : null,
-          status == 'offer' ? _react2.default.createElement(_StatusButton_Component6, { buttonType: 'btn-default', statusType: 'accepted', statusLabel: this.props.labels.accepted }) : null,
-          status == 'offer' ? _react2.default.createElement(_StatusButton_Component7, { buttonType: 'btn-default', statusType: 'offerrejected', statusLabel: this.props.labels.offerrejected }) : null,
-          status == 'interested' || status == 'apply' || status == 'interview' || status == 'interviewed' || status == 'offer' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component8, { buttonType: 'btn-default', statusType: 'uninterested', statusLabel: this.props.labels.uninterested }) : null
+          status == 'interested' ? _react2.default.createElement(_StatusButton_Component, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'apply', statusLabel: this.props.labels.apply }) : null,
+          status == 'apply' || status == 'interviewed' ? _react2.default.createElement(_StatusButton_Component2, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'interview', statusLabel: this.props.labels.interview }) : null,
+          status == 'interview' ? _react2.default.createElement(_StatusButton_Component3, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'interviewed', statusLabel: this.props.labels.interviewed }) : null,
+          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component4, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'offer', statusLabel: this.props.labels.offer }) : null,
+          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component5, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'rejected', statusLabel: this.props.labels.rejected }) : null,
+          status == 'offer' ? _react2.default.createElement(_StatusButton_Component6, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'accepted', statusLabel: this.props.labels.accepted }) : null,
+          status == 'offer' ? _react2.default.createElement(_StatusButton_Component7, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'offerrejected', statusLabel: this.props.labels.offerrejected }) : null,
+          status == 'interested' || status == 'apply' || status == 'interview' || status == 'interviewed' || status == 'offer' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component8, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'uninterested', statusLabel: this.props.labels.uninterested }) : null
         )
       );
     }
@@ -8172,8 +8172,6 @@ var _job = require('../../../actions/job');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -8186,29 +8184,28 @@ var StatusButton = function (_get__$Component) {
   function StatusButton(props) {
     _classCallCheck(this, StatusButton);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(StatusButton).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(StatusButton).call(this, props));
+
+    _this.handleButtonClick = _this.handleButtonClick.bind(_this);
+    return _this;
   }
 
   _createClass(StatusButton, [{
     key: 'handleButtonClick',
     value: function handleButtonClick(e, type) {
-      //Todo get value of button
-      console.log(type);
+      e.preventDefault();
+      this.props.dispatch(_get__('addStatusToJobOffer')(this.props.statusType, this.props.jobId, this.props.token));
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var classButton = "btn btn-block " + this.props.buttonType;
       return _react2.default.createElement(
         'div',
         { 'class': 'StatusButton' },
         _react2.default.createElement(
           'button',
-          _defineProperty({ type: 'button', className: classButton, onClick: function onClick(event) {
-              return _this2.handleButtonClick(event, _this2.props.statusType);
-            } }, 'onClick', this.handleButtonClick),
+          { type: 'button', className: classButton, onClick: this.handleButtonClick },
           this.props.statusLabel
         )
       );
@@ -8219,7 +8216,9 @@ var StatusButton = function (_get__$Component) {
 }(_get__('React').Component);
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {};
+  return {
+    token: state.auth.token
+  };
 };
 
 var _DefaultExportValue = _get__('connect')(_get__('mapStateToProps'))(_get__('StatusButton'));
@@ -8252,6 +8251,9 @@ function _get__(variableName) {
 
 function _get_original__(variableName) {
   switch (variableName) {
+    case 'addStatusToJobOffer':
+      return _job.addStatusToJobOffer;
+
     case 'React':
       return _react2.default;
 

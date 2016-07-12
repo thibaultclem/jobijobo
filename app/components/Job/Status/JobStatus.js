@@ -12,7 +12,7 @@ class JobStatus extends React.Component {
     return (
       <div className="JobStatus col-sm-3">
         <h2>{this.props.labels.title}</h2>
-        <StatusAction status={this.props.job.status[0]} />
+        <StatusAction jobId={this.props.job._id} status={this.props.job.status[this.props.job.status.length-1]} />
       </div>
     );
   }

@@ -21,7 +21,7 @@ class Job extends React.Component {
     return (
       <div className="job">
         <div className="panel panel-default job-offer">
-          <JobHeader status={this.props.job.status[0]}/>
+          <JobHeader status={this.props.job.status[this.props.job.status.length-1]}/>
           <div className="panel-body" onClick={this.handleExpandClik}>
             { this.state.displayMore ? <JobDisplayMore job={this.props.job}/> : <JobDisplayMinimalist job={this.props.job}/>}
           </div>

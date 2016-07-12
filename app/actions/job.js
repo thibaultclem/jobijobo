@@ -204,3 +204,35 @@ export function deleteNote(jobId, id, token) {
     });
   };
 };
+
+//Add new status to job offer
+export function addStatusToJobOffer(type, id, token) {
+  return (dispatch) => {
+    return fetch(apiURL+'/'+id+'/status', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        type: type
+      })
+    }).then((response) => {
+      if (response.ok) {
+        return response.json().then((job) => {
+          dispatch({
+            type: 'CLEAR_MESSAGES'
+          });
+          dispatch({
+            type: 'UPDATE_JOB_OFFER',
+            job
+          });
+        });
+      } else {
+        return response.json().then((json) => {
+          //TODO:
+        });
+      }
+    });
+  };
+};
