@@ -1,19 +1,17 @@
 var mongoose = require('mongoose');
-//model
-//var Contact = mongoose.model('Contact');
-var Status = mongoose.model('Status');
-var Note = mongoose.model('Note')
 
 var StatusSchema = new mongoose.Schema({
   type: String,
   createdDate: String
 });
+var Status = mongoose.model('Status', StatusSchema);
 
 var NoteSchema = new mongoose.Schema({
   body: String,
   createdDate: Date,
   updatedDate: Date
 });
+var Note = mongoose.model('Note', NoteSchema);
 
 var ContactSchema = new mongoose.Schema({
   name: String,
@@ -22,6 +20,7 @@ var ContactSchema = new mongoose.Schema({
   number: String,
   link: String
 });
+var Contact = mongoose.model('Contact', ContactSchema);
 
 var JobSchema = new mongoose.Schema({
   user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
