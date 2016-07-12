@@ -118,6 +118,7 @@
         "accepted": "Accepté",
         "rejected": "Non accepté",
         "offer": "Proposition d'embauche",
+        "offerrejected": "Rejeter l'offre",
         "uninterested": "Plus intéressé"
       }
     },
@@ -129,6 +130,7 @@
       "accepted": "Accepté",
       "rejected": "Non accepté",
       "offer": "Proposition d'embauche",
+      "offerrejected": "Offre rejetée",
       "uninterested": "Plus intéressé",
       "unknown": "Statut inconnu"
     },

@@ -146,9 +146,9 @@ class NewJob extends React.Component {
               </div>
             </div>
             :
-            <p>
-              <button type="button" className="btn btn-primary btn-lg" onClick={this.handleDisplayClick}>{this.props.labels.addjoboffer}</button>
-            </p> }
+            <div className="jobActionBar">
+              <button type="button" title={this.props.labels.addjoboffer} onClick={this.handleDisplayClick} className="btn btn-info btn-circle btn-xl"><i className="fa fa-plus"></i></button>
+            </div> }
       </div>
     );
   }

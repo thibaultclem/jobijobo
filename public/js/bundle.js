@@ -3439,7 +3439,7 @@ var Footer = function (_get__$Component) {
           "p",
           null,
           "© 2016 JobiJobo.",
-          _react2.default.createElement("i", { className: "fa fa-lightbulb-o text-warning" }),
+          _react2.default.createElement("i", { className: "fa fa-lightbulb-o" }),
           " by friend in ",
           _react2.default.createElement(
             "strong",
@@ -3453,7 +3453,7 @@ var Footer = function (_get__$Component) {
             _react2.default.createElement("i", { className: "fa fa-code" })
           ),
           " with ",
-          _react2.default.createElement("i", { className: "fa fa-heart text-danger" }),
+          _react2.default.createElement("i", { className: "fa fa-heart danger" }),
           " in ",
           _react2.default.createElement(
             "strong",
@@ -3663,7 +3663,7 @@ var Header = function (_get__$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var active = { borderBottomColor: '#3f51b5' };
+      var active = { borderBottomColor: 'transparent', backgroundColor: '#106a8c' };
 
       var _LanguageMenu_Component = _get__('LanguageMenu');
 
@@ -5709,7 +5709,38 @@ var JobHeader = function (_get__$Component) {
     key: 'render',
     value: function render() {
       var classHeadingStatus = "panel-heading job-status-" + this.props.status.type;
-      var textHeadingStatus = this.props.status.type == 'interested' ? this.props.labels.interested : this.props.labels.unknown;
+      switch (this.props.status.type) {
+        case 'interested':
+          var textHeadingStatus = this.props.labels.interested;
+          break;
+        case 'apply':
+          var textHeadingStatus = this.props.labels.apply;
+          break;
+        case 'interview':
+          var textHeadingStatus = this.props.labels.interview;
+          break;
+        case 'interviewed':
+          var textHeadingStatus = this.props.labels.interviewed;
+          break;
+        case 'offer':
+          var textHeadingStatus = this.props.labels.offer;
+          break;
+        case 'offer':
+          var textHeadingStatus = this.props.labels.offerrejected;
+          break;
+        case 'accepted':
+          var textHeadingStatus = this.props.labels.accepted;
+          break;
+        case 'rejected':
+          var textHeadingStatus = this.props.labels.rejected;
+          break;
+        case 'uninterested':
+          var textHeadingStatus = this.props.labels.uninterested;
+          break;
+        default:
+          var textHeadingStatus = this.props.labels.unknown;
+      };
+
       return _react2.default.createElement(
         'div',
         { className: 'JobHeader' },
@@ -6761,12 +6792,12 @@ var NewJob = function (_get__$Component) {
             )
           )
         ) : _react2.default.createElement(
-          'p',
-          null,
+          'div',
+          { className: 'jobActionBar' },
           _react2.default.createElement(
             'button',
-            { type: 'button', className: 'btn btn-primary btn-lg', onClick: this.handleDisplayClick },
-            this.props.labels.addjoboffer
+            { type: 'button', title: this.props.labels.addjoboffer, onClick: this.handleDisplayClick, className: 'btn btn-info btn-circle btn-xl' },
+            _react2.default.createElement('i', { className: 'fa fa-plus' })
           )
         )
       );
@@ -7986,14 +8017,14 @@ var StatusAction = function (_get__$Component) {
         _react2.default.createElement(
           'div',
           { className: 'btn-group', role: 'group' },
-          status == 'interested' ? _react2.default.createElement(_StatusButton_Component, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'apply', statusLabel: this.props.labels.apply }) : null,
-          status == 'apply' || status == 'interviewed' ? _react2.default.createElement(_StatusButton_Component2, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'interview', statusLabel: this.props.labels.interview }) : null,
-          status == 'interview' ? _react2.default.createElement(_StatusButton_Component3, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'interviewed', statusLabel: this.props.labels.interviewed }) : null,
-          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component4, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'offer', statusLabel: this.props.labels.offer }) : null,
-          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component5, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'rejected', statusLabel: this.props.labels.rejected }) : null,
-          status == 'offer' ? _react2.default.createElement(_StatusButton_Component6, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'accepted', statusLabel: this.props.labels.accepted }) : null,
-          status == 'offer' ? _react2.default.createElement(_StatusButton_Component7, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'offerrejected', statusLabel: this.props.labels.offerrejected }) : null,
-          status == 'interested' || status == 'apply' || status == 'interview' || status == 'interviewed' || status == 'offer' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component8, { jobId: this.props.jobId, buttonType: 'btn-default', statusType: 'uninterested', statusLabel: this.props.labels.uninterested }) : null
+          status == 'interested' ? _react2.default.createElement(_StatusButton_Component, { jobId: this.props.jobId, buttonType: 'btn-info', statusType: 'apply', statusLabel: this.props.labels.apply }) : null,
+          status == 'apply' || status == 'interviewed' ? _react2.default.createElement(_StatusButton_Component2, { jobId: this.props.jobId, buttonType: 'btn-interview', statusType: 'interview', statusLabel: this.props.labels.interview }) : null,
+          status == 'interview' ? _react2.default.createElement(_StatusButton_Component3, { jobId: this.props.jobId, buttonType: 'btn-interviewed', statusType: 'interviewed', statusLabel: this.props.labels.interviewed }) : null,
+          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component4, { jobId: this.props.jobId, buttonType: 'btn-offer', statusType: 'offer', statusLabel: this.props.labels.offer }) : null,
+          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component5, { jobId: this.props.jobId, buttonType: 'btn-danger', statusType: 'rejected', statusLabel: this.props.labels.rejected }) : null,
+          status == 'offer' ? _react2.default.createElement(_StatusButton_Component6, { jobId: this.props.jobId, buttonType: 'btn-success', statusType: 'accepted', statusLabel: this.props.labels.accepted }) : null,
+          status == 'offer' ? _react2.default.createElement(_StatusButton_Component7, { jobId: this.props.jobId, buttonType: 'btn-warning', statusType: 'offerrejected', statusLabel: this.props.labels.offerrejected }) : null,
+          status == 'interested' || status == 'apply' || status == 'interview' || status == 'interviewed' || status == 'offer' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component8, { jobId: this.props.jobId, buttonType: 'btn-uninterested', statusType: 'uninterested', statusLabel: this.props.labels.uninterested }) : null
         )
       );
     }

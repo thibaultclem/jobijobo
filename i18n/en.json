@@ -118,6 +118,7 @@
         "accepted": "Accepted",
         "rejected": "Rejected",
         "offer": "Got an offer",
+        "offerrejected": "Reject Offer",
         "uninterested": "Uninterested"
       }
     },
@@ -130,6 +131,7 @@
       "rejected": "Rejected",
       "offer": "Got an offer",
       "uninterested": "Uninterested",
+      "offerrejected": "Offer rejected",
       "unknown": "Unknown status"
     },
     "jobinfo": {
