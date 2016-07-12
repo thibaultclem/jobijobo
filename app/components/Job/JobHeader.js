@@ -8,8 +8,8 @@ class JobHeader extends React.Component {
   }
 
   render() {
-    var classHeadingStatus = "panel-heading job-status-" + this.props.status.name;
-    var textHeadingStatus = (this.props.status.name == 'I') ?
+    var classHeadingStatus = "panel-heading job-status-" + this.props.status.type;
+    var textHeadingStatus = (this.props.status.type == 'interested') ?
     this.props.labels.interested
     :
     this.props.labels.unknown

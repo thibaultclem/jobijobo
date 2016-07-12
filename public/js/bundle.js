@@ -577,6 +577,7 @@ exports.deleteJobOffer = deleteJobOffer;
 exports.addNoteToJobOffer = addNoteToJobOffer;
 exports.updateNote = updateNote;
 exports.deleteNote = deleteNote;
+exports.addStatusToJobOffer = addStatusToJobOffer;
 var apiURL = '/api/v1/jobs';
 
 //Fetch all job offer for connected user
@@ -768,6 +769,38 @@ function deleteNote(jobId, id, token) {
     }).then(function (response) {
       if (response.ok) {
         return response.json().then(function (job) {
+          dispatch({
+            type: 'UPDATE_JOB_OFFER',
+            job: job
+          });
+        });
+      } else {
+        return response.json().then(function (json) {
+          //TODO:
+        });
+      }
+    });
+  };
+};
+
+//Add new status to job offer
+function addStatusToJobOffer(type, id, token) {
+  return function (dispatch) {
+    return fetch(_get__('apiURL') + '/' + id + '/status', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({
+        type: type
+      })
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json().then(function (job) {
+          dispatch({
+            type: 'CLEAR_MESSAGES'
+          });
           dispatch({
             type: 'UPDATE_JOB_OFFER',
             job: job
@@ -5675,8 +5708,8 @@ var JobHeader = function (_get__$Component) {
   _createClass(JobHeader, [{
     key: 'render',
     value: function render() {
-      var classHeadingStatus = "panel-heading job-status-" + this.props.status.name;
-      var textHeadingStatus = this.props.status.name == 'I' ? this.props.labels.interested : this.props.labels.unknown;
+      var classHeadingStatus = "panel-heading job-status-" + this.props.status.type;
+      var textHeadingStatus = this.props.status.type == 'interested' ? this.props.labels.interested : this.props.labels.unknown;
       return _react2.default.createElement(
         'div',
         { className: 'JobHeader' },
@@ -8135,7 +8168,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
+var _job = require('../../../actions/job');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8149,28 +8186,29 @@ var StatusButton = function (_get__$Component) {
   function StatusButton(props) {
     _classCallCheck(this, StatusButton);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(StatusButton).call(this, props));
-
-    _this.handleButtonClick = _this.handleButtonClick.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(StatusButton).call(this, props));
   }
 
   _createClass(StatusButton, [{
     key: 'handleButtonClick',
-    value: function handleButtonClick(e) {
+    value: function handleButtonClick(e, type) {
       //Todo get value of button
-      console.log(e.button);
+      console.log(type);
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var classButton = "btn btn-block " + this.props.buttonType;
       return _react2.default.createElement(
         'div',
         { 'class': 'StatusButton' },
         _react2.default.createElement(
           'button',
-          { type: 'button', data: 'test', className: classButton, onClick: this.handleButtonClick },
+          _defineProperty({ type: 'button', className: classButton, onClick: function onClick(event) {
+              return _this2.handleButtonClick(event, _this2.props.statusType);
+            } }, 'onClick', this.handleButtonClick),
           this.props.statusLabel
         )
       );
@@ -8323,7 +8361,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"react":285,"react-redux":106}],31:[function(require,module,exports){
+},{"../../../actions/job":4,"react":285,"react-redux":106}],31:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
