@@ -36,30 +36,20 @@ router.post('/', function(req, res, next) {
   job.user = req.user;
   //Add empty array of notes
   job.notes = [];
+  job.status = [];
 
-  //Create status
+  //Create initial status
   var status = new Status({
     type: "interested",//Interested
     createdDate: now,
     job: job
   });
-
-  // TODO: status is include in job
-  //first save status
-  status.save(function(err, status){
-    //error:
-    if(err){ return next(err); }
-    //success:
-    //Link status to job
-    job.status.push(status);
-    //save job
-    job.save(function(err, job){
-      if(err){ return next(err); }
-      Job.populate(job, [{path:"status"}, {path:"notes"}], function(err, job) {
-        if(err){ return next(err); console.log(err); }
-        res.json(job);
-      });
-    });
+  //push initial status to the job advert
+  job.status.push(status);
+  //save job
+  job.save(function(err, job){
+    if(err){ return next(err); console.log(err); }
+    res.json(job);
   });
 });
 
