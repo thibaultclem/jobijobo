@@ -7945,19 +7945,22 @@ var StatusAction = function (_get__$Component) {
 
       var _StatusButton_Component7 = _get__('StatusButton');
 
+      var _StatusButton_Component8 = _get__('StatusButton');
+
       return _react2.default.createElement(
         'div',
         { className: 'StatusAction' },
         _react2.default.createElement(
           'div',
           { className: 'btn-group', role: 'group' },
-          status == 'I' ? _react2.default.createElement(_StatusButton_Component, { buttonType: 'btn-default', statusType: 'apply', statusLabel: this.props.labels.apply }) : null,
-          status == 'I' ? _react2.default.createElement(_StatusButton_Component2, { buttonType: 'btn-default', statusType: 'interview', statusLabel: this.props.labels.interview }) : null,
-          status == 'I' ? _react2.default.createElement(_StatusButton_Component3, { buttonType: 'btn-default', statusType: 'interviewed', statusLabel: this.props.labels.interviewed }) : null,
-          status == 'I' ? _react2.default.createElement(_StatusButton_Component4, { buttonType: 'btn-default', statusType: 'offer', statusLabel: this.props.labels.offer }) : null,
-          status == 'I' ? _react2.default.createElement(_StatusButton_Component5, { buttonType: 'btn-default', statusType: 'rejected', statusLabel: this.props.labels.rejected }) : null,
-          status == 'I' ? _react2.default.createElement(_StatusButton_Component6, { buttonType: 'btn-default', statusType: 'accepted', statusLabel: this.props.labels.accepted }) : null,
-          status == 'I' ? _react2.default.createElement(_StatusButton_Component7, { buttonType: 'btn-default', statusType: 'uninterested', statusLabel: this.props.labels.uninterested }) : null
+          status == 'interested' ? _react2.default.createElement(_StatusButton_Component, { buttonType: 'btn-default', statusType: 'apply', statusLabel: this.props.labels.apply }) : null,
+          status == 'apply' || status == 'interviewed' ? _react2.default.createElement(_StatusButton_Component2, { buttonType: 'btn-default', statusType: 'interview', statusLabel: this.props.labels.interview }) : null,
+          status == 'interview' ? _react2.default.createElement(_StatusButton_Component3, { buttonType: 'btn-default', statusType: 'interviewed', statusLabel: this.props.labels.interviewed }) : null,
+          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component4, { buttonType: 'btn-default', statusType: 'offer', statusLabel: this.props.labels.offer }) : null,
+          status == 'interviewed' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component5, { buttonType: 'btn-default', statusType: 'rejected', statusLabel: this.props.labels.rejected }) : null,
+          status == 'offer' ? _react2.default.createElement(_StatusButton_Component6, { buttonType: 'btn-default', statusType: 'accepted', statusLabel: this.props.labels.accepted }) : null,
+          status == 'offer' ? _react2.default.createElement(_StatusButton_Component7, { buttonType: 'btn-default', statusType: 'offerrejected', statusLabel: this.props.labels.offerrejected }) : null,
+          status == 'interested' || status == 'apply' || status == 'interview' || status == 'interviewed' || status == 'offer' || status == 'offerrejected' ? _react2.default.createElement(_StatusButton_Component8, { buttonType: 'btn-default', statusType: 'uninterested', statusLabel: this.props.labels.uninterested }) : null
         )
       );
     }
