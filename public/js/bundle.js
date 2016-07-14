@@ -49,7 +49,7 @@ function login(email, password) {
             token: json.token,
             user: json.user
           });
-          _get__('cookie').save('token', json.token, { expires: _get__('moment')().add(1, 'hour').toDate() });
+          _get__('cookie').save('token', json.token, { expires: _get__('moment')().add(7, 'days').toDate() });
           _get__('browserHistory').push('/account');
         });
       } else {
@@ -82,7 +82,7 @@ function signup(name, email, password) {
             user: json.user
           });
           _get__('browserHistory').push('/');
-          _get__('cookie').save('token', json.token, { expires: _get__('moment')().add(1, 'hour').toDate() });
+          _get__('cookie').save('token', json.token, { expires: _get__('moment')().add(7, 'days').toDate() });
         } else {
           dispatch({
             type: 'SIGNUP_FAILURE',
@@ -1204,7 +1204,7 @@ function signIn(_ref5) {
       token: token,
       user: user
     });
-    _get__('cookie').save('token', token, { expires: _get__('moment')().add(1, 'hour').toDate() });
+    _get__('cookie').save('token', token, { expires: _get__('moment')().add(7, 'days').toDate() });
     _get__('browserHistory').push('/');
     resolve({ window: window, interval: interval });
   });

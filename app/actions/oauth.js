@@ -242,7 +242,7 @@ function signIn({ token, user, window, interval, dispatch }) {
       token: token,
       user: user
     });
-    cookie.save('token', token, { expires: moment().add(1, 'hour').toDate() });
+    cookie.save('token', token, { expires: moment().add(7, 'days').toDate() });
     browserHistory.push('/');
     resolve({ window: window, interval: interval });
   });
@@ -257,4 +257,3 @@ function closePopup({ window, interval }) {
     resolve();
   });
 }
-
