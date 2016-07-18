@@ -431,11 +431,20 @@
 
 html {
   position: relative;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
   margin-bottom: 44px;
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+}
+
+.jobijobo {
+  height: 100%;
 }
 
 footer {
@@ -738,6 +747,7 @@ textarea {
   padding-left: 0px;
   padding-bottom: 15px;
 }
+
 .btn-circle.btn-xl {
   width: 70px;
   height: 70px;
@@ -747,10 +757,135 @@ textarea {
   border-radius: 35px;
 }
 
+.btn-circle.btn-xxl {
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    padding: 7px 16px;
+    border: 2px solid #fff;
+    border-radius: 100%!important;
+    font-size: 40px;
+    color: #fff;
+    background: 0 0;
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
 // Add new job
 /*
 .add-new-job button {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+display: block;
+margin-right: auto;
+margin-left: auto;
 }*/
+
+
+//###############################
+
+// Home
+
+//###############################
+.home {
+
+  height: 100%;
+
+  .action-more-info {
+    margin-top: 15px;
+  }
+
+  hr.small {
+    max-width: 100px;
+}
+
+  .text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .text-vertical-center h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 100px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+  }
+
+  .text-vertical-center h3 {
+    font-size: 26px;
+    line-height: 1.6;
+    color: #fff;
+  }
+
+  /* Header */
+
+  .header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 20%;
+    //height: 950px;
+    background: url(../img/strees-man.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+  /* Custom Button Styles */
+  .btn-info {
+      font-size: 24px;
+      height: auto;
+      width: auto;
+  }
+
+.btn-info:hover {
+    color: #fff;
+    background-color: darken(@brand-info, 20%);
+}
+
+.about {
+    padding: 50px 0;
+}
+
+/* Services */
+
+.services {
+    padding: 50px 0;
+    h2, h4 {
+      color: @brand-info;
+    }
+}
+
+.service-item {
+    margin-bottom: 30px;
+}
+
+/* Portfolio */
+
+.portfolio {
+    padding: 50px 0;
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+.img-portfolio {
+    margin: 0 auto;
+}
+
+.img-portfolio:hover {
+    opacity: 0.8;
+}
+
+/* Footer */
+
+.footer {
+    padding: 50px;
+}
+
+}

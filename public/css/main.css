@@ -8919,10 +8919,17 @@ button.close {
 @icon-font-svg-id: "glyphicons_halflingsregular";*/
 html {
   position: relative;
-  min-height: 100%;
+  height: 100%;
 }
 body {
   margin-bottom: 44px;
+  height: 100%;
+}
+#app {
+  height: 100%;
+}
+.jobijobo {
+  height: 100%;
 }
 footer {
   position: absolute;
@@ -9431,9 +9438,101 @@ fieldset[disabled] a.btn-interview {
   line-height: 1.33;
   border-radius: 35px;
 }
+.btn-circle.btn-xxl {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  padding: 7px 16px;
+  border: 2px solid #fff;
+  border-radius: 100%!important;
+  font-size: 40px;
+  color: #fff;
+  background: 0 0;
+  -webkit-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
 /*
 .add-new-job button {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+display: block;
+margin-right: auto;
+margin-left: auto;
 }*/
+.home {
+  height: 100%;
+  /* Header */
+  /* Custom Button Styles */
+  /* Services */
+  /* Portfolio */
+  /* Footer */
+}
+.home .action-more-info {
+  margin-top: 15px;
+}
+.home hr.small {
+  max-width: 100px;
+}
+.home .text-vertical-center {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.home .text-vertical-center h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 100px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.home .text-vertical-center h3 {
+  font-size: 26px;
+  line-height: 1.6;
+  color: #fff;
+}
+.home .header {
+  display: table;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 20%;
+  background: url(../img/strees-man.jpg) no-repeat center center scroll;
+  background-size: cover;
+  -o-background-size: cover;
+}
+.home .btn-info {
+  font-size: 24px;
+  height: auto;
+  width: auto;
+}
+.home .btn-info:hover {
+  color: #fff;
+  background-color: #2390b0;
+}
+.home .about {
+  padding: 50px 0;
+}
+.home .services {
+  padding: 50px 0;
+}
+.home .services h2,
+.home .services h4 {
+  color: #5bc0de;
+}
+.home .service-item {
+  margin-bottom: 30px;
+}
+.home .portfolio {
+  padding: 50px 0;
+}
+.home .portfolio-item {
+  margin-bottom: 30px;
+}
+.home .img-portfolio {
+  margin: 0 auto;
+}
+.home .img-portfolio:hover {
+  opacity: 0.8;
+}
+.home .footer {
+  padding: 50px;
+}

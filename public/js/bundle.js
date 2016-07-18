@@ -3242,16 +3242,18 @@ var App = function (_get__$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
+      console.log('current loc = ' + this.props.location.pathname);
+
       var _Header_Component = _get__('Header');
 
       var _Footer_Component = _get__('Footer');
 
       return _react2.default.createElement(
         'div',
-        null,
-        _react2.default.createElement(_Header_Component, null),
+        { className: 'jobijobo' },
+        !(this.props.location.pathname == '/') ? _react2.default.createElement(_Header_Component, null) : null,
         this.props.children,
-        _react2.default.createElement(_Footer_Component, null)
+        !(this.props.location.pathname == '/') ? _react2.default.createElement(_Footer_Component, null) : null
       );
     }
   }]);
@@ -4477,9 +4479,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require('react-redux');
 
-var _Messages = require('./Messages');
-
-var _Messages2 = _interopRequireDefault(_Messages);
+var _reactRouter = require('react-router');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4503,109 +4503,361 @@ var Home = function (_get__$Component) {
   _createClass(Home, [{
     key: 'render',
     value: function render() {
-      var _Messages_Component = _get__('Messages');
+      var _Link_Component = _get__('Link');
 
       return _react2.default.createElement(
         'div',
-        { className: 'container-fluid' },
-        _react2.default.createElement(_Messages_Component, { messages: this.props.messages }),
+        { className: 'home' },
         _react2.default.createElement(
-          'div',
-          { className: 'row home' },
+          'header',
+          { id: 'top', className: 'header' },
           _react2.default.createElement(
             'div',
-            { className: 'col-md-8 col-md-offset-2' },
+            { className: 'text-vertical-center' },
             _react2.default.createElement(
-              'div',
+              'h1',
               null,
-              _react2.default.createElement(
-                'h3',
-                null,
-                'Welcome to JobiJobo! '
-              ),
-              _react2.default.createElement('br', null)
+              'JobiJobo'
+            ),
+            _react2.default.createElement(
+              'h3',
+              null,
+              'A tool to help you managing your Job Search.'
+            ),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              _Link_Component,
+              { to: '/jobDashboard', className: 'btn btn-info btn-lg' },
+              'Sign up - It\'s free.'
             ),
             _react2.default.createElement(
               'div',
-              null,
+              { className: 'action-more-info' },
               _react2.default.createElement(
-                'h4',
-                null,
-                'Landing page coming soon :)'
-              ),
-              _react2.default.createElement('br', null),
-              _react2.default.createElement('br', null)
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement('br', null),
-              _react2.default.createElement('br', null),
-              _react2.default.createElement(
-                'h5',
-                null,
-                'Tech:'
-              ),
-              _react2.default.createElement(
-                'ul',
-                null,
+                'a',
+                { href: '#about' },
                 _react2.default.createElement(
-                  'li',
-                  null,
-                  'Platform: node'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Framework: express'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Template Engine: handlebars'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'CSS Framework: bootstrap'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'CSS Preprocessor: less'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'JavaScript Framework: react'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Build Tool: gulp'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Unit Testing: mocha'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Database: mongodb'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Authentication: email,facebook,google,twitter'
-                ),
-                _react2.default.createElement(
-                  'li',
-                  null,
-                  'Deployment: heroku'
+                  'button',
+                  { type: 'button', className: 'btn btn-info btn-circle btn-xxl' },
+                  _react2.default.createElement('i', { className: 'fa fa-2x fa-angle-double-down' })
                 )
               )
             )
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          { id: 'about', className: 'about' },
+          _react2.default.createElement(
+            'div',
+            { className: 'container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'div',
+                { className: 'col-lg-12 text-center' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'Notre mission: vous mettre dans les meilleurs conditions pour réussir votre recherche d\'emploi !'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'lead' },
+                  'Fini l\'utilisation de classeurs Excel ou la multiplication des sous repertoires suivant l\'avancée de votre recherche.'
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          { id: 'services', className: 'services bg-primary' },
+          _react2.default.createElement(
+            'div',
+            { className: 'container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'row text-center' },
+              _react2.default.createElement(
+                'div',
+                { className: 'col-lg-10 col-lg-offset-1' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'Our Services'
+                ),
+                _react2.default.createElement('hr', { className: 'small' }),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'row' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-4 col-sm-12' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'service-item' },
+                      _react2.default.createElement(
+                        'span',
+                        { className: 'fa-stack fa-4x' },
+                        _react2.default.createElement('i', { className: 'fa fa-circle fa-stack-2x' }),
+                        _react2.default.createElement('i', { className: 'fa fa-cloud fa-stack-1x text-primary' })
+                      ),
+                      _react2.default.createElement(
+                        'h4',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Service Name'
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#', className: 'btn btn-light' },
+                        'Learn More'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-4 col-sm-12' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'service-item' },
+                      _react2.default.createElement(
+                        'span',
+                        { className: 'fa-stack fa-4x' },
+                        _react2.default.createElement('i', { className: 'fa fa-circle fa-stack-2x' }),
+                        _react2.default.createElement('i', { className: 'fa fa-compass fa-stack-1x text-primary' })
+                      ),
+                      _react2.default.createElement(
+                        'h4',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Coach Jobi'
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Jobi c\'est un peu votre elfe de la gestion de l\'emploi. Il vous aidera à vous y retrouvez dans toutes vos offres, vous orientera vers des articles intéressant mais aussi partagera vos joies et vos coups durs.'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#', className: 'btn btn-light' },
+                        'Learn More'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-4 col-sm-12' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'service-item' },
+                      _react2.default.createElement(
+                        'span',
+                        { className: 'fa-stack fa-4x' },
+                        _react2.default.createElement('i', { className: 'fa fa-circle fa-stack-2x' }),
+                        _react2.default.createElement('i', { className: 'fa fa-mobile fa-stack-1x text-primary' })
+                      ),
+                      _react2.default.createElement(
+                        'h4',
+                        null,
+                        _react2.default.createElement(
+                          'strong',
+                          null,
+                          'Disponible partout'
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'JobiJobo s\'adapte à tous vos appareils. Ajouter une note via votre mobile en sortant de votre entretien. Gérer vos offres sur votre ordinateur ou juste checker l\'avancée de votre recherche tranquilement assis sur le canapé via votre tablette. Tout est possible.'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#', className: 'btn btn-light' },
+                        'Learn More'
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          { id: 'portfolio', className: 'portfolio' },
+          _react2.default.createElement(
+            'div',
+            { className: 'container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'div',
+                { className: 'col-lg-10 col-lg-offset-1 text-center' },
+                _react2.default.createElement(
+                  'h2',
+                  null,
+                  'Our Work'
+                ),
+                _react2.default.createElement('hr', { className: 'small' }),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'row' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-6' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'portfolio-item' },
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        _react2.default.createElement('img', { className: 'img-portfolio img-responsive', src: 'img/english-jobi.jpg' })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-6' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'portfolio-item' },
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        _react2.default.createElement('img', { className: 'img-portfolio img-responsive', src: 'img/english-jobi.jpg' })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-6' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'portfolio-item' },
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        _react2.default.createElement('img', { className: 'img-portfolio img-responsive', src: 'img/english-jobi.jpg' })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'col-md-6' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'portfolio-item' },
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        _react2.default.createElement('img', { className: 'img-portfolio img-responsive', src: 'img/english-jobi.jpg' })
+                      )
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { href: '#', className: 'btn btn-dark' },
+                  'View More Items'
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          { id: 'footer', className: 'footer' },
+          _react2.default.createElement(
+            'div',
+            { className: 'container' },
+            _react2.default.createElement(
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'div',
+                { className: 'col-lg-10 col-lg-offset-1 text-center' },
+                _react2.default.createElement(
+                  'h4',
+                  null,
+                  _react2.default.createElement(
+                    'strong',
+                    null,
+                    'JobiJobo'
+                  )
+                ),
+                _react2.default.createElement(
+                  'ul',
+                  { className: 'list-unstyled' },
+                  _react2.default.createElement(
+                    'li',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-envelope-o fa-fw' }),
+                    ' ',
+                    _react2.default.createElement(
+                      'a',
+                      { href: 'mailto:name@example.com' },
+                      'name@example.com'
+                    )
+                  )
+                ),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  '© 2016 JobiJobo. ',
+                  _react2.default.createElement('i', { className: 'fa fa-lightbulb-o' }),
+                  ' by friend in ',
+                  _react2.default.createElement(
+                    'strong',
+                    null,
+                    'Vietnam'
+                  ),
+                  ', ',
+                  _react2.default.createElement(
+                    'strong',
+                    null,
+                    _react2.default.createElement('i', { className: 'fa fa-code' })
+                  ),
+                  ' with ',
+                  _react2.default.createElement('i', { className: 'fa fa-heart danger' }),
+                  ' in ',
+                  _react2.default.createElement(
+                    'strong',
+                    null,
+                    'France'
+                  ),
+                  ', ',
+                  _react2.default.createElement('i', { className: 'fa fa-wrench' }),
+                  ' from ',
+                  _react2.default.createElement(
+                    'strong',
+                    null,
+                    'Singapore'
+                  ),
+                  '.'
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'a',
+            { id: 'to-top', href: '#top', className: 'btn btn-dark btn-lg' },
+            _react2.default.createElement('i', { className: 'fa fa-angle-double-up fa-fw fa-1x' })
           )
         )
       );
@@ -4652,8 +4904,8 @@ function _get__(variableName) {
 
 function _get_original__(variableName) {
   switch (variableName) {
-    case 'Messages':
-      return _Messages2.default;
+    case 'Link':
+      return _reactRouter.Link;
 
     case 'React':
       return _react2.default;
@@ -4764,7 +5016,7 @@ exports.__set__ = _set__;
 exports.__ResetDependency__ = _reset__;
 exports.__RewireAPI__ = _RewireAPI__;
 
-},{"./Messages":31,"react":285,"react-redux":106}],17:[function(require,module,exports){
+},{"react":285,"react-redux":106,"react-router":139}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
