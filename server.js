@@ -66,7 +66,9 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
 app.use(compression());
-app.use(logger(process.env.LOG_FORMAT));
+app.use(logger(process.env.LOG_FORMAT, {
+  skip: function (req, res) { return res.statusCode < 400 }
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
