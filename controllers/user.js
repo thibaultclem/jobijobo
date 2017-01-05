@@ -9,7 +9,7 @@ var User = require('../models/user');
 
 function generateToken(user) {
   var payload = {
-    iss: 'my.domain.com',
+    iss: 'jobijobo.io',
     sub: user.id,
     iat: moment().unix(),
     exp: moment().add(7, 'days').unix()
@@ -212,8 +212,8 @@ exports.forgotPost = function(req, res, next) {
       });
       var mailOptions = {
         to: user.email,
-        from: 'support@yourdomain.com',
-        subject: '✔ Reset your password on Mega Boilerplate',
+        from: 'support@jobijobo.io',
+        subject: '✔ Reset your password on JobiJobo',
         text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
         'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
         'http://' + req.headers.host + '/reset/' + token + '\n\n' +
@@ -252,9 +252,7 @@ exports.resetPost = function(req, res, next) {
           user.passwordResetToken = undefined;
           user.passwordResetExpires = undefined;
           user.save(function(err) {
-            req.logIn(user, function(err) {
-              done(err, user);
-            });
+            done(err, user);
           });
         });
     },
@@ -267,14 +265,15 @@ exports.resetPost = function(req, res, next) {
         }
       });
       var mailOptions = {
-        from: 'support@yourdomain.com',
+        from: 'support@jobijobo.io',
         to: user.email,
-        subject: 'Your Mega Boilerplate password has been changed',
+        subject: 'Your JobiJobo password has been changed',
         text: 'Hello,\n\n' +
         'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
       };
       transporter.sendMail(mailOptions, function(err) {
-      res.send({ msg: 'Your password has been changed successfully.' });
+        res.send({ msg: 'Your password has been changed successfully.' });
+        done(err);
       });
     }
   ]);
