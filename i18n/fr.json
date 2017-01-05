@@ -14,7 +14,40 @@
     "myactivity": "Mon activité"
   },
   "home": {
-
+    "subtitle": "Un outil pour vous aider a gérer votre recherche d'emplois.",
+    "signupbutton": "Sign up - It's free.",
+    "introduction": "Notre mission: vous mettre dans les meilleurs conditions pour réussir votre recherche d'emploi !",
+    "subintroduction": "Fini l'utilisation de classeurs Excel ou la multiplication des sous repertoires suivant l'avancée de votre recherche.",
+    "feature": {
+      "title": "Features",
+      "feature1": {
+        "title": "Simplicite",
+        "description": "Un outil simple et rapide pour vous simplifier la vie."
+      },
+      "feature2": {
+        "title": "Coach Jobi",
+        "description": "Jobi c'est un peu votre elfe de la gestion de l'emploi. Il vous aidera à vous y retrouvez dans toutes vos offres, vous orientera vers des articles intéressant mais aussi partagera vos joies et vos coups durs."
+      },
+      "feature3": {
+        "title": "Disponible partout",
+        "description": "JobiJobo s'adapte à tous vos appareils. Ajouter une note via votre mobile en sortant de votre entretien. Gérer vos offres sur votre ordinateur ou juste checker l'avancée de votre recherche tranquilement assis sur le canapé via votre tablette. Tout est possible."
+      }
+    },
+    "screenshot": {
+      "title": "Our Work",
+      "screenshot1": {
+        "description": "Voir toutes vos offres en un coup d'oeil et ajouter en des nouvelles en un clic"
+      },
+      "screenshot2": {
+        "description": "Consulter le detail de vos offres et leur avancement"
+      },
+      "screenshot3": {
+        "description": "Faite avancer chacune de vos offres en fonction de vos reponses"
+      },
+      "screenshot4": {
+        "description": "Prenez toutes sorte de notes pour ne rien laisser au hasard"
+      }
+    }
   },
   "message": {
 

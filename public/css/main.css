@@ -9479,7 +9479,7 @@ margin-left: auto;
 .home .text-vertical-center h1 {
   margin: 0;
   padding: 0;
-  font-size: 100px;
+  font-size: 90px;
   font-weight: 700;
   letter-spacing: 1px;
   color: #fff;
@@ -9498,6 +9498,12 @@ margin-left: auto;
   background: url(../img/strees-man.jpg) no-repeat center center scroll;
   background-size: cover;
   -o-background-size: cover;
+}
+.home .header .home-language {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  list-style: none;
 }
 .home .btn-info {
   font-size: 24px;

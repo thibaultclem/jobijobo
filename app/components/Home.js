@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import LanguageMenu from './Header/LanguageMenu';
+
 var apiURL = '/api/v1/job'
 
 class Home extends React.Component {
@@ -14,12 +16,15 @@ class Home extends React.Component {
     return (
       <div className="home">
         <header id="top" className="header">
+          <div className="home-language">
+            <LanguageMenu />
+          </div>
           <div className="text-vertical-center">
             <h1>JobiJobo</h1>
-            <h3>A tool to help you managing your Job Search.
+            <h3>{this.props.labels.subtitle}
             </h3>
             <br />
-            <Link to="/jobDashboard" className="btn btn-info btn-lg">Sign up - It's free.</Link>
+            <Link to="/jobDashboard" className="btn btn-info btn-lg">{this.props.labels.signupbutton}</Link>
             <div className="action-more-info">
               <a href="#about">
                 <button type="button" className="btn btn-info btn-circle btn-xxl"><i className="fa fa-2x fa-angle-double-down"></i></button>
@@ -156,8 +161,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages,
-    token: state.auth.token
+    labels: state.i18n.labels.home
   };
 };
 
