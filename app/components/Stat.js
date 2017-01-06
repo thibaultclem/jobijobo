@@ -21,7 +21,7 @@ class Contact extends React.Component {
   render() {
     return (
       <div className="container">
-        Statistique à propos de votre recherche d'emplois a venir rapidement (ou pas depend si je trouve un travail d'ici là... :) )
+        En cours de Dev, soyez patient :)
       </div>
     );
   }
