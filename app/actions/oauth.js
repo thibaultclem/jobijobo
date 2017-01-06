@@ -8,9 +8,9 @@ import { browserHistory } from 'react-router';
 export function facebookLogin() {
   const facebook = {
     url: 'http://localhost:3000/auth/facebook',
-    clientId: '980220002068787',
+    clientId: '395931560739085',
     redirectUri: 'http://localhost:3000/auth/facebook/callback',
-    authorizationUrl: 'https://www.facebook.com/v2.5/dialog/oauth',
+    authorizationUrl: 'https://www.facebook.com/v2.8/dialog/oauth',
     scope: 'email,user_location',
     width: 580,
     height: 400
@@ -49,7 +49,7 @@ export function twitterLogin() {
 export function googleLogin() {
   const google = {
     url: 'http://localhost:3000/auth/google',
-    clientId: '814958990796-p1centjebv1k0htp3am05tfg5k10nl0k.apps.googleusercontent.com',
+    clientId: '239494910243-ialfhbr17m0g9lv09498b25ut1ud56eo.apps.googleusercontent.com',
     redirectUri: 'http://localhost:3000/auth/google/callback',
     authorizationUrl: 'https://accounts.google.com/o/oauth2/auth',
     scope: 'openid profile email',
