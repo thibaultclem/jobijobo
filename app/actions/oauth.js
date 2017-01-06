@@ -8,7 +8,7 @@ import { browserHistory } from 'react-router';
 export function facebookLogin() {
   const facebook = {
     url: 'https://jobijobo.io/auth/facebook',
-    clientId: '395931560739085',
+    clientId: '395926837406224',
     redirectUri: 'https://jobijobo.io/auth/facebook/callback',
     authorizationUrl: 'https://www.facebook.com/v2.8/dialog/oauth',
     scope: 'email,user_location',
