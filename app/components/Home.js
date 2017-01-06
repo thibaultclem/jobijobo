@@ -36,8 +36,8 @@ class Home extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <h2>Notre mission: vous mettre dans les meilleurs conditions pour réussir votre recherche d'emploi !</h2>
-                <p className="lead">Fini l'utilisation de classeurs Excel ou la multiplication des sous repertoires suivant l'avancée de votre recherche.</p>
+                <h2>{this.props.labels.introduction}</h2>
+                <p className="lead">{this.props.labels.subintroduction}</p>
               </div>
             </div>
           </div>
@@ -46,35 +46,31 @@ class Home extends React.Component {
           <div className="container">
             <div className="row text-center">
               <div className="col-lg-10 col-lg-offset-1">
-                <h2>Our Services</h2>
+                <h2>{this.props.labels.feature.title}</h2>
                 <hr className="small" />
                 <div className="row">
                   <div className="col-md-4 col-sm-12">
                     <div className="service-item">
                       <span className="fa-stack fa-4x">
                         <i className="fa fa-circle fa-stack-2x"></i>
-                        <i className="fa fa-cloud fa-stack-1x text-primary"></i>
+                        <i className="fa fa-simplybuilt fa-stack-1x text-primary"></i>
                       </span>
                       <h4>
-                        <strong>Service Name</strong>
+                        <strong>{this.props.labels.feature.feature1.title}</strong>
                       </h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      <a href="#" className="btn btn-light">Learn More</a>
+                      <p>{this.props.labels.feature.feature1.description}</p>
                     </div>
                   </div>
                   <div className="col-md-4 col-sm-12">
                     <div className="service-item">
                       <span className="fa-stack fa-4x">
                         <i className="fa fa-circle fa-stack-2x"></i>
-                        <i className="fa fa-compass fa-stack-1x text-primary"></i>
+                        <i className="fa fa-smile-o fa-stack-1x text-primary"></i>
                       </span>
                       <h4>
-                        <strong>Coach Jobi</strong>
+                        <strong>{this.props.labels.feature.feature2.title}</strong>
                       </h4>
-                      <p>Jobi c'est un peu votre elfe de la gestion de l'emploi.
-                        Il vous aidera à vous y retrouvez dans toutes vos offres, vous orientera vers des articles intéressant mais aussi partagera vos joies et vos coups durs.
-                      </p>
-                      <a href="#" className="btn btn-light">Learn More</a>
+                      <p>{this.props.labels.feature.feature2.description}</p>
                     </div>
                   </div>
                   <div className="col-md-4 col-sm-12">
@@ -84,11 +80,9 @@ class Home extends React.Component {
                         <i className="fa fa-mobile fa-stack-1x text-primary"></i>
                       </span>
                       <h4>
-                        <strong>Disponible partout</strong>
+                        <strong>{this.props.labels.feature.feature3.title}</strong>
                       </h4>
-                      <p>JobiJobo s'adapte à tous vos appareils.
-                        Ajouter une note via votre mobile en sortant de votre entretien. Gérer vos offres sur votre ordinateur ou juste checker l'avancée de votre recherche tranquilement assis sur le canapé via votre tablette. Tout est possible.</p>
-                      <a href="#" className="btn btn-light">Learn More</a>
+                      <p>{this.props.labels.feature.feature3.description}</p>
                     </div>
                   </div>
                 </div>
@@ -99,40 +93,44 @@ class Home extends React.Component {
         <section id="portfolio" className="portfolio">
         <div className="container">
             <div className="row">
-                <div className="col-lg-10 col-lg-offset-1 text-center">
-                    <h2>Our Work</h2>
+                <div className="col-lg-12 text-center">
+                    <h2>{this.props.labels.screenshot.title}</h2>
                     <hr className="small" />
                     <div className="row">
                         <div className="col-md-6">
                             <div className="portfolio-item">
-                                <a href="#">
-                                    <img className="img-portfolio img-responsive" src="img/english-jobi.jpg" />
+                                <a>
+                                    <img className="img-portfolio img-responsive" src="img/dashboard-fr.png" />
                                 </a>
+                                <p>{this.props.labels.screenshot.screenshot1.description}</p>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="portfolio-item">
-                                <a href="#">
-                                    <img className="img-portfolio img-responsive" src="img/english-jobi.jpg" />
+                                <a>
+                                    <img className="img-portfolio img-responsive" src="img/detail-fr.png" />
                                 </a>
+                                <p>{this.props.labels.screenshot.screenshot2.description}</p>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="portfolio-item">
-                                <a href="#">
-                                    <img className="img-portfolio img-responsive" src="img/english-jobi.jpg" />
+                                <a>
+                                    <img className="img-portfolio img-responsive" src="img/status-fr.png" />
                                 </a>
+                                <p>{this.props.labels.screenshot.screenshot3.description}</p>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="portfolio-item">
-                                <a href="#">
-                                    <img className="img-portfolio img-responsive" src="img/english-jobi.jpg" />
+                                <a>
+                                    <img className="img-portfolio img-responsive" src="img/notes-fr.png" />
                                 </a>
+                                <p>{this.props.labels.screenshot.screenshot4.description}</p>
                             </div>
                         </div>
                     </div>
-                    <a href="#" className="btn btn-dark">View More Items</a>
+                    <Link to="/jobDashboard" className="btn btn-info btn-lg">{this.props.labels.signupbutton}</Link>
                 </div>
             </div>
         </div>
@@ -144,7 +142,7 @@ class Home extends React.Component {
                 <h4><strong>JobiJobo</strong>
               </h4>
               <ul className="list-unstyled">
-                <li><i className="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">name@example.com</a>
+                <li><i className="fa fa-envelope-o fa-fw"></i> <a href="mailto:support@jobijobo.io">support@jobijobo.io</a>
               </li>
             </ul>
             <br />

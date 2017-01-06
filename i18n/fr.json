@@ -14,15 +14,15 @@
     "myactivity": "Mon activité"
   },
   "home": {
-    "subtitle": "Un outil pour vous aider a gérer votre recherche d'emplois.",
-    "signupbutton": "Sign up - It's free.",
+    "subtitle": "Un outil simple pour gérer votre recherche d'emplois.",
+    "signupbutton": "Enregistrer vous - C'est gratuit.",
     "introduction": "Notre mission: vous mettre dans les meilleurs conditions pour réussir votre recherche d'emploi !",
-    "subintroduction": "Fini l'utilisation de classeurs Excel ou la multiplication des sous repertoires suivant l'avancée de votre recherche.",
+    "subintroduction": "Utiliser JobiJobo pour ajouter, gérer et organiser facilement vos offres d'emplois.",
     "feature": {
-      "title": "Features",
+      "title": "Ce qu'on vous propose",
       "feature1": {
-        "title": "Simplicite",
-        "description": "Un outil simple et rapide pour vous simplifier la vie."
+        "title": "Simplicité",
+        "description": "Un outil simple et efficace pour vous simplifier votre recherche d'emplois. De la selection d'offre à la signature de votre contrat JobiJobo vous accompagne tout au long de votre recherche."
       },
       "feature2": {
         "title": "Coach Jobi",
@@ -30,19 +30,19 @@
       },
       "feature3": {
         "title": "Disponible partout",
-        "description": "JobiJobo s'adapte à tous vos appareils. Ajouter une note via votre mobile en sortant de votre entretien. Gérer vos offres sur votre ordinateur ou juste checker l'avancée de votre recherche tranquilement assis sur le canapé via votre tablette. Tout est possible."
+        "description": "JobiJobo s'adapte à tous vos appareils. Ajouter une note via votre mobile en sortant de votre entretien. Gérer vos offres sur votre ordinateur ou juste checker l'avancée de votre recherche via votre tablette. Tout est possible."
       }
     },
     "screenshot": {
-      "title": "Our Work",
+      "title": "Un aperçu de JobiJobo",
       "screenshot1": {
-        "description": "Voir toutes vos offres en un coup d'oeil et ajouter en des nouvelles en un clic"
+        "description": "Voir toutes vos offres facielemnt et ajouter en un clic"
       },
       "screenshot2": {
-        "description": "Consulter le detail de vos offres et leur avancement"
+        "description": "Consulter le detail de vos offres et gerer leur avancement"
       },
       "screenshot3": {
-        "description": "Faite avancer chacune de vos offres en fonction de vos reponses"
+        "description": "Faite avancer pas à pas chacune de vos offres"
       },
       "screenshot4": {
         "description": "Prenez toutes sorte de notes pour ne rien laisser au hasard"
