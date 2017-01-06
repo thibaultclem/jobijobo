@@ -7,9 +7,9 @@ import { browserHistory } from 'react-router';
 // Sign in with Facebook
 export function facebookLogin() {
   const facebook = {
-    url: 'http://localhost:3000/auth/facebook',
+    url: 'https://jobijobo.io/auth/facebook',
     clientId: '395931560739085',
-    redirectUri: 'http://localhost:3000/auth/facebook/callback',
+    redirectUri: 'https://jobijobo.io/auth/facebook/callback',
     authorizationUrl: 'https://www.facebook.com/v2.8/dialog/oauth',
     scope: 'email,user_location',
     width: 580,
@@ -29,8 +29,8 @@ export function facebookLogin() {
 // Sign in with Twitter
 export function twitterLogin() {
   const twitter = {
-    url: 'http://localhost:3000/auth/twitter',
-    redirectUri: 'http://localhost:3000/auth/twitter/callback',
+    url: 'https://jobijobo.io/auth/twitter',
+    redirectUri: 'https://jobijobo.io/auth/twitter/callback',
     authorizationUrl: 'https://api.twitter.com/oauth/authenticate'
   };
 
@@ -48,9 +48,9 @@ export function twitterLogin() {
 // Sign in with Google
 export function googleLogin() {
   const google = {
-    url: 'http://localhost:3000/auth/google',
+    url: 'https://jobijobo.io/auth/google',
     clientId: '239494910243-ialfhbr17m0g9lv09498b25ut1ud56eo.apps.googleusercontent.com',
-    redirectUri: 'http://localhost:3000/auth/google/callback',
+    redirectUri: 'https://jobijobo.io/auth/google/callback',
     authorizationUrl: 'https://accounts.google.com/o/oauth2/auth',
     scope: 'openid profile email',
     width: 452,
