@@ -88,7 +88,7 @@ class JobInfo extends React.Component {
             </div>
             <h3 className="jobInfo-company">{this.state.company}</h3>
             <h4 className="jobInfo-position">{this.state.position}</h4>
-            <i className="fa fa-external-link jobInfo-link"><a href={this.state.link}>{this.props.labels.linkoffer}</a></i>
+            <i className="fa fa-external-link jobInfo-link"><a href={this.state.link} target="_blank">{this.props.labels.linkoffer}</a></i>
             <div className="jobInfo-description">
               <h2>{this.props.labels.descriptiontitle}</h2>
               <ExpandedText>{this.state.description}</ExpandedText>
