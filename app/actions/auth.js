@@ -23,7 +23,7 @@ export function login(email, password) {
             user: json.user
           });
           cookie.save('token', json.token, { expires: moment().add(90, 'days').toDate() });
-          browserHistory.push('/account');
+          browserHistory.push('/jobDashboard');
         });
       } else {
         return response.json().then((json) => {
@@ -54,7 +54,7 @@ export function signup(name, email, password) {
             token: json.token,
             user: json.user
           });
-          browserHistory.push('/');
+          browserHistory.push('/jobDashboard');
           cookie.save('token', json.token, { expires: moment().add(90, 'days').toDate() });
         } else {
           dispatch({

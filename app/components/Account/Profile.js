@@ -137,7 +137,7 @@ class Profile extends React.Component {
             </form>
           </div>
         </div>
-        <div className="panel">
+        {/*<div className="panel">
           <div className="panel-body">
             <div className="form-horizontal">
               <legend>{this.props.labels.linkedaccounts}</legend>
@@ -150,7 +150,7 @@ class Profile extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div>*/}
         <div className="panel">
           <div className="panel-body">
             <form onSubmit={this.handleDeleteAccount.bind(this)} className="form-horizontal">
