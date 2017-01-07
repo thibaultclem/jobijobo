@@ -4,14 +4,31 @@ import Footer from './Footer';
 
 class App extends React.Component {
   render() {
-    return (
+    return (this.props.location.pathname == '/') ? (
       <div className="jobijobo">
-        {!(this.props.location.pathname == '/') ? <Header/> : null}
         {this.props.children}
-        {!(this.props.location.pathname == '/') ? <Footer/> : null}
       </div>
-    );
+    ) : (
+      <div className="jobijobo">
+        <div className="wrapper">
+          <Header/>
+          {this.props.children}
+          <div className="push"></div>
+        </div>
+        <Footer/>
+      </div>
+    )
   }
 }
 
 export default App;
+
+
+// {!(this.props.location.pathname == '/') ? (
+//   <div className="wrapper">
+//     <Header/>
+//     {this.props.children}
+//     <Footer/>
+//   </div>
+// ) : {this.props.children};
+// }

@@ -447,8 +447,19 @@ body {
   height: 100%;
 }
 
+.wrapper {
+	min-height: 100%;
+	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+	height: 100%;
+	margin: 0 auto -44px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.push {
+  height: 44px;
+}
+
 footer {
-  position: absolute;
+  // position: absolute;
   width: 100%;
   height: 44px;
   padding: 10px 30px;
