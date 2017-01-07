@@ -19,7 +19,7 @@ class Header extends React.Component {
   render() {
     const active = { borderBottomColor: 'transparent', backgroundColor: '#106a8c' };
 
-    const rightNav = this.props.user ? (
+    const rightNav = this.props.token ? (
       <ul className="nav navbar-nav navbar-right">
         <LanguageMenu />
         <li className="dropdown">
