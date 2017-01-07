@@ -242,8 +242,8 @@ function signIn({ token, user, window, interval, dispatch }) {
       token: token,
       user: user
     });
-    cookie.save('token', token, { expires: moment().add(7, 'days').toDate() });
-    browserHistory.push('/');
+    cookie.save('token', token, { expires: moment().add(90, 'days').toDate() });
+    browserHistory.push('/jobDashboard');
     resolve({ window: window, interval: interval });
   });
 
