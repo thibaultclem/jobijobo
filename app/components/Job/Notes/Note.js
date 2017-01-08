@@ -53,7 +53,7 @@ export default class Note extends Component {
               <button type="button" className='btn btn-default fa fa-pencil-square-o' onClick={this.handleEditClick}></button>
             </div>
             <p>{this.props.note.body}</p>
-            <h6>{this.props.note.updatedDate}</h6>
+            <h6>{new Date(this.props.note.updatedDate).toLocaleDateString()}</h6>
           </div>
           :
           <div className="note-edit">
