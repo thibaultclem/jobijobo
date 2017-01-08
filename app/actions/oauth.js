@@ -4,6 +4,21 @@ import moment from 'moment';
 import cookie from 'react-cookie';
 import { browserHistory } from 'react-router';
 
+/**
+* Actions type
+**/
+
+export const OAUTH_SUCCESS = 'OAUTH_SUCCESS';
+export const OAUTH_FAILURE = 'OAUTH_FAILURE';
+export const LINK_FAILURE = 'LINK_FAILURE';
+export const UNLINK_SUCCESS = 'UNLINK_SUCCESS';
+export const UNLINK_FAILURE = 'UNLINK_FAILURE';
+import { CLEAR_MESSAGES } from './message';
+
+/**
+* Actions Creator
+**/
+
 // Sign in with Facebook
 export function facebookLogin() {
   const facebook = {
@@ -78,7 +93,7 @@ export function link(provider) {
       return googleLogin();
     default:
       return {
-        type: 'LINK_FAILURE',
+        type: LINK_FAILURE,
         messages: [{ msg: 'Invalid OAuth Provider' }]
       }
   }
@@ -91,14 +106,14 @@ export function unlink(provider) {
       if (response.ok) {
         return response.json().then((json) => {
           dispatch({
-            type: 'UNLINK_SUCCESS',
+            type: UNLINK_SUCCESS,
             messages: [json]
           });
         });
       } else {
         return response.json().then((json) => {
           dispatch({
-            type: 'UNLINK_FAILURE',
+            type: UNLINK_FAILURE,
             messages: [json]
           });
         });
@@ -188,7 +203,7 @@ function pollPopup({ window, config, requestToken, dispatch }) {
 
             if (params.error) {
               dispatch({
-                type: 'OAUTH_FAILURE',
+                type: OAUTH_FAILURE,
                 messages: [{ msg: params.error }]
               });
             } else {
@@ -196,7 +211,7 @@ function pollPopup({ window, config, requestToken, dispatch }) {
             }
           } else {
             dispatch({
-              type: 'OAUTH_FAILURE',
+              type: OAUTH_FAILURE,
               messages: [{ msg: 'OAuth redirect has occurred but no query or hash parameters were found.' }]
             });
           }
@@ -225,7 +240,7 @@ function exchangeCodeForToken({ oauthData, config, window, interval, dispatch })
       } else {
         return response.json().then((json) => {
           dispatch({
-            type: 'OAUTH_FAILURE',
+            type: OAUTH_FAILURE,
             messages: Array.isArray(json) ? json : [json]
           });
           closePopup({ window: window, interval: interval });
@@ -238,7 +253,7 @@ function exchangeCodeForToken({ oauthData, config, window, interval, dispatch })
 function signIn({ token, user, window, interval, dispatch }) {
   return new Promise((resolve, reject) => {
     dispatch({
-      type: 'OAUTH_SUCCESS',
+      type: OAUTH_SUCCESS,
       token: token,
       user: user
     });

@@ -1,5 +1,15 @@
 var apiURL = '/api/v1/i18n'
 
+/**
+* Actions type
+**/
+
+export const FETCH_LANGUAGE = 'FETCH_LANGUAGE';
+
+/**
+* Actions Creator
+**/
+
 //Fetch all job offer for connected user
 export function fetchLanguage(lang, token) {
 return (dispatch) => {
@@ -13,7 +23,7 @@ return (dispatch) => {
     if (response.ok) {
       return response.json().then((labels) => {
         dispatch({
-          type: 'FETCH_LANGUAGE',
+          type: FETCH_LANGUAGE,
           lang,
           labels
         });

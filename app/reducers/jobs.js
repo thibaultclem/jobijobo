@@ -1,6 +1,6 @@
 var update = require('react/lib/update');
 
-import { FETCH_JOB_OFFER, ADD_JOB_OFFER, UPDATE_JOB_OFFER, DELETE_JOB_OFFER } from '../actions/jobs';
+import { FETCH_JOB_OFFER, ADD_JOB_OFFER, UPDATE_JOB_OFFER, DELETE_JOB_OFFER } from '../actions/job';
 
 export default function jobs(state = {}, action) {
    switch (action.type) {

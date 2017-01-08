@@ -8,6 +8,7 @@ export const FETCH_JOB_OFFER = 'FETCH_JOB_OFFER';
 export const ADD_JOB_OFFER = 'ADD_JOB_OFFER';
 export const UPDATE_JOB_OFFER = 'UPDATE_JOB_OFFER';
 export const DELETE_JOB_OFFER = 'DELETE_JOB_OFFER';
+import { CLEAR_MESSAGES } from './message';
 
 /**
 * Actions Creator
@@ -146,7 +147,7 @@ export function addNoteToJobOffer(body, id, token) {
       if (response.ok) {
         return response.json().then((job) => {
           dispatch({
-            type: 'CLEAR_MESSAGES'
+            type: CLEAR_MESSAGES
           });
           dispatch({
             type: UPDATE_JOB_OFFER,
@@ -234,7 +235,7 @@ export function addStatusToJobOffer(type, id, token) {
       if (response.ok) {
         return response.json().then((job) => {
           dispatch({
-            type: 'CLEAR_MESSAGES'
+            type: CLEAR_MESSAGES
           });
           dispatch({
             type: UPDATE_JOB_OFFER,
