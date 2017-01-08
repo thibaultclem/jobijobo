@@ -1,5 +1,18 @@
 var apiURL = '/api/v1/jobs'
 
+/**
+* Actions type
+**/
+
+export const FETCH_JOB_OFFER = 'FETCH_JOB_OFFER';
+export const ADD_JOB_OFFER = 'ADD_JOB_OFFER';
+export const UPDATE_JOB_OFFER = 'UPDATE_JOB_OFFER';
+export const DELETE_JOB_OFFER = 'DELETE_JOB_OFFER';
+
+/**
+* Actions Creator
+**/
+
 //Fetch all job offer for connected user
 export function fetchJobOffer(token) {
 return (dispatch) => {
@@ -13,7 +26,7 @@ return (dispatch) => {
     if (response.ok) {
       return response.json().then((jobs) => {
         dispatch({
-          type: 'FETCH_JOB_OFFER',
+          type: FETCH_JOB_OFFER,
           jobs
         });
       });
@@ -45,7 +58,7 @@ export function addJobOffer(company, position, link, description, token) {
       if (response.ok) {
         return response.json().then((job) => {
           dispatch({
-            type: 'ADD_JOB_OFFER',
+            type: ADD_JOB_OFFER,
             job
           });
         });
@@ -77,7 +90,7 @@ export function updateJobOffer(id, company, position, link, description, token) 
       if (response.ok) {
         return response.json().then((job) => {
           dispatch({
-            type: 'UPDATE_JOB_OFFER',
+            type: UPDATE_JOB_OFFER,
             job
           });
         });
@@ -104,7 +117,7 @@ export function deleteJobOffer(id, token) {
       if (response.ok) {
         return response.json().then((jobId) => {
           dispatch({
-            type: 'DELETE_JOB_OFFER',
+            type: DELETE_JOB_OFFER,
             jobId
           });
         });
@@ -136,7 +149,7 @@ export function addNoteToJobOffer(body, id, token) {
             type: 'CLEAR_MESSAGES'
           });
           dispatch({
-            type: 'UPDATE_JOB_OFFER',
+            type: UPDATE_JOB_OFFER,
             job
           });
         });
@@ -165,7 +178,7 @@ export function updateNote(jobId, id, body, token) {
       if (response.ok) {
         return response.json().then((job) => {
           dispatch({
-            type: 'UPDATE_JOB_OFFER',
+            type: UPDATE_JOB_OFFER,
             job
           });
         });
@@ -192,7 +205,7 @@ export function deleteNote(jobId, id, token) {
       if (response.ok) {
         return response.json().then((job) => {
           dispatch({
-            type: 'UPDATE_JOB_OFFER',
+            type: UPDATE_JOB_OFFER,
             job
           });
         });
@@ -224,7 +237,7 @@ export function addStatusToJobOffer(type, id, token) {
             type: 'CLEAR_MESSAGES'
           });
           dispatch({
-            type: 'UPDATE_JOB_OFFER',
+            type: UPDATE_JOB_OFFER,
             job
           });
         });
