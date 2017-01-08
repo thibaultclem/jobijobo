@@ -5,6 +5,11 @@ class JobHeader extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleClik = this.handleClik.bind(this);
+  }
+
+  handleClik(e) {
+    this.props.onClick(e);
   }
 
   render() {
@@ -42,7 +47,7 @@ class JobHeader extends React.Component {
     };
 
     return (
-      <div className="JobHeader">
+      <div className="JobHeader" onClick={this.handleClik}>
         <div className={classHeadingStatus}>
           <div className="job-state">{textHeadingStatus}</div>
         </div>

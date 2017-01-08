@@ -9085,6 +9085,9 @@ textarea {
 .job-offer .job-display-minimalist {
   padding-top: 20px;
 }
+.job-offer .job-display-minimalist:hover {
+  cursor: pointer;
+}
 .job-offer .panel-body {
   padding-top: 0px;
   padding-bottom: 10px;
@@ -9092,9 +9095,6 @@ textarea {
 .job-offer .panel-body button {
   margin-right: 5px;
   margin-bottom: 5px;
-}
-.job-offer .panel-body:hover {
-  cursor: pointer;
 }
 .job-offer .form-horizontal .form-group {
   margin: 0px;
@@ -9461,6 +9461,9 @@ fieldset[disabled] a.btn-interview {
   background: 0 0;
   -webkit-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
+}
+.JobHeader:hover {
+  cursor: pointer;
 }
 .JobSearchBar .searchInput {
   width: 95%;

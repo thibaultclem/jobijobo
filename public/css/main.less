@@ -633,6 +633,9 @@ textarea {
   }
   .job-display-minimalist {
     padding-top: 20px;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .panel-body {
     padding-top: 0px;
@@ -640,9 +643,6 @@ textarea {
     button {
       margin-right: 5px;
       margin-bottom: 5px;
-    }
-    &:hover {
-      cursor: pointer;
     }
   }
   .form-horizontal .form-group {
@@ -782,6 +782,13 @@ textarea {
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
     transition: background .3s ease-in-out;
+}
+
+// Job header
+.JobHeader {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 // Job Search Bar

@@ -12,8 +12,8 @@ class Job extends React.Component {
     this.handleExpandClik = this.handleExpandClik.bind(this);
   }
 
-  handleExpandClik(e) {
-    this.setState({displayMore: true})
+  handleExpandClik(e, header) {
+    header ? this.setState({displayMore: !this.state.displayMore}) :  this.setState({displayMore: true})
   }
 
   render() {
@@ -21,7 +21,10 @@ class Job extends React.Component {
     return (
       <div className="job">
         <div className="panel panel-default job-offer">
-          <JobHeader status={this.props.job.status[this.props.job.status.length-1]}/>
+          <JobHeader
+            status={this.props.job.status[this.props.job.status.length-1]}
+            onClick={(event) => this.handleExpandClik(event, true)}
+            />
           <div className="panel-body" onClick={this.handleExpandClik}>
             { this.state.displayMore ? <JobDisplayMore job={this.props.job}/> : <JobDisplayMinimalist job={this.props.job}/>}
           </div>
