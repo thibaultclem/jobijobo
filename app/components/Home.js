@@ -24,7 +24,7 @@ class Home extends React.Component {
             <h3>{this.props.labels.subtitle}
             </h3>
             <br />
-            <Link to="/jobDashboard" className="btn btn-info btn-lg">{this.props.labels.signupbutton}</Link>
+            <Link to="/jobDashboard" className="btn btn-info btn-lg">{this.props.user ? this.props.labels.dashboardbutton : this.props.labels.signupbutton}</Link>
             <div className="action-more-info">
               <a href="#about">
                 <button type="button" className="btn btn-info btn-circle btn-xxl"><i className="fa fa-2x fa-angle-double-down"></i></button>
@@ -130,7 +130,7 @@ class Home extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <Link to="/jobDashboard" className="btn btn-info btn-lg">{this.props.labels.signupbutton}</Link>
+                    <Link to="/jobDashboard" className="btn btn-info btn-lg">{this.props.user ? this.props.labels.dashboardbutton : this.props.labels.signupbutton}</Link>
                 </div>
             </div>
         </div>
@@ -159,6 +159,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    user: state.auth.user,
     labels: state.i18n.labels.home
   };
 };
