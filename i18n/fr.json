@@ -126,6 +126,10 @@
 
   },
   "job": {
+    "searchBar": {
+      "placeholder": "Rechercher par entreprise ou poste",
+      "onGoingOnly": "Ne pas afficher non accepté et plus interessé"
+    },
     "notes": {
       "jobnotes": {
         "title": "NOTES"

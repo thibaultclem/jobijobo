@@ -9462,6 +9462,9 @@ fieldset[disabled] a.btn-interview {
   -webkit-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
 }
+.JobSearchBar .searchInput {
+  width: 95%;
+}
 /*
 .add-new-job button {
 display: block;
