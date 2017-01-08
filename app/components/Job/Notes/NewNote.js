@@ -1,8 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { addNoteToJobOffer } from '../../../actions/job';
+import React, { Component, PropTypes } from 'react';
 
-class NewNote extends React.Component {
+export default class NewNote extends Component {
 
   constructor(props) {
     super(props);
@@ -19,18 +17,13 @@ class NewNote extends React.Component {
     if (!body) {
       return;
     }
-    //dispatch the new job offer
-    this.props.dispatch(addNoteToJobOffer(
-      body,
-      this.props.jobId,
-      this.props.token
-    ));
+    // Invoke the callback from parent
+    this.props.onSubmitNewNote(body);
     //Clear the field
     this.setState({body: ''});
   }
 
   handleBodyChange(e) {
-    console.log("body of note change");
     this.setState({body: e.target.value});
   }
 
@@ -62,11 +55,7 @@ class NewNote extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    token: state.auth.token,
-    labels: state.i18n.labels.job.notes.newnote
-  };
+NewNote.propTypes = {
+  onSubmitNewNote: PropTypes.func.isRequired,
+  labels: PropTypes.object.isRequired
 };
-
-export default connect(mapStateToProps)(NewNote);

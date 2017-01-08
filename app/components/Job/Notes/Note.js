@@ -1,8 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { updateNote, deleteNote } from '../../../actions/job';
+import React, { Component, PropTypes } from 'react';
 
-class Note extends React.Component {
+export default class Note extends Component {
 
   constructor(props) {
     super(props);
@@ -12,7 +10,7 @@ class Note extends React.Component {
     };
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleSubmitEditNote = this.handleSubmitEditNote.bind(this);
-    this.handleDeleteNote = this.handleDeleteNote.bind(this);
+    this.handleSubmitDeleteNote = this.handleSubmitDeleteNote.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
   }
 
@@ -30,24 +28,16 @@ class Note extends React.Component {
       //TODO: dispatch a message
       return;
     }
-    //dispatch the updated job offer
-    this.props.dispatch(updateNote(
-      this.props.jobId,
-      this.props.note._id,
-      body,
-      this.props.token
-    ));
+    // Invoke the callback from parent
+    this.props.onSubmitEditNote(body);
     this.setState({editMode: false})
   }
 
-  handleDeleteNote(e) {
-    console.log('jobid : '+this.props.jobId);
-    //dispatch the deleted job offer
-    this.props.dispatch(deleteNote(
-      this.props.jobId,
-      this.props.note._id,
-      this.props.token
-    ));
+  handleSubmitDeleteNote(e) {
+    //Prevent the browser's default action of submitting the form
+    e.preventDefault();
+    // Invoke the callback from parent
+    this.props.onSubmitDeleteNote();
   }
 
   handleEditClick(e) {
@@ -71,8 +61,8 @@ class Note extends React.Component {
               <div className='btn-group edit-buttons' role='group'>
                 <button type='submit' className='btn btn-success hidden-xs'>{this.props.labels.save}</button>
                 <button type="submit" className='btn btn-success fa fa-check visible-xs-block'></button>
-                <button type='button' className='btn btn-danger hidden-xs' onClick={this.handleDeleteNote}>{this.props.labels.delete}</button>
-                <button type="button" className='btn btn-danger fa fa-trash visible-xs-block' onClick={this.handleDeleteNote}></button>
+                <button type='button' className='btn btn-danger hidden-xs' onClick={this.handleSubmitDeleteNote}>{this.props.labels.delete}</button>
+                <button type="button" className='btn btn-danger fa fa-trash visible-xs-block' onClick={this.handleSubmitDeleteNote}></button>
                 <button type='button' className='btn btn-default hidden-xs' onClick={this.handleEditClick}>{this.props.labels.cancel}</button>
                 <button type="button" className='btn btn-default fa fa-remove visible-xs-block' onClick={this.handleEditClick}></button>
               </div>
@@ -94,11 +84,8 @@ class Note extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    token: state.auth.token,
-    labels: state.i18n.labels.job.notes.note
-  };
+Note.propTypes = {
+  onSubmitEditNote: PropTypes.func.isRequired,
+  onSubmitDeleteNote: PropTypes.func.isRequired,
+  labels: PropTypes.object.isRequired
 };
-
-export default connect(mapStateToProps)(Note);
