@@ -33,7 +33,6 @@ class JobDashboard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     messages: state.messages,
     token: state.auth.token
