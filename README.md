@@ -1,6 +1,14 @@
-# jobijobo
+# jobijobo.io
 
-### Configuration
+[jobijobo.io](https://jobijobo.io) is a new Job Management Application.
+Our mission is to make your Job Search taking place under the best conditions.
+We provide a central place to easily add, manage and organize all your job adverts.
+![](https://jobijobo.io)
+
+[jobijobo.io](https://jobijobo.io) is a community project.
+We are looking for any developer, translator, you ? that would like to help us improve JobiJobo.io
+
+### Stack
 - **Platform:** node
 - **Framework**: express
 - **Template Engine**: handlebars
@@ -80,17 +88,10 @@ $ npm start
 #jobijobo listening on port 3000
 ```
 
+### TODO
+See our Trello dashboard:
+https://trello.com/b/1hOTUzKe/jobijobo-io
 
-### TODO (not in priority order)
-. Add Coach Jobi notification to help user interact with the app and help them in their job search
-. Add gamification badges on the activity screen
-. Add activity statistics charts on the activity screen
-. Add Contact and Document section in the search detail
-. Add a parser mechanism to easily extract information from the job search portal (pole emploi, linkedin. Glassdoor, indeed, ...)
-. Add reminders notification (email, sms)
-. Add smart filter/sorter to easily find the job application you are looking for in the dashboard
-. Add more languages
-. Add Linkedin Authentication
 
 ### License
-Copyright (c) 2016 Thibault Clement
+Copyright (c) 2016 JobiJob
